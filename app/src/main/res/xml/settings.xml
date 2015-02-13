@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="@string/settings">
+        <EditTextPreference android:key="username_preference"
+            android:title="@string/user_name"
+            android:summary="@string/pref_user_summary">
+        </EditTextPreference>
+        <ListPreference android:key="language_preference"
+            android:title="@string/title_language"
+            android:entryValues="@array/language"
+            android:entries="@array/language">
+        </ListPreference>
+        <SwitchPreference android:key="save_last_comic"
+            android:title="@string/text_save_comic"
+            android:defaultValue="true" />
+    </PreferenceCategory>
+</PreferenceScreen>
