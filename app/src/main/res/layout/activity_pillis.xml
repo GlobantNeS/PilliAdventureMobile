@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <com.kaineras.pilliadventuremobile.PagerEnabledSlidingPaneLayout
+    <com.kaineras.pilliadventuremobile.custom.PagerEnabledSlidingPaneLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -31,5 +31,5 @@
         android:layout_gravity="right"
         android:layout_weight="1"
         />
-    </com.kaineras.pilliadventuremobile.PagerEnabledSlidingPaneLayout>
+    </com.kaineras.pilliadventuremobile.custom.PagerEnabledSlidingPaneLayout>
 </LinearLayout>

@@ -1,4 +1,4 @@
-package com.kaineras.pilliadventuremobile;
+package com.kaineras.pilliadventuremobile.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

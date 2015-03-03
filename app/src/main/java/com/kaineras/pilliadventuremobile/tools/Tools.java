@@ -1,4 +1,4 @@
-package com.kaineras.pilliadventuremobile;
+package com.kaineras.pilliadventuremobile.tools;
 
 
 import android.content.Context;
@@ -14,6 +14,8 @@ import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 import com.android.volley.toolbox.Volley;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
+import com.kaineras.pilliadventuremobile.R;
+import com.kaineras.pilliadventuremobile.pojo.EnglishImagesProperties;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -90,7 +92,7 @@ public class Tools {
     public List<String> getUrlsByMonth(Context context,String year, String month) throws SQLException {
         mDBHelper=getDBHelper(context);
         List<EnglishImagesProperties> urls=mDBHelper.getImageByMonth(year, month);
-        List<String> resultUrls=new ArrayList<>();
+        List<String> resultUrls=new ArrayList<String>();
         for(EnglishImagesProperties eipTemp:urls)
             resultUrls.add(eipTemp.getName()+".jpg");
         return  resultUrls;

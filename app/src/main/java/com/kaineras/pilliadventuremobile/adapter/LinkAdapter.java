@@ -6,8 +6,9 @@ package com.kaineras.pilliadventuremobile.adapter;
 
 import java.util.List;
 
-import com.kaineras.pilliadventuremobile.OptionsMenu;
 import com.kaineras.pilliadventuremobile.R;
+import com.kaineras.pilliadventuremobile.pojo.OptionsMenu;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;

@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.android.volley.toolbox.NetworkImageView;
+import com.kaineras.pilliadventuremobile.custom.CustomNetworkImageView;
+import com.kaineras.pilliadventuremobile.tools.Tools;
 
 
 /**
@@ -25,10 +27,11 @@ public class AboutFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        NetworkImageView nivComic;
+        //NetworkImageView nivComic;
+        CustomNetworkImageView nivComic;
         v = inflater.inflate(R.layout.fragment_about, container, false);
-        nivComic = (NetworkImageView) v.findViewById(R.id.ivAbout);
-        Tools.loadImageFromInternet(getActivity(),nivComic, url);
+        nivComic = (CustomNetworkImageView) v.findViewById(R.id.ivAbout);
+        Tools.loadImageFromInternet(getActivity(), nivComic, url);
         return v;
     }
 

@@ -1,4 +1,4 @@
-package com.kaineras.pilliadventuremobile;
+package com.kaineras.pilliadventuremobile.tools;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -9,6 +9,7 @@ import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
+import com.kaineras.pilliadventuremobile.pojo.EnglishImagesProperties;
 
 import java.sql.SQLException;
 import java.util.List;

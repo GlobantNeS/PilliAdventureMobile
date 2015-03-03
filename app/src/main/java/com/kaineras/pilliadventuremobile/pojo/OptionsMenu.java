@@ -1,4 +1,4 @@
-package com.kaineras.pilliadventuremobile;
+package com.kaineras.pilliadventuremobile.pojo;
 
 /**
  * Created the first version by kaineras on 3/02/15.

@@ -1,4 +1,4 @@
-package com.kaineras.pilliadventuremobile;
+package com.kaineras.pilliadventuremobile.pojo;
 
 import com.j256.ormlite.field.DatabaseField;
 

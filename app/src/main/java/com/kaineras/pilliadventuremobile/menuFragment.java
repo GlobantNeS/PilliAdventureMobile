@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.kaineras.pilliadventuremobile.adapter.LinkAdapter;
+import com.kaineras.pilliadventuremobile.pojo.OptionsMenu;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +23,7 @@ import java.util.List;
 public class menuFragment extends Fragment {
 
 
-    private List<OptionsMenu> optionList = new ArrayList<>();
+    private List<OptionsMenu> optionList = new ArrayList<OptionsMenu>();
 
     public menuFragment() {
         // Required empty public constructor
@@ -64,7 +65,7 @@ public class menuFragment extends Fragment {
 
     private void init() {
         optionList.add(new OptionsMenu(getString(R.string.text_last_page),"PAGE",R.drawable.ic_action_action_language));
-        //optionList.add(new OptionsMenu(getString(R.string.text_comic),"COMIC",R.drawable.ic_action_image_photo));
+        optionList.add(new OptionsMenu(getString(R.string.text_comic),"COMIC",R.drawable.ic_action_image_photo));
         optionList.add(new OptionsMenu(getString(R.string.text_about),"ABOUT",R.drawable.ic_action_social_person));
         optionList.add(new OptionsMenu(getString(R.string.text_contact),"CONTACT",R.drawable.ic_action_communication_email));
     }

@@ -9,8 +9,6 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.android.volley.toolbox.NetworkImageView;
-import com.kaineras.pilliadventuremobile.adapter.ImageComicsViewFragment;
 
 import java.net.MalformedURLException;
 import java.util.ArrayList;
@@ -18,12 +16,15 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import com.google.common.collect.Lists;
+import com.kaineras.pilliadventuremobile.adapter.MyFragmentPagerAdapter;
+import com.kaineras.pilliadventuremobile.tools.Tools;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ComicFragment extends Fragment {
+public class
+        ComicFragment extends Fragment {
 
     private View v;
     private HashMap settings = new HashMap();
@@ -82,7 +83,7 @@ public class ComicFragment extends Fragment {
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 if(position==0)
                 {
-
+                    //pager.setCurrentItem(7,true);
                 }
             }
 
@@ -100,7 +101,7 @@ public class ComicFragment extends Fragment {
 
     class updateComic extends AsyncTask<Void,Void,Void> {
 
-        List<String> resultComics=new ArrayList<>();
+        List<String> resultComics=new ArrayList<String>();
         ProgressDialog dialog;
 
         @Override

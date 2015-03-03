@@ -1,4 +1,4 @@
-package com.kaineras.pilliadventuremobile;
+package com.kaineras.pilliadventuremobile.tools;
 
 import android.graphics.Bitmap;
 import android.util.LruCache;
