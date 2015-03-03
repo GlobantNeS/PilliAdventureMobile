@@ -1,6 +1,5 @@
-package com.kaineras.pilliadventuremobile.adapter;
+package com.kaineras.pilliadventuremobile;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -9,7 +8,7 @@ import android.view.ViewGroup;
 
 import com.android.volley.toolbox.NetworkImageView;
 import com.kaineras.pilliadventuremobile.R;
-import com.kaineras.pilliadventuremobile.Tools;
+import com.kaineras.pilliadventuremobile.tools.Tools;
 
 /**
  * Created the first version by kaineras on 12/02/15.

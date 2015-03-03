@@ -1,7 +1,9 @@
-package com.kaineras.pilliadventuremobile;
+package com.kaineras.pilliadventuremobile.settings;
 
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
+
+import com.kaineras.pilliadventuremobile.R;
 
 /**
  * Created the first version by kaineras on 3/02/15.

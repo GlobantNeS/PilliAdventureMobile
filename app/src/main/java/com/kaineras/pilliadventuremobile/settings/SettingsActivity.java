@@ -1,10 +1,13 @@
-package com.kaineras.pilliadventuremobile;
+package com.kaineras.pilliadventuremobile.settings;
 
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.kaineras.pilliadventuremobile.R;
+import com.kaineras.pilliadventuremobile.tools.Tools;
 
 /**
  * Created the first version by kaineras on 3/02/15.
