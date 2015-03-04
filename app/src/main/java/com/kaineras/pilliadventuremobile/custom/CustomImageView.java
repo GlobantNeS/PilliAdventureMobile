@@ -4,15 +4,14 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
-
-import com.android.volley.toolbox.NetworkImageView;
+import android.widget.ImageView;
 
 import java.lang.reflect.Field;
 
 /**
  * Created the first version by kaineras on 3/03/15.
  */
-public class CustomNetworkImageView extends NetworkImageView{
+public class CustomImageView extends ImageView{
     private int mDrawableWidth;
     private int mDrawableHeight;
     private boolean mAdjustViewBoundsL;
@@ -20,7 +19,7 @@ public class CustomNetworkImageView extends NetworkImageView{
     private int mMaxHeightL = Integer.MAX_VALUE;
     private View relatedView;
 
-    public CustomNetworkImageView(Context context, AttributeSet attrs, int defStyle) {
+    public CustomImageView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
 
         // hack for acces some private field of parent :-(
@@ -42,11 +41,11 @@ public class CustomNetworkImageView extends NetworkImageView{
         }
     }
 
-    public CustomNetworkImageView(Context context, AttributeSet attrs) {
+    public CustomImageView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public CustomNetworkImageView(Context context) {
+    public CustomImageView(Context context) {
         super(context);
     }
 
@@ -69,6 +68,7 @@ public class CustomNetworkImageView extends NetworkImageView{
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
+
         if (getDrawable() == null) {
             setMeasuredDimension(0, 0);
             return;
@@ -76,6 +76,9 @@ public class CustomNetworkImageView extends NetworkImageView{
 
         mDrawableWidth = getDrawable().getIntrinsicWidth();
         mDrawableHeight = getDrawable().getIntrinsicHeight();
+
+        Log.v(VIEW_LOG_TAG,String.valueOf(mDrawableWidth));
+        Log.v(VIEW_LOG_TAG,String.valueOf(mDrawableHeight));
 
         int w = 0;
         int h = 0;
@@ -87,7 +90,7 @@ public class CustomNetworkImageView extends NetworkImageView{
         boolean resizeWidth = false;
 
         // We are allowed to change the view's height
-        boolean resizeHeight = false;
+        boolean resizeHeight = true;
 
         if (mDrawableWidth > 0) {
             w = mDrawableWidth;
@@ -176,7 +179,7 @@ public class CustomNetworkImageView extends NetworkImageView{
             heightSize = resolveSize(h, heightMeasureSpec);
         }
 
-        //Log.d(Constants.LOGTAG, mDrawableWidth + ":" +  mDrawableHeight + " to " + widthSize + ":" + heightSize);
+        Log.d("END SIZE", mDrawableWidth + ":" +  mDrawableHeight + " to " + widthSize + ":" + heightSize);
 
         setMeasuredDimension(widthSize, heightSize);
 

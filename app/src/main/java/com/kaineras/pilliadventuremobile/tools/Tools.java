@@ -8,6 +8,7 @@ import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
@@ -15,6 +16,7 @@ import com.android.volley.toolbox.NetworkImageView;
 import com.android.volley.toolbox.Volley;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.kaineras.pilliadventuremobile.R;
+import com.kaineras.pilliadventuremobile.custom.CustomImageView;
 import com.kaineras.pilliadventuremobile.pojo.EnglishImagesProperties;
 
 import java.io.IOException;
@@ -33,6 +35,7 @@ import java.util.List;
  */
 public class Tools {
 
+    private static final String LOG_TAG = Tools.class.getSimpleName();
     private DatabaseHelper mDBHelper = null;
 
 
@@ -55,7 +58,15 @@ public class Tools {
         ImageLoader imageLoader;
         mRequestQueue = Volley.newRequestQueue(context);
         imageLoader = new ImageLoader(mRequestQueue,new BitmapLruCache(BitmapLruCache.getDefaultLruCacheSize()));
-        nivComic.setImageUrl(url,imageLoader);
+        nivComic.setImageUrl(url, imageLoader);
+    }
+
+    public static void loadImageFromInternet(Context context,CustomImageView nivComic, String url) {
+        RequestQueue mRequestQueue;
+        ImageLoader imageLoader;
+        mRequestQueue = Volley.newRequestQueue(context);
+        imageLoader = new ImageLoader(mRequestQueue,new BitmapLruCache(BitmapLruCache.getDefaultLruCacheSize()));
+        imageLoader.get(url,ImageLoader.getImageListener(nivComic,0,0));
     }
 
 

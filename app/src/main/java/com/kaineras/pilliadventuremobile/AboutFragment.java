@@ -1,13 +1,19 @@
 package com.kaineras.pilliadventuremobile;
 
 
+import android.content.res.Resources;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.android.volley.toolbox.NetworkImageView;
-import com.kaineras.pilliadventuremobile.custom.CustomNetworkImageView;
+
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageRequest;
+import com.kaineras.pilliadventuremobile.custom.CustomImageView;
 import com.kaineras.pilliadventuremobile.tools.Tools;
 
 
@@ -27,11 +33,11 @@ public class AboutFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        //NetworkImageView nivComic;
-        CustomNetworkImageView nivComic;
+        final CustomImageView nivComic;
         v = inflater.inflate(R.layout.fragment_about, container, false);
-        nivComic = (CustomNetworkImageView) v.findViewById(R.id.ivAbout);
-        Tools.loadImageFromInternet(getActivity(), nivComic, url);
+        nivComic = (CustomImageView) v.findViewById(R.id.ivAbout);
+        nivComic.setAdjustViewBounds(true);
+        Tools.loadImageFromInternet(getActivity(),nivComic,url);
         return v;
     }
 
