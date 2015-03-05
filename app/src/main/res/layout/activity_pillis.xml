@@ -9,27 +9,27 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <com.kaineras.pilliadventuremobile.custom.PagerEnabledSlidingPaneLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/sp" >
-
-    <!-- Left side pane. (Master) -->
-    <fragment android:id="@+id/leftpane"
-        android:name="com.kaineras.pilliadventuremobile.menuFragment"
-        android:layout_width="190dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="left"  />
-
-
-    <!-- Right side page. (Slave)  -->
-    <fragment android:id="@+id/rightpane"
-        android:name="com.kaineras.pilliadventuremobile.ViewFragment"
+    <com.kaineras.pilliadventuremobile.custom.PagerEnabledSlidingPaneLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="right"
-        android:layout_weight="1"
-        />
+        android:id="@+id/sp">
+
+        <!-- Left side pane. (Master) -->
+        <fragment
+            android:id="@+id/leftpane"
+            android:name="com.kaineras.pilliadventuremobile.menuFragment"
+            android:layout_width="190dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="left" />
+
+
+        <!-- Right side page. (Slave)  -->
+        <fragment
+            android:id="@+id/rightpane"
+            android:name="com.kaineras.pilliadventuremobile.ViewFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:layout_weight="1" />
     </com.kaineras.pilliadventuremobile.custom.PagerEnabledSlidingPaneLayout>
 </LinearLayout>

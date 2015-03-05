@@ -6,18 +6,23 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.google.common.collect.Lists;
+import com.kaineras.pilliadventuremobile.adapter.MyFragmentPagerAdapter;
+import com.kaineras.pilliadventuremobile.tools.Tools;
 
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
-import com.google.common.collect.Lists;
-import com.kaineras.pilliadventuremobile.adapter.MyFragmentPagerAdapter;
-import com.kaineras.pilliadventuremobile.tools.Tools;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -27,10 +32,12 @@ public class
         ComicFragment extends Fragment {
 
     private View v;
-    private HashMap settings = new HashMap();
-    Tools tools=new Tools();
+    private Map settings = new HashMap();
+    Tools tools = new Tools();
     ViewPager pager = null;
     MyFragmentPagerAdapter adapter;
+    final static private int PAGERS = 20;
+    private final static String LOG_TAG = ComicFragment.class.getSimpleName();
 
 
     public ComicFragment() {
@@ -45,46 +52,18 @@ public class
         settings = tools.getPreferences(getActivity());
         preparePager();
         adapter = new MyFragmentPagerAdapter(getFragmentManager());
-        boolean lastPage=!getArguments().getBoolean("PAGE");
-        if(lastPage)
-        {
-           new updateComic().execute();
+        boolean lastPage = !getArguments().getBoolean("PAGE");
+        if (lastPage) {
+            new UpdateComic().execute();
         }
-        /*else
-        {
-            String year="2015";
-            String month="02";
-            List<String> urls= null;
-            try {
-                urls = tools.getUrlsByMonth(getActivity(),year,month);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-            int index=0;
-            for(String nameImage:urls)
-            {
-                try {
-                    adapter.addFragment(ImageComicsViewFragment.newInstance(tools.constructURLIma(" ", nameImage).toString(), index));
-                } catch (MalformedURLException e) {
-                    e.printStackTrace();
-                }
-            }
-        }*/
-
-        //pager.setAdapter(adapter);
         return v;
     }
 
-    public void preparePager()
-    {
+    public void preparePager() {
         pager = (ViewPager) v.findViewById(R.id.pager);
         pager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                if(position==0)
-                {
-                    //pager.setCurrentItem(7,true);
-                }
             }
 
             @Override
@@ -99,9 +78,9 @@ public class
         });
     }
 
-    class updateComic extends AsyncTask<Void,Void,Void> {
+    class UpdateComic extends AsyncTask<Void, Void, Void> {
 
-        List<String> resultComics=new ArrayList<String>();
+        List<String> resultComics = new ArrayList<String>();
         ProgressDialog dialog;
 
         @Override
@@ -118,21 +97,20 @@ public class
         protected Void doInBackground(Void... params) {
 
             Calendar calendar = Calendar.getInstance();
-            String dateImage=tools.calendarToString(calendar);
+            String dateImage = tools.calendarToString(calendar);
             try {
 
-                for(int a=20;a>0;)
-                {
-                    if(tools.existImage(tools.constructURLIma(" ",dateImage+ ".jpg")))
-                    {
+                for (int a = PAGERS; a > 0; ) {
+                    if (tools.existImage(tools.constructURLIma(" ", dateImage + ".jpg"))) {
                         resultComics.add(dateImage);
                         a--;
                     }
-                    dateImage=tools.getYesterday(calendar);
+                    dateImage = tools.getYesterday(calendar);
 
                 }
             } catch (MalformedURLException e) {
-                e.printStackTrace();
+                Log.w(LOG_TAG, e.toString());
+                Logger.getLogger(ComicFragment.class.getName()).log(Level.SEVERE, null, e);
             }
             return null;
         }
@@ -140,14 +118,15 @@ public class
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            List<String> reverseList=Lists.reverse(resultComics);
-            for(String name:reverseList)
+            List<String> reverseList = Lists.reverse(resultComics);
+            for (String name : reverseList)
                 try {
-                    adapter.addFragment(ImageComicsViewFragment.newInstance(tools.constructURLIma(" ", name+ ".jpg").toString(), reverseList.indexOf(name)));
+                    adapter.addFragment(ImageComicsViewFragment.newInstance(tools.constructURLIma(" ", name + ".jpg").toString(), reverseList.indexOf(name)));
                 } catch (MalformedURLException e) {
-                    e.printStackTrace();
+                    Log.w(LOG_TAG, e.toString());
                 }
             pager.setAdapter(adapter);
+            pager.setCurrentItem(PAGERS - 1, true);
             dialog.dismiss();
         }
     }

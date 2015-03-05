@@ -18,9 +18,8 @@ public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
     /**
      * Constructor
      *
-     * @param fm
-     *            interface for interacting with Fragment objects inside of an
-     *            Activity
+     * @param fm interface for interacting with Fragment objects inside of an
+     *           Activity
      */
     public MyFragmentPagerAdapter(FragmentManager fm) {
         super(fm);
@@ -30,8 +29,7 @@ public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
     /**
      * Add a new fragment in the list.
      *
-     * @param fragment
-     *            a new fragment
+     * @param fragment a new fragment
      */
     public void addFragment(Fragment fragment) {
         this.fragments.add(fragment);

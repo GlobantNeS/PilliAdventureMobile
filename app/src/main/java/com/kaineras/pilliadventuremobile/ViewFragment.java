@@ -1,8 +1,8 @@
 package com.kaineras.pilliadventuremobile;
 
 
-import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +29,6 @@ public class ViewFragment extends Fragment {
     public void setOptions(String link) {
         if (link != null) {
             System.out.println("loading url");
-            //webView.loadUrl(link);
         }
     }
 

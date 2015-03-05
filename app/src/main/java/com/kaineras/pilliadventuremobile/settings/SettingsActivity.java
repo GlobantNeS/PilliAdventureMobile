@@ -13,20 +13,19 @@ import com.kaineras.pilliadventuremobile.tools.Tools;
  * Created the first version by kaineras on 3/02/15.
  */
 public class SettingsActivity extends ActionBarActivity {
-    Tools t=null;
+    Tools t = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        t=new Tools();
+        t = new Tools();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preference);
-        AppSettingsFragment appSettingsFragment=new AppSettingsFragment();
+        AppSettingsFragment appSettingsFragment = new AppSettingsFragment();
         FragmentTransaction fragmentTransaction;
         fragmentTransaction = getFragmentManager().beginTransaction();
         fragmentTransaction.addToBackStack("SETTINGS");
         fragmentTransaction.replace(R.id.pref_container, appSettingsFragment);
         fragmentTransaction.commit();
-        //t.loadFragment(getSupportFragmentManager(),new AppSettingsFragment(),,"SETTINGS");
-
     }
 
 

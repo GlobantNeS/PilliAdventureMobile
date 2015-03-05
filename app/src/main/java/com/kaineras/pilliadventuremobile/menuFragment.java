@@ -2,8 +2,8 @@ package com.kaineras.pilliadventuremobile;
 
 
 import android.app.Activity;
-import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,7 +37,7 @@ public class menuFragment extends Fragment {
 
     @Override
     public void onAttach(Activity activity) {
-        if (! (activity instanceof OptionsMenuListener) )
+        if (!(activity instanceof OptionsMenuListener))
             throw new ClassCastException();
         super.onAttach(activity);
 
@@ -56,7 +56,7 @@ public class menuFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position,
                                     long id) {
-                ( (OptionsMenuListener) getActivity()).OptionsMenuListener( optionList.get(position).name);
+                ((OptionsMenuListener) getActivity()).OptionsMenuListener(optionList.get(position).getName());
             }
         });
         setHasOptionsMenu(true);
@@ -64,10 +64,10 @@ public class menuFragment extends Fragment {
     }
 
     private void init() {
-        optionList.add(new OptionsMenu(getString(R.string.text_last_page),"PAGE",R.drawable.ic_action_action_language));
-        optionList.add(new OptionsMenu(getString(R.string.text_comic),"COMIC",R.drawable.ic_action_image_photo));
-        optionList.add(new OptionsMenu(getString(R.string.text_about),"ABOUT",R.drawable.ic_action_social_person));
-        optionList.add(new OptionsMenu(getString(R.string.text_contact),"CONTACT",R.drawable.ic_action_communication_email));
+        optionList.add(new OptionsMenu(getString(R.string.text_last_page), "PAGE", R.drawable.ic_action_action_language));
+        optionList.add(new OptionsMenu(getString(R.string.text_comic), "COMIC", R.drawable.ic_action_image_photo));
+        optionList.add(new OptionsMenu(getString(R.string.text_about), "ABOUT", R.drawable.ic_action_social_person));
+        optionList.add(new OptionsMenu(getString(R.string.text_contact), "CONTACT", R.drawable.ic_action_communication_email));
     }
 
     public interface OptionsMenuListener {

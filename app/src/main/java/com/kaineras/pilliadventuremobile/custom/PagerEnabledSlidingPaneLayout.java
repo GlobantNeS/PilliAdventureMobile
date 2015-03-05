@@ -10,7 +10,7 @@ import android.view.ViewConfiguration;
 /**
  * Created the first version by kaineras on 12/02/15.
  */
-public class PagerEnabledSlidingPaneLayout extends SlidingPaneLayout{
+public class PagerEnabledSlidingPaneLayout extends SlidingPaneLayout {
     private float mInitialMotionX;
     private float mInitialMotionY;
     private float mEdgeSlop;

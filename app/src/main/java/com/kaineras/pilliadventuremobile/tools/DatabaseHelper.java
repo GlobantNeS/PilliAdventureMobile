@@ -13,6 +13,8 @@ import com.kaineras.pilliadventuremobile.pojo.EnglishImagesProperties;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Created the first version by kaineras on 9/02/15.
@@ -20,11 +22,10 @@ import java.util.List;
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
 
+    private Dao<EnglishImagesProperties, Integer> mImageDao;
     private final static String LOG_TAG = DatabaseHelper.class.getSimpleName();
     private final static String ENGLISH_DATABASE_NAME = "eng_comics.db";
     private final static int DATABASE_VERSION = 1;
-    private Dao<EnglishImagesProperties, Integer> mImageDao;
-
     private final static String ID = "_id";
     private final static String NAME = "name";
     private final static String DESC = "desc";
@@ -45,18 +46,17 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         return getEnglishImageDao().queryForAll();
     }
 
-    public List<EnglishImagesProperties> getImageByMonth(String year, String month)throws SQLException {
+    public List<EnglishImagesProperties> getImageByMonth(String year, String month) throws SQLException {
         mImageDao = getEnglishImageDao();
         QueryBuilder queryBuilder = mImageDao.queryBuilder();
-        queryBuilder.setWhere(queryBuilder.orderBy(NAME,true).where().like(NAME,year+"-"+month+"-%"));
+        queryBuilder.setWhere(queryBuilder.orderBy(NAME, true).where().like(NAME, year + "-" + month + "-%"));
         return mImageDao.query(queryBuilder.prepare());
     }
 
     public EnglishImagesProperties getLastImage() throws SQLException {
         mImageDao = getEnglishImageDao();
         QueryBuilder queryBuilder = mImageDao.queryBuilder();
-        queryBuilder.orderBy(NAME,false);
-        //queryBuilder.setWhere(queryBuilder.orderBy().where());
+        queryBuilder.orderBy(NAME, false);
         return mImageDao.queryForFirst(queryBuilder.prepare());
     }
 
@@ -68,7 +68,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             TableUtils.createTable(connectionSource, EnglishImagesProperties.class);
         } catch (SQLException e) {
             Log.e(LOG_TAG, "Failed to create database.", e);
-            throw new RuntimeException(e);
+            Logger.getLogger(DatabaseHelper.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 

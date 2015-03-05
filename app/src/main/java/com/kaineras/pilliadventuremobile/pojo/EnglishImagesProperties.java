@@ -11,12 +11,14 @@ public class EnglishImagesProperties {
     private final static String NAME = "name";
     private final static String DESC = "desc";
 
-    @DatabaseField(generatedId = true, columnName = ID) private int _id;
-    @DatabaseField(columnName = NAME) private String name;
-    @DatabaseField(columnName = DESC) private String desc;
+    @DatabaseField(generatedId = true, columnName = ID)
+    private int _id;
+    @DatabaseField(columnName = NAME)
+    private String name;
+    @DatabaseField(columnName = DESC)
+    private String desc;
 
-    EnglishImagesProperties()
-    {
+    EnglishImagesProperties() {
 
     }
 
@@ -33,8 +35,7 @@ public class EnglishImagesProperties {
         this.name = name;
     }
 
-    public String getName()
-    {
+    public String getName() {
 
         return name;
     }

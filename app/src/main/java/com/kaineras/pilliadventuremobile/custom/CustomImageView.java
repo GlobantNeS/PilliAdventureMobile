@@ -7,11 +7,13 @@ import android.view.View;
 import android.widget.ImageView;
 
 import java.lang.reflect.Field;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Created the first version by kaineras on 3/03/15.
  */
-public class CustomImageView extends ImageView{
+public class CustomImageView extends ImageView {
     private int mDrawableWidth;
     private int mDrawableHeight;
     private boolean mAdjustViewBoundsL;
@@ -38,6 +40,7 @@ public class CustomImageView extends ImageView{
             setMaxHeight((Integer) f.get(this));
         } catch (Exception e) {
             Log.e("FAIL TO ACCESS PARENT", e.toString());
+            Logger.getLogger(CustomImageView.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 
@@ -77,8 +80,8 @@ public class CustomImageView extends ImageView{
         mDrawableWidth = getDrawable().getIntrinsicWidth();
         mDrawableHeight = getDrawable().getIntrinsicHeight();
 
-        Log.v(VIEW_LOG_TAG,String.valueOf(mDrawableWidth));
-        Log.v(VIEW_LOG_TAG,String.valueOf(mDrawableHeight));
+        Log.v(VIEW_LOG_TAG, String.valueOf(mDrawableWidth));
+        Log.v(VIEW_LOG_TAG, String.valueOf(mDrawableHeight));
 
         int w = 0;
         int h = 0;
@@ -95,8 +98,12 @@ public class CustomImageView extends ImageView{
         if (mDrawableWidth > 0) {
             w = mDrawableWidth;
             h = mDrawableHeight;
-            if (w <= 0) w = 1;
-            if (h <= 0) h = 1;
+            if (w <= 0) {
+                w = 1;
+            }
+            if (h <= 0) {
+                h = 1;
+            }
 
             // We are supposed to adjust view bounds to match the aspect
             // ratio of our drawable. See if that is possible.
@@ -121,7 +128,7 @@ public class CustomImageView extends ImageView{
         int heightSize;
 
         if (resizeWidth || resizeHeight) {
-			/* If we get here, it means we want to resize to match the
+            /* If we get here, it means we want to resize to match the
 			    drawables aspect ratio, and we have the freedom to change at
 			    least one dimension.
 			*/
@@ -148,10 +155,6 @@ public class CustomImageView extends ImageView{
                             widthSize = Math.min(Math.min(newWidth, mMaxWidthL), widthSize);
                             heightSize = (int) ((widthSize - pleft - pright) / desiredAspect) + ptop + pbottom;
                         }
-
-/*                            widthSize = Math.min(newWidth, mMaxWidthL);
-                            heightSize = (int) ((widthSize - pleft - pright) / desiredAspect) + ptop + pbottom;
-                        }*/
                     }
 
                     // Try adjusting height to be proportional to width
@@ -179,7 +182,7 @@ public class CustomImageView extends ImageView{
             heightSize = resolveSize(h, heightMeasureSpec);
         }
 
-        Log.d("END SIZE", mDrawableWidth + ":" +  mDrawableHeight + " to " + widthSize + ":" + heightSize);
+        Log.d("END SIZE", mDrawableWidth + ":" + mDrawableHeight + " to " + widthSize + ":" + heightSize);
 
         setMeasuredDimension(widthSize, heightSize);
 
@@ -197,17 +200,9 @@ public class CustomImageView extends ImageView{
         //Log.d(Constants.LOGTAG, getTag() +  " onLayout:" +  left + ", " + top + ", " + right + ", " + bottom);
     }
 
-    /**
-     * Experimental. This view will be set to the same size as this image.
-     */
-    /*public void setRelatedView(View view) {
-        relatedView = view;
-    }*/
-
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        //Log.d(Constants.LOGTAG, getTag() + " onSizeChanged:" +  w + ", " + h + ", " + oldw + ", " + oldh);
     }
 
     private int resolveAdjustedSize(int desiredSize, int maxSize, int measureSpec) {

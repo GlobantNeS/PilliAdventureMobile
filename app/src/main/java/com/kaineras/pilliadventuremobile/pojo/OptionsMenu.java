@@ -4,14 +4,37 @@ package com.kaineras.pilliadventuremobile.pojo;
  * Created the first version by kaineras on 3/02/15.
  */
 public class OptionsMenu {
-    public String name;
-    public String text;
-    public int ico;
+    private String name;
+    private String text;
+    private int ico;
 
-    public OptionsMenu(String text,String name,int ico)
-    {
-        this.text=text;
-        this.name=name;
-        this.ico=ico;
+    public OptionsMenu(String text, String name, int ico) {
+        this.setText(text);
+        this.setName(name);
+        this.setIco(ico);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public int getIco() {
+        return ico;
+    }
+
+    public void setIco(int ico) {
+        this.ico = ico;
     }
 }
