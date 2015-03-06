@@ -18,7 +18,7 @@ public class OptionsMenu {
         return name;
     }
 
-    public void setName(String name) {
+    void setName(String name) {
         this.name = name;
     }
 
@@ -26,7 +26,7 @@ public class OptionsMenu {
         return text;
     }
 
-    public void setText(String text) {
+    void setText(String text) {
         this.text = text;
     }
 
@@ -34,7 +34,7 @@ public class OptionsMenu {
         return ico;
     }
 
-    public void setIco(int ico) {
+    void setIco(int ico) {
         this.ico = ico;
     }
 }

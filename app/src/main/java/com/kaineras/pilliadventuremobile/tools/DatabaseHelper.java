@@ -19,22 +19,20 @@ import java.util.logging.Logger;
 /**
  * Created the first version by kaineras on 9/02/15.
  */
-public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
+class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
 
     private Dao<EnglishImagesProperties, Integer> mImageDao;
-    private final static String LOG_TAG = DatabaseHelper.class.getSimpleName();
-    private final static String ENGLISH_DATABASE_NAME = "eng_comics.db";
-    private final static int DATABASE_VERSION = 1;
-    private final static String ID = "_id";
-    private final static String NAME = "name";
-    private final static String DESC = "desc";
+    private static final String LOG_TAG = DatabaseHelper.class.getSimpleName();
+    private static final String ENGLISH_DATABASE_NAME = "eng_comics.db";
+    private static final int DATABASE_VERSION = 1;
+    private static final String NAME = "name";
 
     public DatabaseHelper(Context context) {
         super(context, ENGLISH_DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-    public Dao<EnglishImagesProperties, Integer> getEnglishImageDao() throws SQLException {
+    Dao<EnglishImagesProperties, Integer> getEnglishImageDao() throws SQLException {
         if (mImageDao == null) {
             mImageDao = getDao(EnglishImagesProperties.class);
         }
@@ -74,6 +72,6 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase database, ConnectionSource connectionSource, int oldVersion, int newVersion) {
-
+        //Don't used until next version
     }
 }

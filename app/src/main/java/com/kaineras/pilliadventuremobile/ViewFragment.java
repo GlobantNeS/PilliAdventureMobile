@@ -25,12 +25,4 @@ public class ViewFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_view, container, false);
     }
-
-    public void setOptions(String link) {
-        if (link != null) {
-            System.out.println("loading url");
-        }
-    }
-
-
 }

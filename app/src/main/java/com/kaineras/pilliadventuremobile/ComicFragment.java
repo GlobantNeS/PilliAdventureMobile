@@ -18,9 +18,7 @@ import com.kaineras.pilliadventuremobile.tools.Tools;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -32,12 +30,12 @@ public class
         ComicFragment extends Fragment {
 
     private View v;
-    private Map settings = new HashMap();
-    Tools tools = new Tools();
-    ViewPager pager = null;
-    MyFragmentPagerAdapter adapter;
-    final static private int PAGERS = 20;
-    private final static String LOG_TAG = ComicFragment.class.getSimpleName();
+    private Tools tools = new Tools();
+    private ViewPager pager = null;
+    private MyFragmentPagerAdapter adapter;
+    private static final String LOG_TAG = ComicFragment.class.getSimpleName();
+    private static final  int PAGERS = 20;
+
 
 
     public ComicFragment() {
@@ -49,7 +47,6 @@ public class
                              Bundle savedInstanceState) {
 
         v = inflater.inflate(R.layout.fragment_comic, container, false);
-        settings = tools.getPreferences(getActivity());
         preparePager();
         adapter = new MyFragmentPagerAdapter(getFragmentManager());
         boolean lastPage = !getArguments().getBoolean("PAGE");
@@ -59,28 +56,29 @@ public class
         return v;
     }
 
-    public void preparePager() {
+    void preparePager() {
         pager = (ViewPager) v.findViewById(R.id.pager);
         pager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            //Next functionality
             }
 
             @Override
             public void onPageSelected(int position) {
-
+            //Next functionality
             }
 
             @Override
             public void onPageScrollStateChanged(int state) {
-
+            //Next functionality
             }
         });
     }
 
     class UpdateComic extends AsyncTask<Void, Void, Void> {
 
-        List<String> resultComics = new ArrayList<String>();
+        List<String> resultComics = new ArrayList<>();
         ProgressDialog dialog;
 
         @Override
@@ -99,15 +97,14 @@ public class
             Calendar calendar = Calendar.getInstance();
             String dateImage = tools.calendarToString(calendar);
             try {
-
-                for (int a = PAGERS; a > 0; ) {
+                int a=0;
+                do{
                     if (tools.existImage(tools.constructURLIma(" ", dateImage + ".jpg"))) {
                         resultComics.add(dateImage);
-                        a--;
+                        a++;
                     }
                     dateImage = tools.getYesterday(calendar);
-
-                }
+                }while (a<PAGERS);
             } catch (MalformedURLException e) {
                 Log.w(LOG_TAG, e.toString());
                 Logger.getLogger(ComicFragment.class.getName()).log(Level.SEVERE, null, e);
@@ -119,12 +116,13 @@ public class
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             List<String> reverseList = Lists.reverse(resultComics);
-            for (String name : reverseList)
+            for (String name : reverseList) {
                 try {
                     adapter.addFragment(ImageComicsViewFragment.newInstance(tools.constructURLIma(" ", name + ".jpg").toString(), reverseList.indexOf(name)));
                 } catch (MalformedURLException e) {
                     Log.w(LOG_TAG, e.toString());
                 }
+            }
             pager.setAdapter(adapter);
             pager.setCurrentItem(PAGERS - 1, true);
             dialog.dismiss();

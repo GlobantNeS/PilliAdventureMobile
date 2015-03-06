@@ -24,7 +24,21 @@ android {
         targetCompatibility JavaVersion.VERSION_1_7
     }
 }
+apply plugin: "sonar-runner"
 
+sonarRunner {
+    sonarProperties {
+        property 'sonar.host.url', 'http://localhost:9000'
+        property 'sonar.jdbc.url', 'jdbc:mysql://localhost:3306/sonarqube'
+        property 'sonar.jdbc.driverClassName', 'com.mysql.jdbc.Driver'
+        property 'sonar.jdbc.username', 'sonarqube'
+        property 'sonar.jdbc.password', 'sonarqube'
+        property 'sonar.sourceEncoding', 'UTF-8'
+        property 'sonar.language', 'java'
+        property 'sonar.sources', 'src'
+        property 'sonar.projectName', 'Pillis Adventure'
+    }
+}
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'lib')
@@ -33,5 +47,5 @@ dependencies {
     compile 'com.j256.ormlite:ormlite-core:4.48'
     compile 'com.j256.ormlite:ormlite-android:4.48'
     compile 'com.squareup.okhttp:okhttp:2.2.0'
-    compile 'com.google.guava:guava:12.0'
+    compile 'com.google.guava:guava:18.0'
 }

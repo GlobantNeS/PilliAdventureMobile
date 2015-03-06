@@ -20,12 +20,12 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class menuFragment extends Fragment {
+public class MenuFragment extends Fragment {
 
 
-    private List<OptionsMenu> optionList = new ArrayList<OptionsMenu>();
+    private List<OptionsMenu> optionList = new ArrayList<>();
 
-    public menuFragment() {
+    public MenuFragment() {
         // Required empty public constructor
     }
 
@@ -37,8 +37,9 @@ public class menuFragment extends Fragment {
 
     @Override
     public void onAttach(Activity activity) {
-        if (!(activity instanceof OptionsMenuListener))
+        if (!(activity instanceof OptionsMenuListener)) {
             throw new ClassCastException();
+        }
         super.onAttach(activity);
 
     }
@@ -56,7 +57,7 @@ public class menuFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position,
                                     long id) {
-                ((OptionsMenuListener) getActivity()).OptionsMenuListener(optionList.get(position).getName());
+                ((OptionsMenuListener) getActivity()).optionsMenuListener(optionList.get(position).getName());
             }
         });
         setHasOptionsMenu(true);
@@ -71,6 +72,6 @@ public class menuFragment extends Fragment {
     }
 
     public interface OptionsMenuListener {
-        public void OptionsMenuListener(String optionMenu);
+        public void optionsMenuListener(String optionMenu);
     }
 }

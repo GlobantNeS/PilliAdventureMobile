@@ -5,7 +5,6 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-
 import java.lang.reflect.Field;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,10 +15,22 @@ import java.util.logging.Logger;
 public class CustomImageView extends ImageView {
     private int mDrawableWidth;
     private int mDrawableHeight;
+    private int widthSize;
+    private int heightSize;
     private boolean mAdjustViewBoundsL;
     private int mMaxWidthL = Integer.MAX_VALUE;
     private int mMaxHeightL = Integer.MAX_VALUE;
+    private int pleft;
+    private int pright;
+    private int ptop;
+    private int pbottom;
+    private int w;
+    private int h;
     private View relatedView;
+    private float desiredAspect;
+    private boolean resizeWidth;
+    private boolean resizeHeight;
+    private static final double ASPECT = 0.0000001;
 
     public CustomImageView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
@@ -70,31 +81,53 @@ public class CustomImageView extends ImageView {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-
-
         if (getDrawable() == null) {
             setMeasuredDimension(0, 0);
             return;
         }
+        initializeVariables();
+        adjustViewBounds(widthMeasureSpec, heightMeasureSpec);
+        loadPaddings();
+        if (resizeWidth || resizeHeight) {
+            resizing(widthMeasureSpec, heightMeasureSpec);
 
-        mDrawableWidth = getDrawable().getIntrinsicWidth();
-        mDrawableHeight = getDrawable().getIntrinsicHeight();
+        } else {
+            notResizing(widthMeasureSpec, heightMeasureSpec);
+        }
 
-        Log.v(VIEW_LOG_TAG, String.valueOf(mDrawableWidth));
-        Log.v(VIEW_LOG_TAG, String.valueOf(mDrawableHeight));
+         setMeasuredDimension(widthSize, heightSize);
 
-        int w = 0;
-        int h = 0;
+        if (relatedView != null) {
+            relatedView.getLayoutParams().width = widthSize;
+            relatedView.getLayoutParams().height = heightSize;
+        }
 
-        // Desired aspect ratio of the view's contents (not including padding)
-        float desiredAspect = 0.0f;
+    }
 
-        // We are allowed to change the view's width
-        boolean resizeWidth = false;
+    private void resizing(int widthMeasureSpec, int heightMeasureSpec) {
+        // Get the max possible width given our constraints
+        widthSize = resolveAdjustedSize(w + pleft + pright,
+                mMaxWidthL, widthMeasureSpec);
 
-        // We are allowed to change the view's height
-        boolean resizeHeight = true;
+        // Get the max possible height given our constraints
+        heightSize = resolveAdjustedSize(h + ptop + pbottom,
+                mMaxHeightL, heightMeasureSpec);
 
+        if (desiredAspect != 0.0f) {
+            // See what our actual aspect ratio is
+            float actualAspect = (float) (widthSize - pleft - pright) /
+                    (heightSize - ptop - pbottom);
+
+            if (Math.abs(actualAspect - desiredAspect) > ASPECT) {
+                resizeWidth(desiredAspect, resizeWidth);
+                resizeHeight(desiredAspect, resizeHeight);
+
+
+            }
+        }
+    }
+
+    private void adjustViewBounds(int widthMeasureSpec, int heightMeasureSpec) {
         if (mDrawableWidth > 0) {
             w = mDrawableWidth;
             h = mDrawableHeight;
@@ -118,91 +151,60 @@ public class CustomImageView extends ImageView {
                 desiredAspect = (float) w / (float) h;
             }
         }
+    }
 
-        int pleft = getPaddingLeft();
-        int pright = getPaddingRight();
-        int ptop = getPaddingTop();
-        int pbottom = getPaddingBottom();
+    private void initializeVariables() {
+        mDrawableWidth = getDrawable().getIntrinsicWidth();
+        mDrawableHeight = getDrawable().getIntrinsicHeight();
+        w = 0;
+        h = 0;
 
-        int widthSize;
-        int heightSize;
+        // Desired aspect ratio of the view's contents (not including padding)
+        desiredAspect = 0.0f;
+        // We are allowed to change the view's width
+        resizeWidth = false;
+        // We are allowed to change the view's height
+        resizeHeight = true;
+    }
 
-        if (resizeWidth || resizeHeight) {
-            /* If we get here, it means we want to resize to match the
-			    drawables aspect ratio, and we have the freedom to change at
-			    least one dimension.
-			*/
+    private void notResizing(int widthMeasureSpec, int heightMeasureSpec) {
+        w += pleft + pright;
+        h += ptop + pbottom;
 
-            // Get the max possible width given our constraints
-            widthSize = resolveAdjustedSize(w + pleft + pright,
-                    mMaxWidthL, widthMeasureSpec);
+        w = Math.max(w, getSuggestedMinimumWidth());
+        h = Math.max(h, getSuggestedMinimumHeight());
 
-            // Get the max possible height given our constraints
-            heightSize = resolveAdjustedSize(h + ptop + pbottom,
-                    mMaxHeightL, heightMeasureSpec);
+        widthSize = resolveSize(w, widthMeasureSpec);
+        heightSize = resolveSize(h, heightMeasureSpec);
+    }
 
-            if (desiredAspect != 0.0f) {
-                // See what our actual aspect ratio is
-                float actualAspect = (float) (widthSize - pleft - pright) /
-                        (heightSize - ptop - pbottom);
-
-                if (Math.abs(actualAspect - desiredAspect) > 0.0000001) {
-
-                    // Try adjusting width to be proportional to height
-                    if (resizeWidth) {
-                        int newWidth = (int) (desiredAspect * (heightSize - ptop - pbottom)) + pleft + pright;
-                        if (/*newWidth <= widthSize &&*/newWidth > 0) {
-                            widthSize = Math.min(Math.min(newWidth, mMaxWidthL), widthSize);
-                            heightSize = (int) ((widthSize - pleft - pright) / desiredAspect) + ptop + pbottom;
-                        }
-                    }
-
-                    // Try adjusting height to be proportional to width
-                    if (resizeHeight) {
-                        int newHeight = (int) ((widthSize - pleft - pright) / desiredAspect) + ptop + pbottom;
-                        if (/*newHeight <= heightSize && */newHeight > 0) {
-                            heightSize = Math.min(newHeight, mMaxHeightL);
-                            widthSize = (int) (desiredAspect * (heightSize - ptop - pbottom)) + pleft + pright;
-                        }
-                    }
-                }
+    private void resizeHeight(float desiredAspect, boolean resizeHeight) {
+        // Try adjusting height to be proportional to width
+        if (resizeHeight) {
+            int newHeight = (int) ((widthSize - pleft - pright) / desiredAspect) + ptop + pbottom;
+            if (newHeight > 0) {
+                heightSize = Math.min(newHeight, mMaxHeightL);
+                widthSize = (int) (desiredAspect * (heightSize - ptop - pbottom)) + pleft + pright;
             }
-        } else {
-			/* We are either don't want to preserve the drawables aspect ratio,
-			   or we are not allowed to change view dimensions. Just measure in
-			   the normal way.
-			*/
-            w += pleft + pright;
-            h += ptop + pbottom;
-
-            w = Math.max(w, getSuggestedMinimumWidth());
-            h = Math.max(h, getSuggestedMinimumHeight());
-
-            widthSize = resolveSize(w, widthMeasureSpec);
-            heightSize = resolveSize(h, heightMeasureSpec);
         }
-
-        Log.d("END SIZE", mDrawableWidth + ":" + mDrawableHeight + " to " + widthSize + ":" + heightSize);
-
-        setMeasuredDimension(widthSize, heightSize);
-
-        if (relatedView != null) {
-            //Log.i(Constants.LOGTAG, getTag() +  " onMeasure:" +  widthSize + ", " + heightSize + " update size of related view!");
-            relatedView.getLayoutParams().width = widthSize;
-            relatedView.getLayoutParams().height = heightSize;
-        }
-
     }
 
-    @Override
-    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
-        super.onLayout(changed, left, top, right, bottom);
-        //Log.d(Constants.LOGTAG, getTag() +  " onLayout:" +  left + ", " + top + ", " + right + ", " + bottom);
+    private void resizeWidth(float desiredAspect, boolean resizeWidth) {
+        // Try adjusting width to be proportional to height
+        if (resizeWidth) {
+            int newWidth = (int) (desiredAspect * (heightSize - ptop - pbottom)) + pleft + pright;
+            if (newWidth > 0) {
+                widthSize = Math.min(Math.min(newWidth, mMaxWidthL), widthSize);
+                heightSize = (int) ((widthSize - pleft - pright) / desiredAspect) + ptop + pbottom;
+            }
+        }
     }
 
-    @Override
-    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-        super.onSizeChanged(w, h, oldw, oldh);
+    private void loadPaddings() {
+        pleft = getPaddingLeft();
+        pright = getPaddingRight();
+        ptop = getPaddingTop();
+        pbottom = getPaddingBottom();
     }
 
     private int resolveAdjustedSize(int desiredSize, int maxSize, int measureSpec) {
@@ -211,20 +213,15 @@ public class CustomImageView extends ImageView {
         int specSize = MeasureSpec.getSize(measureSpec);
         switch (specMode) {
             case MeasureSpec.UNSPECIFIED:
-			/* Parent says we can be as big as we want. Just don't be larger
-			than max size imposed on ourselves.
-			*/
                 result = Math.min(desiredSize, maxSize);
                 break;
             case MeasureSpec.AT_MOST:
-                // Parent says we can be as big as we want, up to specSize.
-                // Don't be larger than specSize, and don't be larger than
-                // the max size imposed on ourselves.
                 result = Math.min(Math.min(desiredSize, specSize), maxSize);
                 break;
             case MeasureSpec.EXACTLY:
-                // No choice. Do what we are told.
                 result = specSize;
+                break;
+            default:
                 break;
         }
         return result;
