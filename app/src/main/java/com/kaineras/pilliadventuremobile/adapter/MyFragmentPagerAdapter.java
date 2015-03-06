@@ -13,7 +13,7 @@ import java.util.List;
 public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
 
     // List of fragments which are going to set in the view pager widget
-    List<Fragment> fragments;
+    private List<Fragment> fragments;
 
     /**
      * Constructor
@@ -23,7 +23,7 @@ public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
      */
     public MyFragmentPagerAdapter(FragmentManager fm) {
         super(fm);
-        this.fragments = new ArrayList<Fragment>();
+        this.fragments = new ArrayList<>();
     }
 
     /**

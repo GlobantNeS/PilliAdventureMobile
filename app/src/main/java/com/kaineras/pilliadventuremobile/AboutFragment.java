@@ -15,22 +15,20 @@ import com.kaineras.pilliadventuremobile.tools.Tools;
  */
 public class AboutFragment extends Fragment {
 
-
-    View v;
-    final static String url = "http://pilli-adventure.com/wp-content/uploads/2008/07/cast-web.jpg";
+    private static final String URL = "http://pilli-adventure.com/wp-content/uploads/2008/07/cast-web.jpg";
 
     public AboutFragment() {
-        // Required empty public constructor
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View v;
         final CustomImageView nivComic;
         v = inflater.inflate(R.layout.fragment_about, container, false);
         nivComic = (CustomImageView) v.findViewById(R.id.ivAbout);
         nivComic.setAdjustViewBounds(true);
-        Tools.loadImageFromInternet(getActivity(), nivComic, url);
+        Tools.loadImageFromInternet(getActivity(), nivComic, URL);
         return v;
     }
 }

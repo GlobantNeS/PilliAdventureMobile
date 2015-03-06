@@ -7,12 +7,12 @@ import com.j256.ormlite.field.DatabaseField;
  */
 public class EnglishImagesProperties {
 
-    private final static String ID = "_id";
-    private final static String NAME = "name";
-    private final static String DESC = "desc";
+    private static final String ID = "id";
+    private static final String NAME = "name";
+    private static final String DESC = "desc";
 
     @DatabaseField(generatedId = true, columnName = ID)
-    private int _id;
+    private int id;
     @DatabaseField(columnName = NAME)
     private String name;
     @DatabaseField(columnName = DESC)
@@ -22,12 +22,12 @@ public class EnglishImagesProperties {
 
     }
 
-    public int get_id() {
-        return _id;
+    public int getId() {
+        return id;
     }
 
-    public void set_id(int _id) {
-        this._id = _id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setName(String name) {

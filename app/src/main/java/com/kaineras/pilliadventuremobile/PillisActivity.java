@@ -20,7 +20,7 @@ import com.kaineras.pilliadventuremobile.tools.Tools;
 import java.util.Map;
 
 
-public class PillisActivity extends ActionBarActivity implements menuFragment.OptionsMenuListener {
+public class PillisActivity extends ActionBarActivity implements MenuFragment.OptionsMenuListener {
 
 
     PagerEnabledSlidingPaneLayout slidingPaneLayout;
@@ -55,7 +55,7 @@ public class PillisActivity extends ActionBarActivity implements menuFragment.Op
         slidingPaneLayout.setPanelSlideListener(new SlidingPaneLayout.PanelSlideListener() {
             @Override
             public void onPanelSlide(View panel, float slideOffset) {
-
+                //Next Version add functionality
             }
 
             @Override
@@ -95,16 +95,11 @@ public class PillisActivity extends ActionBarActivity implements menuFragment.Op
 
         switch (id) {
             case R.id.action_settings:
-                Intent intent = new Intent(PillisActivity.this, SettingsActivity.class);
-                startActivity(intent);
+                loadSettings();
                 handler = true;
                 break;
             case android.R.id.home:
-                if (slidingPaneLayout.isOpen()) {
-                    closePane();
-                } else {
-                    openPane();
-                }
+                updatePane();
                 handler = true;
                 break;
             default:
@@ -112,6 +107,19 @@ public class PillisActivity extends ActionBarActivity implements menuFragment.Op
                 break;
         }
         return handler;
+    }
+
+    private void updatePane() {
+        if (slidingPaneLayout.isOpen()) {
+            closePane();
+        } else {
+            openPane();
+        }
+    }
+
+    private void loadSettings() {
+        Intent intent = new Intent(PillisActivity.this, SettingsActivity.class);
+        startActivity(intent);
     }
 
     private void openPane() {
@@ -125,57 +133,71 @@ public class PillisActivity extends ActionBarActivity implements menuFragment.Op
     }
 
     @Override
-    public void OptionsMenuListener(String optionMenu) {
+    public void optionsMenuListener(String optionMenu) {
         ConnectivityManager connMgr = (ConnectivityManager)
                 getSystemService(CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         switch (optionMenu) {
             case "PAGE":
-                if (networkInfo != null && networkInfo.isConnected()) {
-                    ComicFragment fragment = new ComicFragment();
-                    Bundle bundle = new Bundle();
-                    bundle.putBoolean("PAGE", false);
-                    fragment.setArguments(bundle);
-                    tools.loadFragment(getSupportFragmentManager(), fragment,"PAGE");
-                } else {
-                    createAlert(getString(R.string.text_check_connection));
-                }
+                loadLastPageFragment(networkInfo);
                 break;
             case "COMIC":
-                if (networkInfo != null && networkInfo.isConnected()) {
-                    ComicFragment fragment = new ComicFragment();
-                    Bundle bundle = new Bundle();
-                    if (settings.get("save").equals("0")) {
-                        bundle.putBoolean("PAGE", false);
-                        fragment.setArguments(bundle);
-                    } else {
-                        bundle.putBoolean("PAGE", true);
-                        fragment.setArguments(bundle);
-                    }
-                    tools.loadFragment(getSupportFragmentManager(), fragment,"COMIC");
-                } else {
-                    createAlert(getString(R.string.text_check_connection));
-                }
+                loadComicFragment(networkInfo);
                 break;
             case "ABOUT":
-                if (networkInfo != null && networkInfo.isConnected()) {
-                    tools.loadFragment(getSupportFragmentManager(), new AboutFragment(), "ABOUT");
-                } else {
-                    createAlert(getString(R.string.text_check_connection));
-                }
-
+                loadAboutFragment(networkInfo);
                 break;
             case "CONTACT":
-                Intent intent = new Intent(Intent.ACTION_SEND);
-                intent.setType("plain/text");
-                intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"pilliadv@hotmail.com"});
-                intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.text_subject_email));
-                intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.text_body_mail));
-                startActivity(Intent.createChooser(intent, getString(R.string.text_send_email)));
+                sendMail();
                 break;
             default:
                 break;
         }
     }
 
+    private void loadAboutFragment(NetworkInfo networkInfo) {
+        if (networkInfo != null && networkInfo.isConnected()) {
+            tools.loadFragment(getSupportFragmentManager(), new AboutFragment(), "ABOUT");
+        } else {
+            createAlert(getString(R.string.text_check_connection));
+        }
+    }
+
+    private void loadComicFragment(NetworkInfo networkInfo) {
+        if (networkInfo != null && networkInfo.isConnected()) {
+            ComicFragment fragment = new ComicFragment();
+            Bundle bundle = new Bundle();
+            if ("0".equals(settings.get("save"))) {
+                bundle.putBoolean("PAGE", false);
+                fragment.setArguments(bundle);
+            } else {
+                bundle.putBoolean("PAGE", true);
+                fragment.setArguments(bundle);
+            }
+            tools.loadFragment(getSupportFragmentManager(), fragment,"COMIC");
+        } else {
+            createAlert(getString(R.string.text_check_connection));
+        }
+    }
+
+    private void loadLastPageFragment(NetworkInfo networkInfo) {
+        if (networkInfo != null && networkInfo.isConnected()) {
+            ComicFragment fragment = new ComicFragment();
+            Bundle bundle = new Bundle();
+            bundle.putBoolean("PAGE", false);
+            fragment.setArguments(bundle);
+            tools.loadFragment(getSupportFragmentManager(), fragment,"PAGE");
+        } else {
+            createAlert(getString(R.string.text_check_connection));
+        }
+    }
+
+    private void sendMail() {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("plain/text");
+        intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"pilliadv@hotmail.com"});
+        intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.text_subject_email));
+        intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.text_body_mail));
+        startActivity(Intent.createChooser(intent, getString(R.string.text_send_email)));
+    }
 }

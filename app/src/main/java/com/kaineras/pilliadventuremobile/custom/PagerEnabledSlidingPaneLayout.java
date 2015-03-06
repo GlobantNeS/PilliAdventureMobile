@@ -12,7 +12,7 @@ import android.view.ViewConfiguration;
  */
 public class PagerEnabledSlidingPaneLayout extends SlidingPaneLayout {
     private float mInitialMotionX;
-    private float mInitialMotionY;
+
     private float mEdgeSlop;
 
     public PagerEnabledSlidingPaneLayout(Context context) {
@@ -32,32 +32,31 @@ public class PagerEnabledSlidingPaneLayout extends SlidingPaneLayout {
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
-
+        final float x = ev.getX();
+        final float y = ev.getY();
         switch (MotionEventCompat.getActionMasked(ev)) {
-            case MotionEvent.ACTION_DOWN: {
+            case MotionEvent.ACTION_DOWN:
                 mInitialMotionX = ev.getX();
-                mInitialMotionY = ev.getY();
                 break;
-            }
-
-            case MotionEvent.ACTION_MOVE: {
-                final float x = ev.getX();
-                final float y = ev.getY();
-                // The user should always be able to "close" the pane, so we only check
-                // for child scrollability if the pane is currently closed.
-                if (mInitialMotionX > mEdgeSlop && !isOpen() && canScroll(this, false,
-                        Math.round(x - mInitialMotionX), Math.round(x), Math.round(y))) {
-
-                    // How do we set super.mIsUnableToDrag = true?
-
-                    // send the parent a cancel event
-                    MotionEvent cancelEvent = MotionEvent.obtain(ev);
-                    cancelEvent.setAction(MotionEvent.ACTION_CANCEL);
-                    return super.onInterceptTouchEvent(cancelEvent);
+            case MotionEvent.ACTION_MOVE:
+                if (mInitialMotionX > mEdgeSlop && !isOpen() && canScroll(this, false,Math.round(x - mInitialMotionX), Math.round(x), Math.round(y))) {
+                    return cancelEvent(ev);
                 }
-            }
+                break;
+            default:
+                break;
         }
-
         return super.onInterceptTouchEvent(ev);
+    }
+
+    private boolean cancelEvent(MotionEvent ev) {
+        MotionEvent cancelEvent = getMotionEvent(ev);
+        return super.onInterceptTouchEvent(cancelEvent);
+    }
+
+    private MotionEvent getMotionEvent(MotionEvent ev) {
+        MotionEvent cancelEvent = MotionEvent.obtain(ev);
+        cancelEvent.setAction(MotionEvent.ACTION_CANCEL);
+        return cancelEvent;
     }
 }

@@ -88,7 +88,7 @@ public class Tools {
     }
 
     public Map<String, String> getPreferences(Context context) {
-        Map<String, String> settings = new HashMap<String, String>();
+        Map<String, String> settings = new HashMap<>();
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         settings.put("username", prefs.getString("username_preference", context.getString(R.string.default_username)));
         settings.put("language", prefs.getString("language_preference", context.getString(R.string.default_language)));
@@ -103,7 +103,7 @@ public class Tools {
     public List<String> getUrlsByMonth(Context context, String year, String month) throws SQLException {
         mDBHelper = getDBHelper(context);
         List<EnglishImagesProperties> urls = mDBHelper.getImageByMonth(year, month);
-        List<String> resultUrls = new ArrayList<String>();
+        List<String> resultUrls = new ArrayList<>();
         for (EnglishImagesProperties eipTemp : urls) {
             resultUrls.add(eipTemp.getName() + ".jpg");
         }
@@ -126,7 +126,7 @@ public class Tools {
 
     public boolean existImage(URL urlToCheck) {
         boolean result = false;
-        URLConnection connection = null;
+        URLConnection connection;
         URL url;
         url = urlToCheck;
         try {
