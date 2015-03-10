@@ -15,7 +15,8 @@ import com.kaineras.pilliadventuremobile.tools.Tools;
  */
 public class AboutFragment extends Fragment {
 
-    private static final String URL = "http://pilli-adventure.com/wp-content/uploads/2008/07/cast-web.jpg";
+    //private static final String URL = "http://pilli-adventure.com/wp-content/uploads/2008/07/cast-web.jpg";
+    private static final String URL="http://10.0.2.2//wp-content/uploads/2008/07/about.jpg";
 
     public AboutFragment() {
     }
@@ -24,6 +25,7 @@ public class AboutFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v;
+
         final CustomImageView nivComic;
         Tools tools=new Tools();
         v = inflater.inflate(R.layout.fragment_about, container, false);

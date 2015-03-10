@@ -12,10 +12,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 
-import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
-import com.android.volley.toolbox.Volley;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.kaineras.pilliadventuremobile.R;
 import com.kaineras.pilliadventuremobile.custom.CustomImageView;
@@ -24,7 +22,6 @@ import com.kaineras.pilliadventuremobile.pojo.EnglishImagesProperties;
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
@@ -47,7 +44,8 @@ public class Tools {
     private static final String LOG_TAG = Tools.class.getSimpleName();
     private BitmapLruCache bitmapLruCache;
     private static final String SCHEME = "http";
-    private static final String BASE_URL = "pilli-adventure.com";
+    //private static final String BASE_URL = "pilli-adventure.com";
+    private static final String BASE_URL = "10.0.2.2";
     private static final String LANGUAGE_PATH = "espa";
     private static final String IMAGE_ENDPOINT = "comics";
 
@@ -66,18 +64,14 @@ public class Tools {
     }
 
     public void loadImageFromInternet(Context context, NetworkImageView nivComic, String url) {
-        RequestQueue mRequestQueue;
         ImageLoader imageLoader;
-        mRequestQueue = Volley.newRequestQueue(context);
-        imageLoader = new ImageLoader(mRequestQueue, bitmapLruCache);
+        imageLoader = VolleySingleton.getInstance().getImageLoader();
         nivComic.setImageUrl(url, imageLoader);
     }
 
     public void loadImageFromInternet(Context context, CustomImageView nivComic, String url) {
-        RequestQueue mRequestQueue;
         ImageLoader imageLoader;
-        mRequestQueue = Volley.newRequestQueue(context);
-        imageLoader = new ImageLoader(mRequestQueue, bitmapLruCache);
+        imageLoader = VolleySingleton.getInstance().getImageLoader();
         imageLoader.get(url, ImageLoader.getImageListener(nivComic, 0, 0));
     }
 
@@ -150,6 +144,7 @@ public class Tools {
         try {
             InputStream inputStream=connection.getInputStream();
             BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream);
+            bitmapLruCache = VolleySingleton.getInstance().getBitmapLruCache();
             bitmapLruCache.putBitmap(url.toString(),BitmapFactory.decodeStream(bufferedInputStream));
             result = true;
         } catch (IOException e) {
@@ -158,10 +153,6 @@ public class Tools {
             return result;
         }
         return result;
-    }
-
-    public BitmapLruCache getImageCache()  {
-        return bitmapLruCache;
     }
 
     public String getYesterday(Calendar calendar) {
