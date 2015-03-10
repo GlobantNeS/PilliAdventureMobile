@@ -67,7 +67,7 @@ public class MenuFragment extends Fragment {
     private void init() {
         optionList.add(new OptionsMenu(getString(R.string.text_last_page), "PAGE", R.drawable.ic_action_action_language));
         optionList.add(new OptionsMenu(getString(R.string.text_comic), "COMIC", R.drawable.ic_action_image_photo));
-        optionList.add(new OptionsMenu(getString(R.string.text_about), "ABOUT", R.drawable.ic_action_social_person));
+        optionList.add(new OptionsMenu(getString(R.string.text_about), "ABOUT", R.drawable.ic_menu_contact));
         optionList.add(new OptionsMenu(getString(R.string.text_contact), "CONTACT", R.drawable.ic_action_communication_email));
     }
 

@@ -55,18 +55,19 @@ public class Tools {
 
     }
 
-    public void loadFragment(FragmentManager fm, Fragment f, String namestack) {
+    public void loadFragment(FragmentManager fm,int container, Fragment f, String namestack) {
         FragmentTransaction fragmentTransaction;
         fragmentTransaction = fm.beginTransaction();
-        fragmentTransaction.addToBackStack(namestack);
-        fragmentTransaction.replace(R.id.rightpane, f);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.replace(container, f);
         fragmentTransaction.commit();
     }
 
-    public void loadImageFromInternet(Context context, NetworkImageView nivComic, String url) {
-        ImageLoader imageLoader;
-        imageLoader = VolleySingleton.getInstance().getImageLoader();
-        nivComic.setImageUrl(url, imageLoader);
+    public void loadFragment(FragmentManager fm,int container, Fragment f) {
+        FragmentTransaction fragmentTransaction;
+        fragmentTransaction = fm.beginTransaction();
+        fragmentTransaction.replace(container, f);
+        fragmentTransaction.commit();
     }
 
     public void loadImageFromInternet(Context context, CustomImageView nivComic, String url) {

@@ -6,14 +6,15 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.common.collect.Lists;
 import com.kaineras.pilliadventuremobile.adapter.MyFragmentPagerAdapter;
-import com.kaineras.pilliadventuremobile.pojo.PageModel;
 import com.kaineras.pilliadventuremobile.tools.Tools;
 
 import java.net.MalformedURLException;
@@ -31,25 +32,20 @@ import java.util.logging.Logger;
 public class
         ComicFragment extends Fragment {
 
-    private View v;
     private Tools tools = new Tools();
     private ViewPager pager = null;
     private MyFragmentPagerAdapter adapter;
     private Map<String, String> settings;
     private String lastPageName;
+    private View rootView;
     private boolean flagLastName = false;
     private List<String> comicsList;
     private Calendar calendar;
     private Calendar calendarLeft;
     private Calendar calendarRight;
-    private PageModel[] mPageModel = new PageModel[3];
-    private LayoutInflater mInflater;
-    private int mSelectedPageIndex = 1;
     private static final String LOG_TAG = ComicFragment.class.getSimpleName();
-    private static final int PAGE_LEFT = 0;
-    private static final int PAGE_MIDDLE = 1;
-    private static final int PAGE_RIGHT = 2;
     private static final  int PAGERS = 3;
+
 
     public ComicFragment() {
 
@@ -58,9 +54,11 @@ public class
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        v = inflater.inflate(R.layout.fragment_comic, container, false);
+
+        rootView = inflater.inflate(R.layout.fragment_comic, container, false);
         calendar = Calendar.getInstance();
         settings = tools.getPreferences(getActivity());
+        hideToolbar();
         preparePager();
         boolean lastPage = !getArguments().getBoolean("PAGE");
         if (lastPage) {
@@ -68,12 +66,16 @@ public class
         }else{
             new UpdateComic().execute("update");
         }
-        return v;
+        return rootView;
+    }
+
+    private void hideToolbar() {
     }
 
     void preparePager() {
         adapter = new MyFragmentPagerAdapter(getFragmentManager());
-        pager = (ViewPager) v.findViewById(R.id.pager);
+
+        pager = (ViewPager) rootView.findViewById(R.id.pager);
         pager.setOffscreenPageLimit(PAGERS - 1);
         pager.setOnPageChangeListener(new ViewPager.OnPageChangeListener(){
 
@@ -84,10 +86,10 @@ public class
 
             @Override
             public void onPageSelected(int position) {
-                mSelectedPageIndex = position;
-                /*if(PAGERS-1==position && lastPageName.equals(comicsList.get(PAGERS-1))){
-                    Toast.makeText(getActivity(),getString(R.string.text_last_page_comic),Toast.LENGTH_SHORT).show();
-                }*/
+                //mSelectedPageIndex = position;
+                if(PAGERS-1==position && lastPageName.equals(comicsList.get(PAGERS-1))){
+                    Toast.makeText(getActivity(), getString(R.string.text_last_page_comic), Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
@@ -170,6 +172,7 @@ public class
             dialog.dismiss();
         }
     }
+
 
     public String getLanguage() {
         return settings.get("language");

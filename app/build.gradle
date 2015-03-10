@@ -48,4 +48,5 @@ dependencies {
     compile 'com.j256.ormlite:ormlite-android:4.48'
     compile 'com.squareup.okhttp:okhttp:2.2.0'
     compile 'com.google.guava:guava:18.0'
+    compile 'com.android.support:support-v4:21.0.3'
 }

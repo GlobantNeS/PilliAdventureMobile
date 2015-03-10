@@ -16,7 +16,7 @@ import com.kaineras.pilliadventuremobile.tools.Tools;
 public class AboutFragment extends Fragment {
 
     //private static final String URL = "http://pilli-adventure.com/wp-content/uploads/2008/07/cast-web.jpg";
-    private static final String URL="http://10.0.2.2//wp-content/uploads/2008/07/about.jpg";
+    private static final String URL="http://10.0.2.2/wp-content/uploads/2008/07/about.jpg";
 
     public AboutFragment() {
     }
