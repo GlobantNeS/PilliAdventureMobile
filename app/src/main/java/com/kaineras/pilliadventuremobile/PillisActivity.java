@@ -1,6 +1,7 @@
 package com.kaineras.pilliadventuremobile;
 
 import android.app.AlertDialog;
+import android.app.Application;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -154,7 +155,6 @@ public class PillisActivity extends ActionBarActivity implements MenuFragment.Op
                 break;
         }
     }
-
     private void loadAboutFragment(NetworkInfo networkInfo) {
         if (networkInfo != null && networkInfo.isConnected()) {
             tools.loadFragment(getSupportFragmentManager(), new AboutFragment(), "ABOUT");
@@ -163,22 +163,25 @@ public class PillisActivity extends ActionBarActivity implements MenuFragment.Op
         }
     }
 
+
+
     private void loadComicFragment(NetworkInfo networkInfo) {
         if (networkInfo != null && networkInfo.isConnected()) {
             ComicFragment fragment = new ComicFragment();
             Bundle bundle = new Bundle();
-            if ("0".equals(settings.get("save"))) {
-                bundle.putBoolean("PAGE", false);
-                fragment.setArguments(bundle);
-            } else {
-                bundle.putBoolean("PAGE", true);
-                fragment.setArguments(bundle);
-            }
+            bundle.putBoolean("PAGE", getSaveState());
+            fragment.setArguments(bundle);
             tools.loadFragment(getSupportFragmentManager(), fragment,"COMIC");
         } else {
             createAlert(getString(R.string.text_check_connection));
         }
     }
+
+    public boolean getSaveState(){
+        return !"0".equals(settings.get("save"));
+    }
+
+
 
     private void loadLastPageFragment(NetworkInfo networkInfo) {
         if (networkInfo != null && networkInfo.isConnected()) {

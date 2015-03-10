@@ -8,17 +8,64 @@
             <set />
           </value>
         </entry>
+        <entry key="/fragment.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/AboutFragment.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/Application.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/ComicFragment.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/ImageComicsViewFragment.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/MyApplication.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/PillisActivity.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/adapter/InfinitePagerAdapter.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/adapter/MyFragmentPagerAdapter.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/custom/InfiniteViewPager.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/menuFragment.java">
           <value>
             <set>
-              <SonarIssue>
-                <option name="isNew" value="true" />
-                <option name="key" value="eb3ef5e2-61cf-4cb3-80f1-4ef1bf2e5534" />
-                <option name="line" value="23" />
-                <option name="message" value="Rename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'." />
-                <option name="ruleKey" value="squid:S00101" />
-                <option name="severity" value="MAJOR" />
-              </SonarIssue>
               <SonarIssue>
                 <option name="isNew" value="true" />
                 <option name="key" value="a1ad7ebe-9dd0-4f09-9833-71f5fbd297de" />
@@ -35,10 +82,38 @@
                 <option name="ruleKey" value="squid:S00100" />
                 <option name="severity" value="MAJOR" />
               </SonarIssue>
+              <SonarIssue>
+                <option name="isNew" value="true" />
+                <option name="key" value="eb3ef5e2-61cf-4cb3-80f1-4ef1bf2e5534" />
+                <option name="line" value="23" />
+                <option name="message" value="Rename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'." />
+                <option name="ruleKey" value="squid:S00101" />
+                <option name="severity" value="MAJOR" />
+              </SonarIssue>
             </set>
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/res/layout/toolbar.xml">
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/pojo/PageModel.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/tools/Tools.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/tools/VolleySingleton.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/layout/fragment_comic.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/layout/fragment_image_comic.xml">
           <value>
             <set />
           </value>

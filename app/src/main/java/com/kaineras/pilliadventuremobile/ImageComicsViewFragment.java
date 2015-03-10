@@ -31,13 +31,22 @@ public class ImageComicsViewFragment extends Fragment {
     }
 
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        // Load parameters when the initial creation of the fragment is done
+        url = (getArguments() != null) ? getArguments().getString(URL) : "index.html";
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        Tools tools=new Tools();
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_image_comic, container, false);
         CustomImageView nivComic;
         nivComic = (CustomImageView) rootView.findViewById(R.id.ivComic);
         nivComic.setAdjustViewBounds(true);
-        Tools.loadImageFromInternet(getActivity(), nivComic, url);
+        tools.loadImageFromInternet(getActivity(), nivComic, url);
         return rootView;
 
     }

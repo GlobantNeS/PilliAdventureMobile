@@ -3,6 +3,8 @@ package com.kaineras.pilliadventuremobile.tools;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
@@ -19,7 +21,9 @@ import com.kaineras.pilliadventuremobile.R;
 import com.kaineras.pilliadventuremobile.custom.CustomImageView;
 import com.kaineras.pilliadventuremobile.pojo.EnglishImagesProperties;
 
+import java.io.BufferedInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -41,13 +45,15 @@ public class Tools {
 
     private DatabaseHelper mDBHelper = null;
     private static final String LOG_TAG = Tools.class.getSimpleName();
-    static final String SCHEME = "http";
-    static final String BASE_URL = "pilli-adventure.com";
-    static final String LANGUAGE_PATH = "espa";
-    static final String IMAGE_ENDPOINT = "comics";
+    private BitmapLruCache bitmapLruCache;
+    private static final String SCHEME = "http";
+    private static final String BASE_URL = "pilli-adventure.com";
+    private static final String LANGUAGE_PATH = "espa";
+    private static final String IMAGE_ENDPOINT = "comics";
 
 
     public Tools() {
+        bitmapLruCache=new BitmapLruCache(BitmapLruCache.getDefaultLruCacheSize());
 
     }
 
@@ -59,19 +65,19 @@ public class Tools {
         fragmentTransaction.commit();
     }
 
-    public static void loadImageFromInternet(Context context, NetworkImageView nivComic, String url) {
+    public void loadImageFromInternet(Context context, NetworkImageView nivComic, String url) {
         RequestQueue mRequestQueue;
         ImageLoader imageLoader;
         mRequestQueue = Volley.newRequestQueue(context);
-        imageLoader = new ImageLoader(mRequestQueue, new BitmapLruCache(BitmapLruCache.getDefaultLruCacheSize()));
+        imageLoader = new ImageLoader(mRequestQueue, bitmapLruCache);
         nivComic.setImageUrl(url, imageLoader);
     }
 
-    public static void loadImageFromInternet(Context context, CustomImageView nivComic, String url) {
+    public void loadImageFromInternet(Context context, CustomImageView nivComic, String url) {
         RequestQueue mRequestQueue;
         ImageLoader imageLoader;
         mRequestQueue = Volley.newRequestQueue(context);
-        imageLoader = new ImageLoader(mRequestQueue, new BitmapLruCache(BitmapLruCache.getDefaultLruCacheSize()));
+        imageLoader = new ImageLoader(mRequestQueue, bitmapLruCache);
         imageLoader.get(url, ImageLoader.getImageListener(nivComic, 0, 0));
     }
 
@@ -91,7 +97,12 @@ public class Tools {
         Map<String, String> settings = new HashMap<>();
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         settings.put("username", prefs.getString("username_preference", context.getString(R.string.default_username)));
-        settings.put("language", prefs.getString("language_preference", context.getString(R.string.default_language)));
+        if("Spanish".equals(prefs.getString("language_preference", context.getString(R.string.default_language)))) {
+            settings.put("language", "espa");
+        }else{
+            settings.put("language", prefs.getString("language_preference", context.getString(R.string.default_language)));
+        }
+
         if (prefs.getBoolean("save_last_comic", false)) {
             settings.put("save", "1");
         } else {
@@ -137,7 +148,9 @@ public class Tools {
             return result;
         }
         try {
-            new InputStreamReader(connection.getInputStream());
+            InputStream inputStream=connection.getInputStream();
+            BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream);
+            bitmapLruCache.putBitmap(url.toString(),BitmapFactory.decodeStream(bufferedInputStream));
             result = true;
         } catch (IOException e) {
             Log.d(LOG_TAG, e.toString());
@@ -147,8 +160,17 @@ public class Tools {
         return result;
     }
 
+    public BitmapLruCache getImageCache()  {
+        return bitmapLruCache;
+    }
+
     public String getYesterday(Calendar calendar) {
         calendar.add(Calendar.DAY_OF_YEAR, -1);
+        return calendarToString(calendar);
+    }
+
+    public String getTomorrow(Calendar calendar) {
+        calendar.add(Calendar.DAY_OF_YEAR, +1);
         return calendarToString(calendar);
     }
 

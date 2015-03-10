@@ -23,6 +23,7 @@
     <string name="default_language">English</string>
     <string name="text_save_comic">Save last page view</string>
     <string name="text_last_page">Last Page</string>
+    <string name="text_last_page_comic">Last Page</string>
 
     <string-array name="language">
         <item>English</item>
