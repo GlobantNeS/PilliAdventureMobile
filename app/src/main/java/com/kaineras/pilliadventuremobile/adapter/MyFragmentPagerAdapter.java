@@ -1,12 +1,11 @@
 package com.kaineras.pilliadventuremobile.adapter;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +13,7 @@ import java.util.List;
 /**
  * Created the first version by kaineras on 12/02/15.
  */
-public class MyFragmentPagerAdapter extends FragmentPagerAdapter{
+public class MyFragmentPagerAdapter extends FragmentStatePagerAdapter{
 
     // List of fragments which are going to set in the view pager widget
     private List<Fragment> fragments;
@@ -35,9 +34,10 @@ public class MyFragmentPagerAdapter extends FragmentPagerAdapter{
      *
      * @param fragment a new fragment
      */
-    public void addFragment(Fragment fragment) {
-        this.fragments.add(fragment);
-    }
+    public void addFragment(Fragment fragment) { this.fragments.add(fragment); }
+
+    @Override
+    public int getItemPosition(Object object) { return POSITION_NONE; }
 
     @Override
     public Fragment getItem(int arg0) {

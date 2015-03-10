@@ -1,6 +1,7 @@
 package com.kaineras.pilliadventuremobile.tools;
 
 import android.graphics.Bitmap;
+import android.util.Log;
 import android.util.LruCache;
 
 import com.android.volley.toolbox.ImageLoader;

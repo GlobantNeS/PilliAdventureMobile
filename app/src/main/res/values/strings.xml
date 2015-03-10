@@ -29,4 +29,11 @@
         <item>English</item>
         <item>Spanish</item>
     </string-array>
+
+    <string name="title_activity_comic_fullscreen">Pilli Adventure</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_comics_view_full_screen">ComicsViewFullScreenActivity</string>
 </resources>

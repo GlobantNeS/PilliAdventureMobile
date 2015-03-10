@@ -2,6 +2,7 @@ package com.kaineras.pilliadventuremobile;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,6 +48,7 @@ public class ImageComicsViewFragment extends Fragment {
         nivComic = (CustomImageView) rootView.findViewById(R.id.ivComic);
         nivComic.setAdjustViewBounds(true);
         tools.loadImageFromInternet(getActivity(), nivComic, url);
+        Log.v("URL CACHE EN FRAGMENTO", url);
         return rootView;
 
     }

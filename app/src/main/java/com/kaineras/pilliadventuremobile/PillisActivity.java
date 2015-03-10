@@ -1,11 +1,12 @@
 package com.kaineras.pilliadventuremobile;
 
+import android.app.ActionBar;
 import android.app.AlertDialog;
-import android.app.Application;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.widget.SlidingPaneLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -13,6 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 
 import com.kaineras.pilliadventuremobile.custom.PagerEnabledSlidingPaneLayout;
 import com.kaineras.pilliadventuremobile.settings.SettingsActivity;
@@ -34,6 +36,16 @@ public class PillisActivity extends ActionBarActivity implements MenuFragment.Op
         setContentView(R.layout.activity_pillis);
         prepareToolbar();
         prepareSlide();
+        if (Build.VERSION.SDK_INT < 16) {
+            getWindow().setFlags(
+                    WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                    WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        }else{
+            View decorView = getWindow().getDecorView();
+            int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+            decorView.setSystemUiVisibility(uiOptions);
+            //getSupportActionBar().hide();
+        }
         settings = tools.getPreferences(this);
     }
 
@@ -155,9 +167,10 @@ public class PillisActivity extends ActionBarActivity implements MenuFragment.Op
                 break;
         }
     }
+
     private void loadAboutFragment(NetworkInfo networkInfo) {
         if (networkInfo != null && networkInfo.isConnected()) {
-            tools.loadFragment(getSupportFragmentManager(), new AboutFragment(), "ABOUT");
+            tools.loadFragment(getSupportFragmentManager(),R.id.rightpane, new AboutFragment(), "ABOUT");
         } else {
             createAlert(getString(R.string.text_check_connection));
         }
@@ -167,11 +180,8 @@ public class PillisActivity extends ActionBarActivity implements MenuFragment.Op
 
     private void loadComicFragment(NetworkInfo networkInfo) {
         if (networkInfo != null && networkInfo.isConnected()) {
-            ComicFragment fragment = new ComicFragment();
-            Bundle bundle = new Bundle();
-            bundle.putBoolean("PAGE", getSaveState());
-            fragment.setArguments(bundle);
-            tools.loadFragment(getSupportFragmentManager(), fragment,"COMIC");
+            Intent intent = new Intent(PillisActivity.this,ComicsViewFullScreenActivity.class);
+            startActivity(intent);
         } else {
             createAlert(getString(R.string.text_check_connection));
         }
@@ -189,7 +199,7 @@ public class PillisActivity extends ActionBarActivity implements MenuFragment.Op
             Bundle bundle = new Bundle();
             bundle.putBoolean("PAGE", false);
             fragment.setArguments(bundle);
-            tools.loadFragment(getSupportFragmentManager(), fragment,"PAGE");
+            tools.loadFragment(getSupportFragmentManager(),R.id.rightpane, fragment,"PAGE");
         } else {
             createAlert(getString(R.string.text_check_connection));
         }
