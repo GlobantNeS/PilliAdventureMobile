@@ -6,7 +6,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,9 +14,11 @@ import android.widget.Toast;
 
 import com.google.common.collect.Lists;
 import com.kaineras.pilliadventuremobile.adapter.MyFragmentPagerAdapter;
+import com.kaineras.pilliadventuremobile.pojo.ImagesProperties;
 import com.kaineras.pilliadventuremobile.tools.Tools;
 
 import java.net.MalformedURLException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -86,7 +87,6 @@ public class
 
             @Override
             public void onPageSelected(int position) {
-                //mSelectedPageIndex = position;
                 if(PAGERS-1==position && lastPageName.equals(comicsList.get(PAGERS-1))){
                     Toast.makeText(getActivity(), getString(R.string.text_last_page_comic), Toast.LENGTH_SHORT).show();
                 }
@@ -130,23 +130,49 @@ public class
         }
 
         private void getLastPagesFrom() {
-            calendarRight=calendar;
+            calendarRight = calendar;
             String dateImage = tools.calendarToString(calendar);
             try {
-                int a=0;
-                do{
-                    if (tools.existImage(tools.constructURLIma(language, dateImage + ".jpg"))) {
-                        resultComics.add(dateImage);
-                        saveLastPageName(dateImage);
-                        a++;
+                int a = 0;
+                do {
+                    int statusImage = tools.existImageDB(getActivity(), dateImage, language);
+                    switch (statusImage) {
+                        case -1:
+                            a = addComicToDB(dateImage, a);
+                            break;
+                        case 1:
+                            a = addComicToList(dateImage, a);
+                            break;
+                        default:
+                            break;
                     }
                     dateImage = tools.getYesterday(calendar);
-                }while (a<PAGERS);
-                calendarLeft=calendar;
+                } while (a < PAGERS);
+                calendarLeft = calendar;
             } catch (MalformedURLException e) {
                 Log.w(LOG_TAG, e.toString());
                 Logger.getLogger(ComicFragment.class.getName()).log(Level.SEVERE, null, e);
             }
+        }
+
+        private int addComicToDB(String dateImage, int a) throws MalformedURLException {
+            boolean imageExist = tools.existImageInUrl(tools.constructURLIma(language, dateImage + ".jpg"));
+            if (imageExist) {
+                a = addComicToList(dateImage, a);
+            }
+            ImagesProperties imagesProperties = new ImagesProperties();
+            imagesProperties.setName(dateImage);
+            imagesProperties.setLang(language);
+            imagesProperties.setExist(imageExist ? "1" : "0");
+            tools.saveImagePropertiesDB(getActivity(), imagesProperties);
+            return a;
+        }
+
+        private int addComicToList(String dateImage, int a) {
+            resultComics.add(dateImage);
+            saveLastPageName(dateImage);
+            a++;
+            return a;
         }
 
         private void saveLastPageName(String dateImage) {

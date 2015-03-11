@@ -3,7 +3,6 @@ package com.kaineras.pilliadventuremobile.tools;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.preference.PreferenceManager;
@@ -13,11 +12,11 @@ import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 
 import com.android.volley.toolbox.ImageLoader;
-import com.android.volley.toolbox.NetworkImageView;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
+import com.j256.ormlite.dao.Dao;
 import com.kaineras.pilliadventuremobile.R;
 import com.kaineras.pilliadventuremobile.custom.CustomImageView;
-import com.kaineras.pilliadventuremobile.pojo.EnglishImagesProperties;
+import com.kaineras.pilliadventuremobile.pojo.ImagesProperties;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
@@ -44,6 +43,7 @@ public class Tools {
     private static final String LOG_TAG = Tools.class.getSimpleName();
     private BitmapLruCache bitmapLruCache;
     private static final String SCHEME = "http";
+
     //private static final String BASE_URL = "pilli-adventure.com";
     private static final String BASE_URL = "10.0.2.2";
     private static final String LANGUAGE_PATH = "espa";
@@ -106,31 +106,7 @@ public class Tools {
         return settings;
     }
 
-    public List<String> getUrlsByMonth(Context context, String year, String month) throws SQLException {
-        mDBHelper = getDBHelper(context);
-        List<EnglishImagesProperties> urls = mDBHelper.getImageByMonth(year, month);
-        List<String> resultUrls = new ArrayList<>();
-        for (EnglishImagesProperties eipTemp : urls) {
-            resultUrls.add(eipTemp.getName() + ".jpg");
-        }
-        return resultUrls;
-
-    }
-
-    public String getDBLastComic(Context context) throws SQLException {
-        mDBHelper = getDBHelper(context);
-        EnglishImagesProperties eipTemp = mDBHelper.getLastImage();
-        return eipTemp.getName();
-    }
-
-    private DatabaseHelper getDBHelper(Context context) {
-        if (mDBHelper == null) {
-            mDBHelper = OpenHelperManager.getHelper(context, DatabaseHelper.class);
-        }
-        return mDBHelper;
-    }
-
-    public boolean existImage(URL urlToCheck) {
+    public boolean existImageInUrl(URL urlToCheck) {
         boolean result = false;
         URLConnection connection;
         URL url;
@@ -178,4 +154,59 @@ public class Tools {
         }
         return year + "-" + month + "-" + day;
     }
+
+
+
+    /////////////DATA BASE TOOLS
+
+
+    private DatabaseHelper getDBHelper(Context context) {
+        if (mDBHelper == null) {
+            mDBHelper = OpenHelperManager.getHelper(context, DatabaseHelper.class);
+        }
+        return mDBHelper;
+    }
+
+    public List<String> getUrlsByMonth(Context context, String year, String month) throws SQLException {
+        mDBHelper = getDBHelper(context);
+        List<ImagesProperties> urls = mDBHelper.getImageByMonth(year, month);
+        List<String> resultUrls = new ArrayList<>();
+        for (ImagesProperties eipTemp : urls) {
+            resultUrls.add(eipTemp.getName() + ".jpg");
+        }
+        return resultUrls;
+
+    }
+
+    public String getDBLastComic(Context context) throws SQLException {
+        mDBHelper = getDBHelper(context);
+        ImagesProperties eipTemp = mDBHelper.getLastImage();
+        return eipTemp.getName();
+    }
+
+    public void saveImagePropertiesDB(Context context,ImagesProperties imagesProperties)
+    {
+        mDBHelper=getDBHelper(context);
+        mDBHelper.saveImageProperties(imagesProperties);
+    }
+
+    public int existImageDB(Context context,String dateImage, String language){
+        int result = -1;
+        mDBHelper=getDBHelper(context);
+        ImagesProperties imageProp = null;
+        try {
+            imageProp = mDBHelper.getImageByNameAndLanguage(dateImage, language);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return  result;
+        }
+        if(imageProp != null){
+            result = "0".equals(imageProp.getExist())? 0 : 1;
+        }
+        return result;
+    }
+
+
+
+
 }

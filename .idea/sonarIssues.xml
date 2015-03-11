@@ -13,6 +13,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../Contacts/app/src/main/java/com/kaineras/contacts/ListContactFragment.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/build/intermediates/manifests/full/debug/AndroidManifest.xml">
           <value>
             <set />
@@ -52,64 +57,7 @@
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/ComicFragment.java">
           <value>
-            <set>
-              <SonarIssue>
-                <option name="isNew" value="true" />
-                <option name="key" value="042c2d59-8ea3-4353-abf6-40af13f5a817" />
-                <option name="line" value="44" />
-                <option name="message" value="Remove this unused &quot;calendarLeft&quot; private field." />
-                <option name="ruleKey" value="squid:S1068" />
-                <option name="severity" value="MAJOR" />
-              </SonarIssue>
-              <SonarIssue>
-                <option name="isNew" value="true" />
-                <option name="key" value="73941f50-a24d-4fb3-858e-624072b1ea9c" />
-                <option name="line" value="96" />
-                <option name="message" value="Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation." />
-                <option name="ruleKey" value="squid:S1186" />
-                <option name="severity" value="MAJOR" />
-              </SonarIssue>
-              <SonarIssue>
-                <option name="isNew" value="true" />
-                <option name="key" value="ed61b810-566c-4791-8eaf-e1d5d8d63686" />
-                <option name="line" value="9" />
-                <option name="message" value="Remove this unused import 'android.support.v7.widget.Toolbar'." />
-                <option name="ruleKey" value="squid:UselessImportCheck" />
-                <option name="severity" value="MINOR" />
-              </SonarIssue>
-              <SonarIssue>
-                <option name="isNew" value="true" />
-                <option name="key" value="29ab0db2-3578-4f6d-9412-ce9f5686d9ec" />
-                <option name="line" value="89" />
-                <option name="message" value="This block of commented-out lines of code should be removed." />
-                <option name="ruleKey" value="squid:CommentedOutCodeLine" />
-                <option name="severity" value="MAJOR" />
-              </SonarIssue>
-              <SonarIssue>
-                <option name="isNew" value="true" />
-                <option name="key" value="76879bb6-3703-496b-9b96-5340d3ad485f" />
-                <option name="line" value="45" />
-                <option name="message" value="Remove this unused &quot;calendarRight&quot; private field." />
-                <option name="ruleKey" value="squid:S1068" />
-                <option name="severity" value="MAJOR" />
-              </SonarIssue>
-              <SonarIssue>
-                <option name="isNew" value="true" />
-                <option name="key" value="961da693-4831-4a00-aa7e-a36f48265872" />
-                <option name="line" value="72" />
-                <option name="message" value="Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation." />
-                <option name="ruleKey" value="squid:S1186" />
-                <option name="severity" value="MAJOR" />
-              </SonarIssue>
-              <SonarIssue>
-                <option name="isNew" value="true" />
-                <option name="key" value="bf78582f-534a-472b-8f17-68041aeb6bab" />
-                <option name="line" value="83" />
-                <option name="message" value="Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation." />
-                <option name="ruleKey" value="squid:S1186" />
-                <option name="severity" value="MAJOR" />
-              </SonarIssue>
-            </set>
+            <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/ComicFullActivity.java">
@@ -127,17 +75,17 @@
             <set>
               <SonarIssue>
                 <option name="isNew" value="true" />
-                <option name="key" value="1badfcc5-7b22-43d7-b1bc-dc439cd7227b" />
-                <option name="line" value="5" />
-                <option name="message" value="Remove this unused import 'android.support.v4.app.Fragment'." />
+                <option name="key" value="32364f8a-f9b3-4a17-b6d7-4ea70e0b034f" />
+                <option name="line" value="7" />
+                <option name="message" value="Remove this unused import 'android.view.LayoutInflater'." />
                 <option name="ruleKey" value="squid:UselessImportCheck" />
                 <option name="severity" value="MINOR" />
               </SonarIssue>
               <SonarIssue>
                 <option name="isNew" value="true" />
-                <option name="key" value="32364f8a-f9b3-4a17-b6d7-4ea70e0b034f" />
-                <option name="line" value="7" />
-                <option name="message" value="Remove this unused import 'android.view.LayoutInflater'." />
+                <option name="key" value="1badfcc5-7b22-43d7-b1bc-dc439cd7227b" />
+                <option name="line" value="5" />
+                <option name="message" value="Remove this unused import 'android.support.v4.app.Fragment'." />
                 <option name="ruleKey" value="squid:UselessImportCheck" />
                 <option name="severity" value="MINOR" />
               </SonarIssue>
@@ -296,6 +244,16 @@
             </set>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/pojo/EnglishImagesProperties.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/pojo/ImagesProperties.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/tools/BitmapLruCache.java">
           <value>
             <set>
@@ -315,71 +273,19 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/tools/DatabaseHelper.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/tools/Tools.java">
           <value>
-            <set>
-              <SonarIssue>
-                <option name="isNew" value="true" />
-                <option name="key" value="ad6b63d3-5db5-4ba4-91e4-47f6f7379478" />
-                <option name="line" value="58" />
-                <option name="message" value="Remove the unused method parameter(s) &quot;namestack&quot;." />
-                <option name="ruleKey" value="squid:S1172" />
-                <option name="severity" value="MAJOR" />
-              </SonarIssue>
-              <SonarIssue>
-                <option name="isNew" value="true" />
-                <option name="key" value="11c50597-4b2e-41f6-9482-ed9e3b614025" />
-                <option name="line" value="47" />
-                <option name="message" value="This block of commented-out lines of code should be removed." />
-                <option name="ruleKey" value="squid:CommentedOutCodeLine" />
-                <option name="severity" value="MAJOR" />
-              </SonarIssue>
-              <SonarIssue>
-                <option name="isNew" value="true" />
-                <option name="key" value="89afe069-07ea-4493-ab8b-322436c1d13c" />
-                <option name="line" value="73" />
-                <option name="message" value="Remove the unused method parameter(s) &quot;context&quot;." />
-                <option name="ruleKey" value="squid:S1172" />
-                <option name="severity" value="MAJOR" />
-              </SonarIssue>
-              <SonarIssue>
-                <option name="isNew" value="true" />
-                <option name="key" value="c4576995-ebe4-43bb-8a60-a8fb6c391991" />
-                <option name="line" value="16" />
-                <option name="message" value="Remove this unused import 'com.android.volley.toolbox.NetworkImageView'." />
-                <option name="ruleKey" value="squid:UselessImportCheck" />
-                <option name="severity" value="MINOR" />
-              </SonarIssue>
-              <SonarIssue>
-                <option name="isNew" value="true" />
-                <option name="key" value="090edc35-dbd3-41bc-ad15-4afbd5b9734f" />
-                <option name="line" value="48" />
-                <option name="message" value="Make this IP &quot;10.0.2.2&quot; address configurable." />
-                <option name="ruleKey" value="squid:S1313" />
-                <option name="severity" value="MAJOR" />
-              </SonarIssue>
-              <SonarIssue>
-                <option name="isNew" value="true" />
-                <option name="key" value="4dc17df8-686a-496f-8c21-7d08e6279376" />
-                <option name="line" value="6" />
-                <option name="message" value="Remove this unused import 'android.graphics.Bitmap'." />
-                <option name="ruleKey" value="squid:UselessImportCheck" />
-                <option name="severity" value="MINOR" />
-              </SonarIssue>
-            </set>
+            <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/tools/VolleySingleton.java">
           <value>
             <set>
-              <SonarIssue>
-                <option name="isNew" value="true" />
-                <option name="key" value="955a34aa-05c9-4a27-bf0d-91b28ec05065" />
-                <option name="line" value="10" />
-                <option name="message" value="Remove this unused import 'com.kaineras.pilliadventuremobile.PillisActivity'." />
-                <option name="ruleKey" value="squid:UselessImportCheck" />
-                <option name="severity" value="MINOR" />
-              </SonarIssue>
               <SonarIssue>
                 <option name="isNew" value="true" />
                 <option name="key" value="f32444df-fece-44bb-9670-41a5431dd34a" />
@@ -390,9 +296,9 @@
               </SonarIssue>
               <SonarIssue>
                 <option name="isNew" value="true" />
-                <option name="key" value="b6bdb00b-700a-40e0-bfe7-776e5983ee7e" />
-                <option name="line" value="3" />
-                <option name="message" value="Remove this unused import 'android.graphics.Bitmap'." />
+                <option name="key" value="955a34aa-05c9-4a27-bf0d-91b28ec05065" />
+                <option name="line" value="10" />
+                <option name="message" value="Remove this unused import 'com.kaineras.pilliadventuremobile.PillisActivity'." />
                 <option name="ruleKey" value="squid:UselessImportCheck" />
                 <option name="severity" value="MINOR" />
               </SonarIssue>
@@ -403,6 +309,14 @@
                 <option name="message" value="Move this closing curly brace to the next line." />
                 <option name="ruleKey" value="squid:RightCurlyBraceStartLineCheck" />
                 <option name="severity" value="MAJOR" />
+              </SonarIssue>
+              <SonarIssue>
+                <option name="isNew" value="true" />
+                <option name="key" value="b6bdb00b-700a-40e0-bfe7-776e5983ee7e" />
+                <option name="line" value="3" />
+                <option name="message" value="Remove this unused import 'android.graphics.Bitmap'." />
+                <option name="ruleKey" value="squid:UselessImportCheck" />
+                <option name="severity" value="MINOR" />
               </SonarIssue>
             </set>
           </value>
