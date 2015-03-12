@@ -1,12 +1,10 @@
 package com.kaineras.pilliadventuremobile;
 
-import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.widget.SlidingPaneLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -14,7 +12,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 
 import com.kaineras.pilliadventuremobile.custom.PagerEnabledSlidingPaneLayout;
 import com.kaineras.pilliadventuremobile.settings.SettingsActivity;
@@ -160,7 +157,7 @@ public class PillisActivity extends ActionBarActivity implements MenuFragment.Op
 
     private void loadAboutFragment(NetworkInfo networkInfo) {
         if (networkInfo != null && networkInfo.isConnected()) {
-            tools.loadFragment(getSupportFragmentManager(),R.id.rightpane, new AboutFragment(), "ABOUT");
+            tools.loadFragment(getSupportFragmentManager(),R.id.rightpane, new AboutFragment());
         } else {
             createAlert(getString(R.string.text_check_connection));
         }
@@ -189,7 +186,7 @@ public class PillisActivity extends ActionBarActivity implements MenuFragment.Op
             Bundle bundle = new Bundle();
             bundle.putBoolean("PAGE", false);
             fragment.setArguments(bundle);
-            tools.loadFragment(getSupportFragmentManager(),R.id.rightpane, fragment,"PAGE");
+            tools.loadFragment(getSupportFragmentManager(),R.id.rightpane, fragment);
         } else {
             createAlert(getString(R.string.text_check_connection));
         }

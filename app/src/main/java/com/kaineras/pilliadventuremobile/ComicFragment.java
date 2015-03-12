@@ -38,15 +38,19 @@ public class
     private MyFragmentPagerAdapter adapter;
     private Map<String, String> settings;
     private String lastPageName;
+    private String dateImage;
     private View rootView;
     private boolean flagLastName = false;
     private List<String> comicsList;
     private Calendar calendar;
     private Calendar calendarLeft;
     private Calendar calendarRight;
+    private int a;
     private static final int INT_BASE = 77777;
     private static final String LOG_TAG = ComicFragment.class.getSimpleName();
     private static final  int PAGERS = 3;
+    private static final  int FIRST_PAGE = 0;
+    private static final  int LAST_PAGE = 4;
     private static final  int REAL_PAGERS = 5;
 
 
@@ -62,7 +66,6 @@ public class
         calendar = Calendar.getInstance();
         calendarLeft = calendarRight = calendar;
         settings = tools.getPreferences(getActivity());
-        hideToolbar();
         preparePager();
         boolean lastPage = !getArguments().getBoolean("PAGE");
         if (lastPage) {
@@ -73,45 +76,45 @@ public class
         return rootView;
     }
 
-    private void hideToolbar() {
-    }
-
     void preparePager() {
         adapter = new MyFragmentPagerAdapter(getFragmentManager());
 
         pager = (ViewPager) rootView.findViewById(R.id.pager);
         pager.setOffscreenPageLimit(REAL_PAGERS - 1);
         pager.setOnPageChangeListener(new ViewPager.OnPageChangeListener(){
-
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
+                //FUNCTIONALITY IN NEXT FEATURES
             }
-
             @Override
             public void onPageSelected(int position) {
-                if(REAL_PAGERS-2==position && lastPageName.equals(comicsList.get(REAL_PAGERS-2))){
+                if(PAGERS == position && lastPageName.equals(comicsList.get(PAGERS))){
                     Toast.makeText(getActivity(), getString(R.string.text_last_page_comic), Toast.LENGTH_SHORT).show();
                 }else {
-                    if (position == 0) {
-                        new UpdateComic().execute("updateLeft");
-                    }
-                    if (position == 4 && lastPageName.equals(comicsList.get(REAL_PAGERS - 2))) {
-                        Toast.makeText(getActivity(), getString(R.string.text_last_page_comic), Toast.LENGTH_SHORT).show();
-                        pager.setCurrentItem(REAL_PAGERS - 2, false);
-                    } else {
-                        if (position == 4) {
-                            new UpdateComic().execute("updateRight");
-                        }
-                    }
+                    checkComicUpdates(position);
                 }
             }
 
             @Override
             public void onPageScrollStateChanged(int state) {
-
+                //FUNCTIONALITY IN NEXT FEATURES
             }
         });
+    }
+
+    private void checkComicUpdates(int position) {
+        if (position == FIRST_PAGE) {
+            new UpdateComic().execute("updateLeft");
+        }else {
+            if (position == LAST_PAGE && lastPageName.equals(comicsList.get(PAGERS))) {
+                Toast.makeText(getActivity(), getString(R.string.text_last_page_comic), Toast.LENGTH_SHORT).show();
+                pager.setCurrentItem(PAGERS, false);
+            } else {
+                if (position == LAST_PAGE) {
+                    new UpdateComic().execute("updateRight");
+                }
+            }
+        }
     }
 
     class UpdateComic extends AsyncTask<String, Void, Void> {
@@ -152,57 +155,15 @@ public class
 
         private void getLastPagesFrom(Calendar tempCalendar,int mode) {
             this.mode=mode;
-            int a=0;
-            String dateImage = tools.calendarToString(tempCalendar);
+            a=0;
+            dateImage = tools.calendarToString(tempCalendar);
             resultComics.clear();
             resultComics.add("FakePageAfter");
             try {
-                switch (mode)
-                {
-                    case 1:
-                        calendarLeft = tempCalendar;
-                        do {
-                            int statusImage = tools.existImageDB(getActivity(), dateImage, language);
-                            switch (statusImage) {
-                                case -1:
-                                    a = addComicToDB(dateImage, a);
-                                    break;
-                                case 1:
-                                    a = addComicToList(dateImage, a);
-                                    break;
-                                default:
-                                    break;
-                            }
-                            if(a<=PAGERS) {
-                                dateImage = tools.getTomorrow(tempCalendar);
-                            }
-                        } while (a < PAGERS);
-                        calendarRight = tempCalendar;
-                        resultComics.add("FakePageBefore");
-                        comicsList = resultComics;
-                        break;
-                    default:
-                        calendarRight = tempCalendar;
-                        do {
-                            int statusImage = tools.existImageDB(getActivity(), dateImage, language);
-                            switch (statusImage) {
-                                case -1:
-                                    a = addComicToDB(dateImage, a);
-                                    break;
-                                case 1:
-                                    a = addComicToList(dateImage, a);
-                                    break;
-                                default:
-                                    break;
-                            }
-                            if(a<=PAGERS) {
-                                dateImage = tools.getYesterday(tempCalendar);
-                            }
-                        } while (a < PAGERS);
-                        calendarLeft = tempCalendar;
-                        resultComics.add("FakePageBefore");
-                        comicsList = Lists.reverse(resultComics);
-                        break;
+                if(mode == 1){
+                    updateRightComics(tempCalendar);
+                }else{
+                    updateLeftComics(tempCalendar);
                 }
             } catch (MalformedURLException e) {
                 Log.w(LOG_TAG, e.toString());
@@ -210,24 +171,68 @@ public class
             }
         }
 
-        private int addComicToDB(String dateImage, int a) throws MalformedURLException {
+        private void updateLeftComics(Calendar tempCalendar) throws MalformedURLException {
+            calendarRight = tempCalendar;
+            do {
+                int statusImage = tools.existImageDB(getActivity(), dateImage, language);
+                switch (statusImage) {
+                    case -1:
+                        addComicToDB(dateImage);
+                        break;
+                    case 1:
+                        addComicToList(dateImage);
+                        break;
+                    default:
+                        break;
+                }
+                if(a<=PAGERS) {
+                    dateImage = tools.getYesterday(tempCalendar);
+                }
+            } while (a < PAGERS);
+            calendarLeft = tempCalendar;
+            resultComics.add("FakePageBefore");
+            comicsList = Lists.reverse(resultComics);
+        }
+
+        private void updateRightComics(Calendar tempCalendar) throws MalformedURLException {
+            calendarLeft = tempCalendar;
+            do {
+                int statusImage = tools.existImageDB(getActivity(), dateImage, language);
+                switch (statusImage) {
+                    case -1:
+                        addComicToDB(dateImage);
+                        break;
+                    case 1:
+                        addComicToList(dateImage);
+                        break;
+                    default:
+                        break;
+                }
+                if(a<=PAGERS) {
+                    dateImage = tools.getTomorrow(tempCalendar);
+                }
+            } while (a < PAGERS);
+            calendarRight = tempCalendar;
+            resultComics.add("FakePageBefore");
+            comicsList = resultComics;
+        }
+
+        private void addComicToDB(String dateImage) throws MalformedURLException {
             boolean imageExist = tools.existImageInUrl(tools.constructURLIma(language, dateImage + ".jpg"));
             if (imageExist) {
-                a = addComicToList(dateImage, a);
+                addComicToList(dateImage);
             }
             ImagesProperties imagesProperties = new ImagesProperties();
             imagesProperties.setName(dateImage);
             imagesProperties.setLang(language);
             imagesProperties.setExist(imageExist ? "1" : "0");
             tools.saveImagePropertiesDB(getActivity(), imagesProperties);
-            return a;
         }
 
-        private int addComicToList(String dateImage, int a) {
+        private void addComicToList(String dateImage) {
             resultComics.add(dateImage);
             saveLastPageName(dateImage);
             a++;
-            return a;
         }
 
         private void saveLastPageName(String dateImage) {
@@ -254,24 +259,29 @@ public class
                 int index=0;
                 for (String name : comicsList) {
                     if(!name.contains("Fake")){
-                        try {
-                            CustomImageView customImageView= (CustomImageView) rootView.findViewById(INT_BASE+index);
-                            String url=tools.constructURLIma(language, name + ".jpg").toString();
-                            tools.loadImageFromInternet(getActivity(), customImageView, url);
-                        } catch (MalformedURLException e) {
-                            e.printStackTrace();
-                        }
+                        updateImagesInViewPager(index, name);
                     }
                     index++;
                 }
             }
             if(mode==0) {
-                pager.setCurrentItem(REAL_PAGERS - 2, false);
+                pager.setCurrentItem(PAGERS, false);
             }else{
                 pager.setCurrentItem(1, false);
             }
 
             dialog.dismiss();
+        }
+
+        private void updateImagesInViewPager(int index, String name) {
+            try {
+                CustomImageView customImageView= (CustomImageView) rootView.findViewById(INT_BASE+index);
+                String url=tools.constructURLIma(language, name + ".jpg").toString();
+                tools.loadImageFromInternet(customImageView, url);
+            } catch (MalformedURLException e) {
+                Log.d(LOG_TAG, e.toString());
+                Logger.getLogger(ComicFragment.class.getName()).log(Level.SEVERE, null, e);
+            }
         }
     }
     public String getLanguage() {

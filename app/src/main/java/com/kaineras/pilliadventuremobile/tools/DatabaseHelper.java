@@ -40,11 +40,6 @@ class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         return mImageDao;
     }
 
-    public List<ImagesProperties> getPropertiesImage() throws SQLException {
-
-        return getImageDao().queryForAll();
-    }
-
     public List<ImagesProperties> getImageByMonth(String year, String month) throws SQLException {
         mImageDao = getImageDao();
         QueryBuilder queryBuilder = mImageDao.queryBuilder();
@@ -83,13 +78,13 @@ class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         return mImageDao.queryForFirst(queryBuilder.prepare());
     }
 
-    public void saveImageProperties(ImagesProperties imagesProperties)
-    {
+    public void saveImageProperties(ImagesProperties imagesProperties) {
         try {
             Dao<ImagesProperties, Integer> dao = getImageDao();
             dao.create(imagesProperties);
         } catch (SQLException e) {
-            e.printStackTrace();
+            Log.e(LOG_TAG, "Failed to SaveImage.", e);
+            Logger.getLogger(DatabaseHelper.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 }

@@ -1,9 +1,7 @@
 package com.kaineras.pilliadventuremobile;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,8 +22,6 @@ public class ImageComicsViewFragment extends Fragment {
     private static final String INDEX = "INDEX";
     private Tools tools=new Tools();
     private static final int INT_BASE = 77777;
-    private static final String LOG_TAG = ImageComicsViewFragment.class.getSimpleName();
-
 
     public static ImageComicsViewFragment newInstance(String url, int index) {
         ImageComicsViewFragment fragment = new ImageComicsViewFragment();
@@ -57,7 +53,7 @@ public class ImageComicsViewFragment extends Fragment {
         if(url.isEmpty()){
             nivComic.setImageResource(R.mipmap.ic_launcher);
         }else {
-            tools.loadImageFromInternet(getActivity(), nivComic, url);
+            tools.loadImageFromInternet(nivComic, url);
         }
         return rootView;
     }

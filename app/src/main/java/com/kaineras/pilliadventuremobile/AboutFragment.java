@@ -31,7 +31,7 @@ public class AboutFragment extends Fragment {
         v = inflater.inflate(R.layout.fragment_about, container, false);
         nivComic = (CustomImageView) v.findViewById(R.id.ivAbout);
         nivComic.setAdjustViewBounds(true);
-        tools.loadImageFromInternet(getActivity(), nivComic, URL);
+        tools.loadImageFromInternet(nivComic, URL);
         return v;
     }
 }

@@ -13,7 +13,6 @@ import android.util.Log;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
-import com.j256.ormlite.dao.Dao;
 import com.kaineras.pilliadventuremobile.R;
 import com.kaineras.pilliadventuremobile.custom.CustomImageView;
 import com.kaineras.pilliadventuremobile.pojo.ImagesProperties;
@@ -25,10 +24,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -55,14 +52,6 @@ public class Tools {
 
     }
 
-    public void loadFragment(FragmentManager fm,int container, Fragment f, String namestack) {
-        FragmentTransaction fragmentTransaction;
-        fragmentTransaction = fm.beginTransaction();
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.replace(container, f);
-        fragmentTransaction.commit();
-    }
-
     public void loadFragment(FragmentManager fm,int container, Fragment f) {
         FragmentTransaction fragmentTransaction;
         fragmentTransaction = fm.beginTransaction();
@@ -70,7 +59,7 @@ public class Tools {
         fragmentTransaction.commit();
     }
 
-    public void loadImageFromInternet(Context context, CustomImageView nivComic, String url) {
+    public void loadImageFromInternet(CustomImageView nivComic, String url) {
         ImageLoader imageLoader;
         imageLoader = VolleySingleton.getInstance().getImageLoader();
         if(!url.isEmpty()) {
@@ -169,25 +158,13 @@ public class Tools {
         return mDBHelper;
     }
 
-    public List<String> getUrlsByMonth(Context context, String year, String month) throws SQLException {
-        mDBHelper = getDBHelper(context);
-        List<ImagesProperties> urls = mDBHelper.getImageByMonth(year, month);
-        List<String> resultUrls = new ArrayList<>();
-        for (ImagesProperties eipTemp : urls) {
-            resultUrls.add(eipTemp.getName() + ".jpg");
-        }
-        return resultUrls;
-
-    }
-
     public String getDBLastComic(Context context) throws SQLException {
         mDBHelper = getDBHelper(context);
         ImagesProperties eipTemp = mDBHelper.getLastImage();
         return eipTemp.getName();
     }
 
-    public void saveImagePropertiesDB(Context context,ImagesProperties imagesProperties)
-    {
+    public void saveImagePropertiesDB(Context context,ImagesProperties imagesProperties)  {
         mDBHelper=getDBHelper(context);
         mDBHelper.saveImageProperties(imagesProperties);
     }
@@ -195,11 +172,12 @@ public class Tools {
     public int existImageDB(Context context,String dateImage, String language){
         int result = -1;
         mDBHelper=getDBHelper(context);
-        ImagesProperties imageProp = null;
+        ImagesProperties imageProp;
         try {
             imageProp = mDBHelper.getImageByNameAndLanguage(dateImage, language);
         } catch (SQLException e) {
-            e.printStackTrace();
+            Log.d(LOG_TAG, e.toString());
+            Logger.getLogger(Tools.class.getName()).log(Level.SEVERE, null, e);
             return  result;
         }
         if(imageProp != null){

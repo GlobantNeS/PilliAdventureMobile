@@ -28,18 +28,18 @@
             <set>
               <SonarIssue>
                 <option name="isNew" value="true" />
-                <option name="key" value="3c2e8a57-2c2f-4dd2-a135-ceaef3fbd5c1" />
-                <option name="line" value="18" />
-                <option name="message" value="This block of commented-out lines of code should be removed." />
-                <option name="ruleKey" value="squid:CommentedOutCodeLine" />
+                <option name="key" value="93f658f5-bf6d-4755-9a18-4523c7b2b2fd" />
+                <option name="line" value="19" />
+                <option name="message" value="Make this IP &quot;10.0.2.2&quot; address configurable." />
+                <option name="ruleKey" value="squid:S1313" />
                 <option name="severity" value="MAJOR" />
               </SonarIssue>
               <SonarIssue>
                 <option name="isNew" value="true" />
-                <option name="key" value="ba8f0420-ed23-4f6e-ac6f-aa9b6c913614" />
-                <option name="line" value="19" />
-                <option name="message" value="Make this IP &quot;10.0.2.2&quot; address configurable." />
-                <option name="ruleKey" value="squid:S1313" />
+                <option name="key" value="1a1df6f1-1856-429a-b0ef-1ec3da602fd4" />
+                <option name="line" value="18" />
+                <option name="message" value="This block of commented-out lines of code should be removed." />
+                <option name="ruleKey" value="squid:CommentedOutCodeLine" />
                 <option name="severity" value="MAJOR" />
               </SonarIssue>
             </set>
@@ -55,76 +55,12 @@
             <set />
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/ComicFragment.java">
-          <value>
-            <set />
-          </value>
-        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/ComicFullActivity.java">
           <value>
             <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/ComicFullscreenActivity.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/ComicsViewFullScreenActivity.java">
-          <value>
-            <set>
-              <SonarIssue>
-                <option name="isNew" value="true" />
-                <option name="key" value="1badfcc5-7b22-43d7-b1bc-dc439cd7227b" />
-                <option name="line" value="5" />
-                <option name="message" value="Remove this unused import 'android.support.v4.app.Fragment'." />
-                <option name="ruleKey" value="squid:UselessImportCheck" />
-                <option name="severity" value="MINOR" />
-              </SonarIssue>
-              <SonarIssue>
-                <option name="isNew" value="true" />
-                <option name="key" value="32364f8a-f9b3-4a17-b6d7-4ea70e0b034f" />
-                <option name="line" value="7" />
-                <option name="message" value="Remove this unused import 'android.view.LayoutInflater'." />
-                <option name="ruleKey" value="squid:UselessImportCheck" />
-                <option name="severity" value="MINOR" />
-              </SonarIssue>
-              <SonarIssue>
-                <option name="isNew" value="true" />
-                <option name="key" value="6aad77e2-e5ac-42c2-857a-054aeb474ca9" />
-                <option name="line" value="10" />
-                <option name="message" value="Remove this unused import 'android.view.View'." />
-                <option name="ruleKey" value="squid:UselessImportCheck" />
-                <option name="severity" value="MINOR" />
-              </SonarIssue>
-              <SonarIssue>
-                <option name="isNew" value="true" />
-                <option name="key" value="55ac4d41-5c85-4d42-8e94-e191c88e45e4" />
-                <option name="line" value="4" />
-                <option name="message" value="Remove this unused import 'android.support.v7.app.ActionBar'." />
-                <option name="ruleKey" value="squid:UselessImportCheck" />
-                <option name="severity" value="MINOR" />
-              </SonarIssue>
-              <SonarIssue>
-                <option name="isNew" value="true" />
-                <option name="key" value="653b714d-75e4-4f3b-890c-8fa925f11dff" />
-                <option name="line" value="12" />
-                <option name="message" value="Remove this unused import 'android.os.Build'." />
-                <option name="ruleKey" value="squid:UselessImportCheck" />
-                <option name="severity" value="MINOR" />
-              </SonarIssue>
-              <SonarIssue>
-                <option name="isNew" value="true" />
-                <option name="key" value="60e1e464-58d3-4f3b-8b40-4ae4828d513b" />
-                <option name="line" value="11" />
-                <option name="message" value="Remove this unused import 'android.view.ViewGroup'." />
-                <option name="ruleKey" value="squid:UselessImportCheck" />
-                <option name="severity" value="MINOR" />
-              </SonarIssue>
-            </set>
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/ImageComicsViewFragment.java">
           <value>
             <set />
           </value>
@@ -139,22 +75,7 @@
             <set />
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/MenuFragment.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/PillisActivity.java">
-          <value>
-            <set />
-          </value>
-        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/adapter/InfinitePagerAdapter.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/adapter/MyFragmentPagerAdapter.java">
           <value>
             <set />
           </value>
@@ -204,25 +125,6 @@
             <set />
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/pojo/ImagesProperties.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/tools/BitmapLruCache.java">
-          <value>
-            <set>
-              <SonarIssue>
-                <option name="isNew" value="true" />
-                <option name="key" value="16722fcd-572e-4532-ac3c-7af6d5085064" />
-                <option name="line" value="4" />
-                <option name="message" value="Remove this unused import 'android.util.Log'." />
-                <option name="ruleKey" value="squid:UselessImportCheck" />
-                <option name="severity" value="MINOR" />
-              </SonarIssue>
-            </set>
-          </value>
-        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/tools/ComicFullActivity.java">
           <value>
             <set />
@@ -235,45 +137,29 @@
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/tools/Tools.java">
           <value>
-            <set />
+            <set>
+              <SonarIssue>
+                <option name="isNew" value="true" />
+                <option name="key" value="2057997d-d337-4d5e-bffe-82283996eb02" />
+                <option name="line" value="44" />
+                <option name="message" value="This block of commented-out lines of code should be removed." />
+                <option name="ruleKey" value="squid:CommentedOutCodeLine" />
+                <option name="severity" value="MAJOR" />
+              </SonarIssue>
+              <SonarIssue>
+                <option name="isNew" value="true" />
+                <option name="key" value="db45ee36-5738-4e65-b752-814296746d9f" />
+                <option name="line" value="45" />
+                <option name="message" value="Make this IP &quot;10.0.2.2&quot; address configurable." />
+                <option name="ruleKey" value="squid:S1313" />
+                <option name="severity" value="MAJOR" />
+              </SonarIssue>
+            </set>
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/tools/VolleySingleton.java">
           <value>
-            <set>
-              <SonarIssue>
-                <option name="isNew" value="true" />
-                <option name="key" value="955a34aa-05c9-4a27-bf0d-91b28ec05065" />
-                <option name="line" value="10" />
-                <option name="message" value="Remove this unused import 'com.kaineras.pilliadventuremobile.PillisActivity'." />
-                <option name="ruleKey" value="squid:UselessImportCheck" />
-                <option name="severity" value="MINOR" />
-              </SonarIssue>
-              <SonarIssue>
-                <option name="isNew" value="true" />
-                <option name="key" value="f32444df-fece-44bb-9670-41a5431dd34a" />
-                <option name="line" value="4" />
-                <option name="message" value="Remove this unused import 'android.support.v4.util.LruCache'." />
-                <option name="ruleKey" value="squid:UselessImportCheck" />
-                <option name="severity" value="MINOR" />
-              </SonarIssue>
-              <SonarIssue>
-                <option name="isNew" value="true" />
-                <option name="key" value="b6bdb00b-700a-40e0-bfe7-776e5983ee7e" />
-                <option name="line" value="3" />
-                <option name="message" value="Remove this unused import 'android.graphics.Bitmap'." />
-                <option name="ruleKey" value="squid:UselessImportCheck" />
-                <option name="severity" value="MINOR" />
-              </SonarIssue>
-              <SonarIssue>
-                <option name="isNew" value="true" />
-                <option name="key" value="b759a90c-b028-4d14-804e-ae9f6ea47e54" />
-                <option name="line" value="34" />
-                <option name="message" value="Move this closing curly brace to the next line." />
-                <option name="ruleKey" value="squid:RightCurlyBraceStartLineCheck" />
-                <option name="severity" value="MAJOR" />
-              </SonarIssue>
-            </set>
+            <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/res/layout/activity_comic_full.xml">
@@ -282,11 +168,6 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/res/layout/activity_comic_fullscreen.xml">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/res/layout/fragment_image_comic.xml">
           <value>
             <set />
           </value>

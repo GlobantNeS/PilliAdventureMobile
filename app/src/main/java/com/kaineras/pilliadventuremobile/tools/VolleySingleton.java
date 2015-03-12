@@ -1,13 +1,10 @@
 package com.kaineras.pilliadventuremobile.tools;
 
-import android.graphics.Bitmap;
-import android.support.v4.util.LruCache;
-
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
 import com.kaineras.pilliadventuremobile.MyApplication;
-import com.kaineras.pilliadventuremobile.PillisActivity;
+
 
 /**
  * Created the first version by kaineras on 10/03/15.
@@ -31,10 +28,8 @@ public class VolleySingleton {
         return mInstance;
     }
 
-    public BitmapLruCache getBitmapLruCache() { return this.bitmapLruCache; }
-
-    public RequestQueue getRequestQueue(){
-        return this.mRequestQueue;
+    public BitmapLruCache getBitmapLruCache() {
+        return this.bitmapLruCache;
     }
 
     public ImageLoader getImageLoader(){
