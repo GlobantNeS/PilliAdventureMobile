@@ -73,7 +73,6 @@ public class Tools {
     public void loadImageFromInternet(Context context, CustomImageView nivComic, String url) {
         ImageLoader imageLoader;
         imageLoader = VolleySingleton.getInstance().getImageLoader();
-        Log.d(LOG_TAG,url + " LOAD IMAGE");
         if(!url.isEmpty()) {
             imageLoader.get(url, ImageLoader.getImageListener(nivComic, 0, 0));
         }

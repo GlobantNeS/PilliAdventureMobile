@@ -75,17 +75,17 @@
             <set>
               <SonarIssue>
                 <option name="isNew" value="true" />
-                <option name="key" value="32364f8a-f9b3-4a17-b6d7-4ea70e0b034f" />
-                <option name="line" value="7" />
-                <option name="message" value="Remove this unused import 'android.view.LayoutInflater'." />
+                <option name="key" value="1badfcc5-7b22-43d7-b1bc-dc439cd7227b" />
+                <option name="line" value="5" />
+                <option name="message" value="Remove this unused import 'android.support.v4.app.Fragment'." />
                 <option name="ruleKey" value="squid:UselessImportCheck" />
                 <option name="severity" value="MINOR" />
               </SonarIssue>
               <SonarIssue>
                 <option name="isNew" value="true" />
-                <option name="key" value="1badfcc5-7b22-43d7-b1bc-dc439cd7227b" />
-                <option name="line" value="5" />
-                <option name="message" value="Remove this unused import 'android.support.v4.app.Fragment'." />
+                <option name="key" value="32364f8a-f9b3-4a17-b6d7-4ea70e0b034f" />
+                <option name="line" value="7" />
+                <option name="message" value="Remove this unused import 'android.view.LayoutInflater'." />
                 <option name="ruleKey" value="squid:UselessImportCheck" />
                 <option name="severity" value="MINOR" />
               </SonarIssue>
@@ -260,6 +260,14 @@
             <set>
               <SonarIssue>
                 <option name="isNew" value="true" />
+                <option name="key" value="955a34aa-05c9-4a27-bf0d-91b28ec05065" />
+                <option name="line" value="10" />
+                <option name="message" value="Remove this unused import 'com.kaineras.pilliadventuremobile.PillisActivity'." />
+                <option name="ruleKey" value="squid:UselessImportCheck" />
+                <option name="severity" value="MINOR" />
+              </SonarIssue>
+              <SonarIssue>
+                <option name="isNew" value="true" />
                 <option name="key" value="f32444df-fece-44bb-9670-41a5431dd34a" />
                 <option name="line" value="4" />
                 <option name="message" value="Remove this unused import 'android.support.v4.util.LruCache'." />
@@ -268,9 +276,9 @@
               </SonarIssue>
               <SonarIssue>
                 <option name="isNew" value="true" />
-                <option name="key" value="955a34aa-05c9-4a27-bf0d-91b28ec05065" />
-                <option name="line" value="10" />
-                <option name="message" value="Remove this unused import 'com.kaineras.pilliadventuremobile.PillisActivity'." />
+                <option name="key" value="b6bdb00b-700a-40e0-bfe7-776e5983ee7e" />
+                <option name="line" value="3" />
+                <option name="message" value="Remove this unused import 'android.graphics.Bitmap'." />
                 <option name="ruleKey" value="squid:UselessImportCheck" />
                 <option name="severity" value="MINOR" />
               </SonarIssue>
@@ -281,14 +289,6 @@
                 <option name="message" value="Move this closing curly brace to the next line." />
                 <option name="ruleKey" value="squid:RightCurlyBraceStartLineCheck" />
                 <option name="severity" value="MAJOR" />
-              </SonarIssue>
-              <SonarIssue>
-                <option name="isNew" value="true" />
-                <option name="key" value="b6bdb00b-700a-40e0-bfe7-776e5983ee7e" />
-                <option name="line" value="3" />
-                <option name="message" value="Remove this unused import 'android.graphics.Bitmap'." />
-                <option name="ruleKey" value="squid:UselessImportCheck" />
-                <option name="severity" value="MINOR" />
               </SonarIssue>
             </set>
           </value>
