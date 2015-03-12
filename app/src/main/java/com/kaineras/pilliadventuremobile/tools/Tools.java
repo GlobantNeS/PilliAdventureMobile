@@ -94,6 +94,11 @@ public class Tools {
         } else {
             settings.put("save", "0");
         }
+        if (prefs.getBoolean("notifications", false)) {
+            settings.put("notifications", "1");
+        } else {
+            settings.put("notifications", "0");
+        }
         return settings;
     }
 

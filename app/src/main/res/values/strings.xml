@@ -36,4 +36,8 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_comics_view_full_screen">ComicsViewFullScreenActivity</string>
+    <string name="text_news">NEWS</string>
+    <string name="text_new_comic_alert">New Comic</string>
+    <string name="text_body_alert">Is a new comic in Pilli Adventure</string>
+    <string name="text_notifications">Notifications</string>
 </resources>

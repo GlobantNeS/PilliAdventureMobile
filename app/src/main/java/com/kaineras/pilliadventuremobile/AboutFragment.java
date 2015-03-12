@@ -25,13 +25,12 @@ public class AboutFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v;
-
-        final CustomImageView nivComic;
+        final CustomImageView nivAbout;
         Tools tools=new Tools();
         v = inflater.inflate(R.layout.fragment_about, container, false);
-        nivComic = (CustomImageView) v.findViewById(R.id.ivAbout);
-        nivComic.setAdjustViewBounds(true);
-        tools.loadImageFromInternet(nivComic, URL);
+        nivAbout = (CustomImageView) v.findViewById(R.id.ivAbout);
+        nivAbout.setAdjustViewBounds(true);
+        tools.loadImageFromInternet(nivAbout, URL);
         return v;
     }
 }
