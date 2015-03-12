@@ -95,9 +95,9 @@ public class Tools {
             settings.put("save", "0");
         }
         if (prefs.getBoolean("notifications", false)) {
-            settings.put("notifications", "1");
+            settings.put("notif", "1");
         } else {
-            settings.put("notifications", "0");
+            settings.put("notif", "0");
         }
         return settings;
     }
