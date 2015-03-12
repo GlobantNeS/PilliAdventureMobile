@@ -124,6 +124,11 @@
             </set>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/ImageComicsViewFragment.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/InmersiveModeFragment.java">
           <value>
             <set />
@@ -168,40 +173,7 @@
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/adapter/MyFragmentPagerAdapter.java">
           <value>
-            <set>
-              <SonarIssue>
-                <option name="isNew" value="true" />
-                <option name="key" value="da6f3801-2d89-4f0f-bfb0-15547412a58b" />
-                <option name="line" value="40" />
-                <option name="message" value="Move this closing curly brace to the next line." />
-                <option name="ruleKey" value="squid:RightCurlyBraceStartLineCheck" />
-                <option name="severity" value="MAJOR" />
-              </SonarIssue>
-              <SonarIssue>
-                <option name="isNew" value="true" />
-                <option name="key" value="db3d04d4-7dba-4659-b610-515645efc466" />
-                <option name="line" value="3" />
-                <option name="message" value="Remove this unused import 'android.content.Context'." />
-                <option name="ruleKey" value="squid:UselessImportCheck" />
-                <option name="severity" value="MINOR" />
-              </SonarIssue>
-              <SonarIssue>
-                <option name="isNew" value="true" />
-                <option name="key" value="3a2ebf55-0bee-4143-b4ba-193a89cdcd8d" />
-                <option name="line" value="37" />
-                <option name="message" value="Move this closing curly brace to the next line." />
-                <option name="ruleKey" value="squid:RightCurlyBraceStartLineCheck" />
-                <option name="severity" value="MAJOR" />
-              </SonarIssue>
-              <SonarIssue>
-                <option name="isNew" value="true" />
-                <option name="key" value="07558b0d-95e6-4262-8561-5fd243a18727" />
-                <option name="line" value="20" />
-                <option name="message" value="Remove this unused &quot;LOG_TAG&quot; private field." />
-                <option name="ruleKey" value="squid:S1068" />
-                <option name="severity" value="MAJOR" />
-              </SonarIssue>
-            </set>
+            <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/adapter/TempAdapter.java">

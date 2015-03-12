@@ -17,6 +17,7 @@ public class MyFragmentPagerAdapter extends FragmentStatePagerAdapter{
 
     // List of fragments which are going to set in the view pager widget
     private List<Fragment> fragments;
+    private long baseId = 0;
     private static final String LOG_TAG = MyFragmentPagerAdapter.class.getSimpleName();
 
     /**
@@ -37,11 +38,8 @@ public class MyFragmentPagerAdapter extends FragmentStatePagerAdapter{
     public void addFragment(Fragment fragment) { this.fragments.add(fragment); }
 
     @Override
-    public int getItemPosition(Object object) { return POSITION_NONE; }
-
-    @Override
-    public Fragment getItem(int arg0) {
-        return this.fragments.get(arg0);
+    public Fragment getItem(int position) {
+        return this.fragments.get(position);
     }
 
     @Override
@@ -56,7 +54,6 @@ public class MyFragmentPagerAdapter extends FragmentStatePagerAdapter{
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
-        container.removeView((View) object);
+        super.destroyItem(container, position, object);
     }
-
 }

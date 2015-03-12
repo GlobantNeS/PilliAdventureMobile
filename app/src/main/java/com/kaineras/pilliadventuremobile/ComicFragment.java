@@ -14,11 +14,11 @@ import android.widget.Toast;
 
 import com.google.common.collect.Lists;
 import com.kaineras.pilliadventuremobile.adapter.MyFragmentPagerAdapter;
+import com.kaineras.pilliadventuremobile.custom.CustomImageView;
 import com.kaineras.pilliadventuremobile.pojo.ImagesProperties;
 import com.kaineras.pilliadventuremobile.tools.Tools;
 
 import java.net.MalformedURLException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -44,8 +44,10 @@ public class
     private Calendar calendar;
     private Calendar calendarLeft;
     private Calendar calendarRight;
+    private static final int INT_BASE = 77777;
     private static final String LOG_TAG = ComicFragment.class.getSimpleName();
     private static final  int PAGERS = 3;
+    private static final  int REAL_PAGERS = 5;
 
 
     public ComicFragment() {
@@ -77,7 +79,7 @@ public class
         adapter = new MyFragmentPagerAdapter(getFragmentManager());
 
         pager = (ViewPager) rootView.findViewById(R.id.pager);
-        pager.setOffscreenPageLimit(PAGERS - 1);
+        pager.setOffscreenPageLimit(REAL_PAGERS - 1);
         pager.setOnPageChangeListener(new ViewPager.OnPageChangeListener(){
 
             @Override
@@ -87,13 +89,22 @@ public class
 
             @Override
             public void onPageSelected(int position) {
-                if(PAGERS-1==position && lastPageName.equals(comicsList.get(PAGERS-1))){
+                if(REAL_PAGERS-2==position && lastPageName.equals(comicsList.get(REAL_PAGERS-2))){
                     Toast.makeText(getActivity(), getString(R.string.text_last_page_comic), Toast.LENGTH_SHORT).show();
+                }
+                if(position == 0) {
+                    new UpdateComic().execute("updateLeft");
+                }
+
+                if(position == 4 && lastPageName.equals(comicsList.get(REAL_PAGERS-2))){
+                    Toast.makeText(getActivity(), getString(R.string.text_last_page_comic), Toast.LENGTH_SHORT).show();
+                    pager.setCurrentItem(REAL_PAGERS - 2, false);
                 }
             }
 
             @Override
             public void onPageScrollStateChanged(int state) {
+
             }
         });
     }
@@ -119,9 +130,13 @@ public class
             String varOpt=params[0];
             switch (varOpt){
                 case "last":
-                    getLastPagesFrom();
+                    getLastPagesFrom(calendar);
                     break;
-                case "update":
+                case "updateLeft":
+                    getLastPagesFrom(calendarLeft);
+                    break;
+                case "updateRight":
+                    getLastPagesFrom(calendarRight);
                     break;
                 default:
                     break;
@@ -129,10 +144,12 @@ public class
             return null;
         }
 
-        private void getLastPagesFrom() {
-            calendarRight = calendar;
-            String dateImage = tools.calendarToString(calendar);
+        private void getLastPagesFrom(Calendar tempCalendar) {
+            calendarRight = tempCalendar;
+            String dateImage = tools.calendarToString(tempCalendar);
             try {
+                resultComics.clear();
+                resultComics.add("FakePageAfter");
                 int a = 0;
                 do {
                     int statusImage = tools.existImageDB(getActivity(), dateImage, language);
@@ -146,9 +163,12 @@ public class
                         default:
                             break;
                     }
-                    dateImage = tools.getYesterday(calendar);
+                    if(a<=PAGERS) {
+                        dateImage = tools.getYesterday(tempCalendar);
+                    }
                 } while (a < PAGERS);
                 calendarLeft = calendar;
+                resultComics.add("FakePageBefore");
             } catch (MalformedURLException e) {
                 Log.w(LOG_TAG, e.toString());
                 Logger.getLogger(ComicFragment.class.getName()).log(Level.SEVERE, null, e);
@@ -186,19 +206,35 @@ public class
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             comicsList = Lists.reverse(resultComics);
-            for (String name : comicsList) {
-                try {
-                    adapter.addFragment(ImageComicsViewFragment.newInstance(tools.constructURLIma(language, name + ".jpg").toString(), comicsList.indexOf(name)));
-                } catch (MalformedURLException e) {
-                    Log.w(LOG_TAG, e.toString());
+            if(pager.getAdapter()== null) {
+                for (String name : comicsList) {
+                    try {
+                        String url=name.contains("Fake")?"":tools.constructURLIma(language, name + ".jpg").toString();
+                        adapter.addFragment(ImageComicsViewFragment.newInstance(url, comicsList.indexOf(name)));
+                    } catch (MalformedURLException e) {
+                        Log.w(LOG_TAG, e.toString());
+                    }
+                }
+                pager.setAdapter(adapter);
+            }else{
+                int index=0;
+                for (String name : comicsList) {
+                    if(!name.contains("Fake")){
+                        try {
+                            CustomImageView customImageView= (CustomImageView) rootView.findViewById(INT_BASE+index);
+                            String url=tools.constructURLIma(language, name + ".jpg").toString();
+                            tools.loadImageFromInternet(getActivity(), customImageView, url);
+                        } catch (MalformedURLException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    index++;
                 }
             }
-            pager.setAdapter(adapter);
-            pager.setCurrentItem(PAGERS - 1, true);
+            pager.setCurrentItem(REAL_PAGERS - 2, false);
             dialog.dismiss();
         }
     }
-
 
     public String getLanguage() {
         return settings.get("language");

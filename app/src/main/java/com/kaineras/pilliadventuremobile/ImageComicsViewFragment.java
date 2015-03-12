@@ -1,6 +1,7 @@
 package com.kaineras.pilliadventuremobile;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,9 +16,15 @@ import com.kaineras.pilliadventuremobile.tools.Tools;
  */
 public class ImageComicsViewFragment extends Fragment {
 
+    private String url;
+    private int index;
+    private CustomImageView nivComic;
+    private View rootView;
     private static String URL = "URL";
     private static final String INDEX = "INDEX";
-    private String url;
+    private Tools tools=new Tools();
+    private static final int INT_BASE = 77777;
+    private static final String LOG_TAG = ImageComicsViewFragment.class.getSimpleName();
 
 
     public static ImageComicsViewFragment newInstance(String url, int index) {
@@ -36,21 +43,22 @@ public class ImageComicsViewFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         // Load parameters when the initial creation of the fragment is done
+        index = getArguments().getInt(INDEX,-1);
         url = (getArguments() != null) ? getArguments().getString(URL) : "index.html";
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Tools tools=new Tools();
-        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_image_comic, container, false);
-        CustomImageView nivComic;
+        rootView = inflater.inflate(R.layout.fragment_image_comic, container, false);
         nivComic = (CustomImageView) rootView.findViewById(R.id.ivComic);
+        nivComic.setId(INT_BASE+index);
         nivComic.setAdjustViewBounds(true);
-        tools.loadImageFromInternet(getActivity(), nivComic, url);
-        Log.v("URL CACHE EN FRAGMENTO", url);
+        if(url.isEmpty()){
+            nivComic.setImageResource(R.mipmap.ic_launcher);
+        }else {
+            tools.loadImageFromInternet(getActivity(), nivComic, url);
+        }
         return rootView;
-
     }
-
 }
