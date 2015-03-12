@@ -13,8 +13,8 @@ import android.webkit.WebView;
  */
 public class NewsFragment extends Fragment {
 
-    //private static final String URL = "http://www.pilli-adventure.com";
-    private static final String URL = "http://www.globant.com";
+    private static final String URL = "http://www.pilli-adventure.com";
+    //private static final String URL = "http://www.globant.com";
 
     public NewsFragment(){
 

@@ -41,8 +41,8 @@ public class Tools {
     private BitmapLruCache bitmapLruCache;
     private static final String SCHEME = "http";
 
-    //private static final String BASE_URL = "pilli-adventure.com";
-    private static final String BASE_URL = "10.0.2.2";
+    private static final String BASE_URL = "pilli-adventure.com";
+    //private static final String BASE_URL = "10.0.2.2";
     private static final String LANGUAGE_PATH = "espa";
     private static final String IMAGE_ENDPOINT = "comics";
 

@@ -30,24 +30,7 @@
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/AboutFragment.java">
           <value>
-            <set>
-              <SonarIssue>
-                <option name="isNew" value="true" />
-                <option name="key" value="1a1df6f1-1856-429a-b0ef-1ec3da602fd4" />
-                <option name="line" value="18" />
-                <option name="message" value="This block of commented-out lines of code should be removed." />
-                <option name="ruleKey" value="squid:CommentedOutCodeLine" />
-                <option name="severity" value="MAJOR" />
-              </SonarIssue>
-              <SonarIssue>
-                <option name="isNew" value="true" />
-                <option name="key" value="93f658f5-bf6d-4755-9a18-4523c7b2b2fd" />
-                <option name="line" value="19" />
-                <option name="message" value="Make this IP &quot;10.0.2.2&quot; address configurable." />
-                <option name="ruleKey" value="squid:S1313" />
-                <option name="severity" value="MAJOR" />
-              </SonarIssue>
-            </set>
+            <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/Application.java">
