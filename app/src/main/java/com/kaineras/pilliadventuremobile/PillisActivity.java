@@ -44,7 +44,7 @@ public class PillisActivity extends ActionBarActivity implements MenuFragment.Op
 
     private void setAlarm() {
         AlarmReceiver alarmReceiver = new AlarmReceiver();
-        if("1".equals(settings.get("notifications"))) {
+        if("1".equals(settings.get("notif"))) {
             alarmReceiver.setAlarm(this);
         }else{
             alarmReceiver.cancelAlarm(this);

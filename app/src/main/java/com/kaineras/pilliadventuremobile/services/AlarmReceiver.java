@@ -19,25 +19,12 @@ public class AlarmReceiver extends WakefulBroadcastReceiver {
     private AlarmManager alarmMgr;
     // The pending intent that is triggered when the alarm fires.
     private PendingIntent alarmIntent;
+    private static final int HR = 7;
+    private static final int MIN = 0;
 
     @Override
     public void onReceive(Context context, Intent intent) {
         // BEGIN_INCLUDE(alarm_onreceive)
-        /*
-         * If your receiver intent includes extras that need to be passed along to the
-         * service, use setComponent() to indicate that the service should handle the
-         * receiver's intent. For example:
-         *
-         * ComponentName comp = new ComponentName(context.getPackageName(),
-         *      MyService.class.getName());
-         *
-         * // This intent passed in this call will include the wake lock extra as well as
-         * // the receiver intent contents.
-         * startWakefulService(context, (intent.setComponent(comp)));
-         *
-         * In this example, we simply create a new intent to deliver to the service.
-         * This intent holds an extra identifying the wake lock.
-         */
         Intent service = new Intent(context, SchedulingUpdateComicService.class);
 
         // Start the service, keeping the device awake while it is launching.
@@ -59,8 +46,8 @@ public class AlarmReceiver extends WakefulBroadcastReceiver {
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
         // Set the alarm's trigger time to 7:00 a.m.
-        calendar.set(Calendar.HOUR_OF_DAY, 7);
-        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.HOUR_OF_DAY, HR);
+        calendar.set(Calendar.MINUTE, MIN);
 
 
         // Set the alarm to fire at approximately 7:00 a.m., according to the device's

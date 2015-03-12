@@ -30,7 +30,16 @@
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/AboutFragment.java">
           <value>
-            <set />
+            <set>
+              <SonarIssue>
+                <option name="isNew" value="true" />
+                <option name="key" value="682b8b45-b21b-4f0c-bae3-ef3eba3245e1" />
+                <option name="line" value="19" />
+                <option name="message" value="This block of commented-out lines of code should be removed." />
+                <option name="ruleKey" value="squid:CommentedOutCodeLine" />
+                <option name="severity" value="MAJOR" />
+              </SonarIssue>
+            </set>
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/Application.java">
@@ -68,11 +77,6 @@
             <set />
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/MenuFragment.java">
-          <value>
-            <set />
-          </value>
-        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/MyIntentService.java">
           <value>
             <set />
@@ -80,12 +84,16 @@
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/NewsFragment.java">
           <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/PillisActivity.java">
-          <value>
-            <set />
+            <set>
+              <SonarIssue>
+                <option name="isNew" value="true" />
+                <option name="key" value="fdfe3fc3-ed03-44c4-978a-816df1bb5861" />
+                <option name="line" value="16" />
+                <option name="message" value="This block of commented-out lines of code should be removed." />
+                <option name="ruleKey" value="squid:CommentedOutCodeLine" />
+                <option name="severity" value="MAJOR" />
+              </SonarIssue>
+            </set>
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/adapter/InfinitePagerAdapter.java">
@@ -138,16 +146,6 @@
             <set />
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/services/AlarmReceiver.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/services/BootReceiver.java">
-          <value>
-            <set />
-          </value>
-        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/services/NewComicService.java">
           <value>
             <set />
@@ -163,11 +161,6 @@
             <set />
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/services/SchedulingUpdateComicService.java">
-          <value>
-            <set />
-          </value>
-        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/services/newComicService.java">
           <value>
             <set />
@@ -178,36 +171,18 @@
             <set />
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/tools/DatabaseHelper.java">
-          <value>
-            <set />
-          </value>
-        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/tools/Tools.java">
           <value>
             <set>
               <SonarIssue>
                 <option name="isNew" value="true" />
-                <option name="key" value="2057997d-d337-4d5e-bffe-82283996eb02" />
-                <option name="line" value="44" />
+                <option name="key" value="ed6ae230-dfd2-4e64-bddd-1a38b6c7032a" />
+                <option name="line" value="45" />
                 <option name="message" value="This block of commented-out lines of code should be removed." />
                 <option name="ruleKey" value="squid:CommentedOutCodeLine" />
                 <option name="severity" value="MAJOR" />
               </SonarIssue>
-              <SonarIssue>
-                <option name="isNew" value="true" />
-                <option name="key" value="db45ee36-5738-4e65-b752-814296746d9f" />
-                <option name="line" value="45" />
-                <option name="message" value="Make this IP &quot;10.0.2.2&quot; address configurable." />
-                <option name="ruleKey" value="squid:S1313" />
-                <option name="severity" value="MAJOR" />
-              </SonarIssue>
             </set>
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/tools/VolleySingleton.java">
-          <value>
-            <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/newComicService.java">
@@ -225,22 +200,7 @@
             <set />
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/res/layout/fragment_news.xml">
-          <value>
-            <set />
-          </value>
-        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/res/menu/main.xml">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/res/xml/settings.xml">
           <value>
             <set />
           </value>

@@ -6,6 +6,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
+import android.util.Log;
 
 import com.kaineras.pilliadventuremobile.PillisActivity;
 import com.kaineras.pilliadventuremobile.R;
@@ -14,24 +15,23 @@ import com.kaineras.pilliadventuremobile.tools.Tools;
 import java.net.MalformedURLException;
 import java.util.Calendar;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Created the first version by kaineras on 12/03/15.
  */
 public class SchedulingUpdateComicService extends IntentService {
 
+    private String dateImage;
+    public static final int NOTIFICATION_ID = 1;
+    public static final String TAG = "Scheduling Update New Comic";
+    private NotificationManager mNotificationManager;
+    private static final String LOG_TAG = SchedulingUpdateComicService.class.getSimpleName();
+
     public SchedulingUpdateComicService() {
         super("SchedulingUpdateComicService");
     }
-
-    public static final String TAG = "Scheduling Update New Comic";
-    // An ID used to post the notification.
-    public static final int NOTIFICATION_ID = 1;
-    // The string the app searches for in the Google home page content. If the app finds
-    // the string, it indicates the presence of a doodle.
-
-    private NotificationManager mNotificationManager;
-    public String dateImage;
 
     @Override
     protected void onHandleIntent(Intent intent) {
@@ -40,7 +40,8 @@ public class SchedulingUpdateComicService extends IntentService {
                 sendNotification(getString(R.string.text_body_alert) + dateImage);
             }
         } catch (MalformedURLException e) {
-            e.printStackTrace();
+            Log.d(LOG_TAG, e.toString());
+            Logger.getLogger(SchedulingUpdateComicService.class.getName()).log(Level.SEVERE, null, e);
         }
 
         AlarmReceiver.completeWakefulIntent(intent);
