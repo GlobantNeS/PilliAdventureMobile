@@ -60,6 +60,7 @@ public class
 
         rootView = inflater.inflate(R.layout.fragment_comic, container, false);
         calendar = Calendar.getInstance();
+        calendarLeft = calendarRight = calendar;
         settings = tools.getPreferences(getActivity());
         hideToolbar();
         preparePager();
@@ -91,14 +92,18 @@ public class
             public void onPageSelected(int position) {
                 if(REAL_PAGERS-2==position && lastPageName.equals(comicsList.get(REAL_PAGERS-2))){
                     Toast.makeText(getActivity(), getString(R.string.text_last_page_comic), Toast.LENGTH_SHORT).show();
-                }
-                if(position == 0) {
-                    new UpdateComic().execute("updateLeft");
-                }
-
-                if(position == 4 && lastPageName.equals(comicsList.get(REAL_PAGERS-2))){
-                    Toast.makeText(getActivity(), getString(R.string.text_last_page_comic), Toast.LENGTH_SHORT).show();
-                    pager.setCurrentItem(REAL_PAGERS - 2, false);
+                }else {
+                    if (position == 0) {
+                        new UpdateComic().execute("updateLeft");
+                    }
+                    if (position == 4 && lastPageName.equals(comicsList.get(REAL_PAGERS - 2))) {
+                        Toast.makeText(getActivity(), getString(R.string.text_last_page_comic), Toast.LENGTH_SHORT).show();
+                        pager.setCurrentItem(REAL_PAGERS - 2, false);
+                    } else {
+                        if (position == 4) {
+                            new UpdateComic().execute("updateRight");
+                        }
+                    }
                 }
             }
 
@@ -114,6 +119,7 @@ public class
         List<String> resultComics = new ArrayList<>();
         ProgressDialog dialog;
         String language = getLanguage();
+        int mode=0;
 
         @Override
         protected void onPreExecute() {
@@ -130,13 +136,13 @@ public class
             String varOpt=params[0];
             switch (varOpt){
                 case "last":
-                    getLastPagesFrom(calendar);
+                    getLastPagesFrom(calendar,0);
                     break;
                 case "updateLeft":
-                    getLastPagesFrom(calendarLeft);
+                    getLastPagesFrom(calendarLeft,0);
                     break;
                 case "updateRight":
-                    getLastPagesFrom(calendarRight);
+                    getLastPagesFrom(calendarRight,1);
                     break;
                 default:
                     break;
@@ -144,31 +150,60 @@ public class
             return null;
         }
 
-        private void getLastPagesFrom(Calendar tempCalendar) {
-            calendarRight = tempCalendar;
+        private void getLastPagesFrom(Calendar tempCalendar,int mode) {
+            this.mode=mode;
+            int a=0;
             String dateImage = tools.calendarToString(tempCalendar);
+            resultComics.clear();
+            resultComics.add("FakePageAfter");
             try {
-                resultComics.clear();
-                resultComics.add("FakePageAfter");
-                int a = 0;
-                do {
-                    int statusImage = tools.existImageDB(getActivity(), dateImage, language);
-                    switch (statusImage) {
-                        case -1:
-                            a = addComicToDB(dateImage, a);
-                            break;
-                        case 1:
-                            a = addComicToList(dateImage, a);
-                            break;
-                        default:
-                            break;
-                    }
-                    if(a<=PAGERS) {
-                        dateImage = tools.getYesterday(tempCalendar);
-                    }
-                } while (a < PAGERS);
-                calendarLeft = calendar;
-                resultComics.add("FakePageBefore");
+                switch (mode)
+                {
+                    case 1:
+                        calendarLeft = tempCalendar;
+                        do {
+                            int statusImage = tools.existImageDB(getActivity(), dateImage, language);
+                            switch (statusImage) {
+                                case -1:
+                                    a = addComicToDB(dateImage, a);
+                                    break;
+                                case 1:
+                                    a = addComicToList(dateImage, a);
+                                    break;
+                                default:
+                                    break;
+                            }
+                            if(a<=PAGERS) {
+                                dateImage = tools.getTomorrow(tempCalendar);
+                            }
+                        } while (a < PAGERS);
+                        calendarRight = tempCalendar;
+                        resultComics.add("FakePageBefore");
+                        comicsList = resultComics;
+                        break;
+                    default:
+                        calendarRight = tempCalendar;
+                        do {
+                            int statusImage = tools.existImageDB(getActivity(), dateImage, language);
+                            switch (statusImage) {
+                                case -1:
+                                    a = addComicToDB(dateImage, a);
+                                    break;
+                                case 1:
+                                    a = addComicToList(dateImage, a);
+                                    break;
+                                default:
+                                    break;
+                            }
+                            if(a<=PAGERS) {
+                                dateImage = tools.getYesterday(tempCalendar);
+                            }
+                        } while (a < PAGERS);
+                        calendarLeft = tempCalendar;
+                        resultComics.add("FakePageBefore");
+                        comicsList = Lists.reverse(resultComics);
+                        break;
+                }
             } catch (MalformedURLException e) {
                 Log.w(LOG_TAG, e.toString());
                 Logger.getLogger(ComicFragment.class.getName()).log(Level.SEVERE, null, e);
@@ -205,7 +240,6 @@ public class
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            comicsList = Lists.reverse(resultComics);
             if(pager.getAdapter()== null) {
                 for (String name : comicsList) {
                     try {
@@ -231,11 +265,15 @@ public class
                     index++;
                 }
             }
-            pager.setCurrentItem(REAL_PAGERS - 2, false);
+            if(mode==0) {
+                pager.setCurrentItem(REAL_PAGERS - 2, false);
+            }else{
+                pager.setCurrentItem(1, false);
+            }
+
             dialog.dismiss();
         }
     }
-
     public String getLanguage() {
         return settings.get("language");
     }

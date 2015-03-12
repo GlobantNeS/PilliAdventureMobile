@@ -36,16 +36,6 @@ public class PillisActivity extends ActionBarActivity implements MenuFragment.Op
         setContentView(R.layout.activity_pillis);
         prepareToolbar();
         prepareSlide();
-        if (Build.VERSION.SDK_INT < 16) {
-            getWindow().setFlags(
-                    WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                    WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        }else{
-            View decorView = getWindow().getDecorView();
-            int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
-            decorView.setSystemUiVisibility(uiOptions);
-            //getSupportActionBar().hide();
-        }
         settings = tools.getPreferences(this);
     }
 
@@ -210,7 +200,7 @@ public class PillisActivity extends ActionBarActivity implements MenuFragment.Op
         intent.setType("plain/text");
         intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"pilliadv@hotmail.com"});
         intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.text_subject_email));
-        intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.text_body_mail));
+        intent.putExtra(Intent.EXTRA_TEXT, settings.get("username")+":\n"+getString(R.string.text_body_mail));
         startActivity(Intent.createChooser(intent, getString(R.string.text_send_email)));
     }
 }
