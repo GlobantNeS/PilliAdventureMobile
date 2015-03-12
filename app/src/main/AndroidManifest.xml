@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:name=".MyApplication"
@@ -24,14 +26,6 @@
             android:name=".settings.SettingsActivity"
             android:label="@string/settings" />
         <activity
-            android:name=".ComicFullscreenActivity"
-            android:label="@string/title_activity_comic_fullscreen"
-            android:parentActivityName=".PillisActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.kaineras.pilliadventuremobile.PillisActivity" />
-        </activity>
-        <activity
             android:name=".ComicsViewFullScreenActivity"
             android:label="@string/title_activity_comics_view_full_screen"
             android:parentActivityName=".PillisActivity" >
@@ -39,6 +33,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.kaineras.pilliadventuremobile.PillisActivity" />
         </activity>
+        <receiver android:name=".services.AlarmReceiver"></receiver>
+
+        <receiver android:name=".services.BootReceiver"
+            android:enabled="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"></action>
+            </intent-filter>
+        </receiver>
+        <service android:name=".services.SchedulingUpdateComicService" />
     </application>
 
 </manifest>

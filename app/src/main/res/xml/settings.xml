@@ -14,5 +14,9 @@
             android:key="save_last_comic"
             android:title="@string/text_save_comic"
             android:defaultValue="true" />
+        <SwitchPreference
+            android:key="notifications"
+            android:title="@string/text_notifications"
+            android:defaultValue="true" />
     </PreferenceCategory>
 </PreferenceScreen>

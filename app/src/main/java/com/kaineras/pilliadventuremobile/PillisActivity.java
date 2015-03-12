@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.kaineras.pilliadventuremobile.custom.PagerEnabledSlidingPaneLayout;
+import com.kaineras.pilliadventuremobile.services.AlarmReceiver;
 import com.kaineras.pilliadventuremobile.settings.SettingsActivity;
 import com.kaineras.pilliadventuremobile.tools.Tools;
 
@@ -23,17 +24,37 @@ import java.util.Map;
 public class PillisActivity extends ActionBarActivity implements MenuFragment.OptionsMenuListener {
 
 
-    PagerEnabledSlidingPaneLayout slidingPaneLayout;
-    Tools tools = new Tools();
-    Map<String, String> settings;
+    private PagerEnabledSlidingPaneLayout slidingPaneLayout;
+    private Tools tools = new Tools();
+    private Map<String, String> settings;
+    private ConnectivityManager connMgr;
+    private NetworkInfo networkInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        stateOfConnectivity();
         setContentView(R.layout.activity_pillis);
+        settings = tools.getPreferences(this);
+        setAlarm();
         prepareToolbar();
         prepareSlide();
-        settings = tools.getPreferences(this);
+        loadNewsFragment(networkInfo);
+    }
+
+    private void setAlarm() {
+        AlarmReceiver alarmReceiver = new AlarmReceiver();
+        if("1".equals(settings.get("notifications"))) {
+            alarmReceiver.setAlarm(this);
+        }else{
+            alarmReceiver.cancelAlarm(this);
+        }
+
+    }
+
+    private void stateOfConnectivity() {
+        connMgr = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
+        networkInfo = connMgr.getActiveNetworkInfo();
     }
 
     public void createAlert(String message) {
@@ -134,12 +155,9 @@ public class PillisActivity extends ActionBarActivity implements MenuFragment.Op
 
     @Override
     public void optionsMenuListener(String optionMenu) {
-        ConnectivityManager connMgr = (ConnectivityManager)
-                getSystemService(CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         switch (optionMenu) {
-            case "PAGE":
-                loadLastPageFragment(networkInfo);
+            case "NEWS":
+                loadNewsFragment(networkInfo);
                 break;
             case "COMIC":
                 loadComicFragment(networkInfo);
@@ -179,10 +197,9 @@ public class PillisActivity extends ActionBarActivity implements MenuFragment.Op
     }
 
 
-
-    private void loadLastPageFragment(NetworkInfo networkInfo) {
+    private void loadNewsFragment(NetworkInfo networkInfo) {
         if (networkInfo != null && networkInfo.isConnected()) {
-            ComicFragment fragment = new ComicFragment();
+            NewsFragment fragment = new NewsFragment();
             Bundle bundle = new Bundle();
             bundle.putBoolean("PAGE", false);
             fragment.setArguments(bundle);
