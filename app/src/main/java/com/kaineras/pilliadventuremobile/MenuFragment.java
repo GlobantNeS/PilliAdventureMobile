@@ -65,10 +65,10 @@ public class MenuFragment extends Fragment {
     }
 
     private void init() {
-        optionList.add(new OptionsMenu(getString(R.string.text_news), "NEWS", R.drawable.ic_action_action_language));
-        optionList.add(new OptionsMenu(getString(R.string.text_comic), "COMIC", R.drawable.ic_action_image_photo));
-        optionList.add(new OptionsMenu(getString(R.string.text_about), "ABOUT", R.drawable.ic_menu_contact));
-        optionList.add(new OptionsMenu(getString(R.string.text_contact), "CONTACT", R.drawable.ic_action_communication_email));
+        optionList.add(new OptionsMenu(getString(R.string.text_news), "NEWS", R.drawable.ic_pilli_2));
+        optionList.add(new OptionsMenu(getString(R.string.text_comic), "COMIC", R.drawable.ic_paco_1));
+        optionList.add(new OptionsMenu(getString(R.string.text_about), "ABOUT", R.drawable.ic_pilli_1));
+        optionList.add(new OptionsMenu(getString(R.string.text_contact), "CONTACT", R.drawable.ic_pilli_3));
     }
 
     public interface OptionsMenuListener {

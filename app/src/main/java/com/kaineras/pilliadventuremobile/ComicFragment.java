@@ -2,6 +2,7 @@ package com.kaineras.pilliadventuremobile;
 
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -45,7 +46,8 @@ public class
     private Calendar calendar;
     private Calendar calendarLeft;
     private Calendar calendarRight;
-    private int a;
+    private int numberOfImageTaken;
+    private int indexEasterEgg;
     private static final int INT_BASE = 77777;
     private static final String LOG_TAG = ComicFragment.class.getSimpleName();
     private static final  int PAGERS = 3;
@@ -66,6 +68,7 @@ public class
         calendar = Calendar.getInstance();
         calendarLeft = calendarRight = calendar;
         settings = tools.getPreferences(getActivity());
+        indexEasterEgg=0;
         preparePager();
         boolean lastPage = !getArguments().getBoolean("PAGE");
         if (lastPage) {
@@ -88,6 +91,11 @@ public class
             }
             @Override
             public void onPageSelected(int position) {
+                if(indexEasterEgg==7) {
+                    Intent intent = new Intent(getActivity(),EasterEgg.class);
+                    indexEasterEgg=0;
+                    startActivity(intent);
+                }
                 if(PAGERS == position && lastPageName.equals(comicsList.get(PAGERS))){
                     Toast.makeText(getActivity(), getString(R.string.text_last_page_comic), Toast.LENGTH_SHORT).show();
                 }else {
@@ -108,6 +116,7 @@ public class
         }else {
             if (position == LAST_PAGE && lastPageName.equals(comicsList.get(PAGERS))) {
                 Toast.makeText(getActivity(), getString(R.string.text_last_page_comic), Toast.LENGTH_SHORT).show();
+                indexEasterEgg++;
                 pager.setCurrentItem(PAGERS, false);
             } else {
                 if (position == LAST_PAGE) {
@@ -155,7 +164,7 @@ public class
 
         private void getLastPagesFrom(Calendar tempCalendar,int mode) {
             this.mode=mode;
-            a=0;
+            numberOfImageTaken =0;
             dateImage = tools.calendarToString(tempCalendar);
             resultComics.clear();
             resultComics.add("FakePageAfter");
@@ -185,10 +194,10 @@ public class
                     default:
                         break;
                 }
-                if(a<=PAGERS) {
+                if(numberOfImageTaken <=PAGERS) {
                     dateImage = tools.getYesterday(tempCalendar);
                 }
-            } while (a < PAGERS);
+            } while (numberOfImageTaken < PAGERS);
             calendarLeft = tempCalendar;
             resultComics.add("FakePageBefore");
             comicsList = Lists.reverse(resultComics);
@@ -208,10 +217,10 @@ public class
                     default:
                         break;
                 }
-                if(a<=PAGERS) {
+                if(numberOfImageTaken <=PAGERS) {
                     dateImage = tools.getTomorrow(tempCalendar);
                 }
-            } while (a < PAGERS);
+            } while (numberOfImageTaken < PAGERS);
             calendarRight = tempCalendar;
             resultComics.add("FakePageBefore");
             comicsList = resultComics;
@@ -232,7 +241,7 @@ public class
         private void addComicToList(String dateImage) {
             resultComics.add(dateImage);
             saveLastPageName(dateImage);
-            a++;
+            numberOfImageTaken++;
         }
 
         private void saveLastPageName(String dateImage) {

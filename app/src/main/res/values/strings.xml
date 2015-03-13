@@ -31,13 +31,12 @@
     </string-array>
 
     <string name="title_activity_comic_fullscreen">Pilli Adventure</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
-    <string name="title_activity_main">MainActivity</string>
-    <string name="hello_world">Hello world!</string>
     <string name="title_activity_comics_view_full_screen">ComicsViewFullScreenActivity</string>
-    <string name="text_news">NEWS</string>
+    <string name="text_news">News</string>
     <string name="text_new_comic_alert">New Comic</string>
     <string name="text_body_alert">Is a new comic in Pilli Adventure</string>
     <string name="text_notifications">Notifications</string>
+    <string name="title_activity_easter_egg">KaineraS</string>
+    <string name="text_autor_pilli">Autor y Dibujante</string>
+    <string name="text_autor_kaineras">App By</string>
 </resources>

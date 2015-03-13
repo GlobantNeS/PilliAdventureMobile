@@ -5,6 +5,8 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
@@ -25,7 +27,6 @@ public class SchedulingUpdateComicService extends IntentService {
 
     private String dateImage;
     public static final int NOTIFICATION_ID = 1;
-    public static final String TAG = "Scheduling Update New Comic";
     private NotificationManager mNotificationManager;
     private static final String LOG_TAG = SchedulingUpdateComicService.class.getSimpleName();
 
@@ -57,7 +58,7 @@ public class SchedulingUpdateComicService extends IntentService {
 
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(this)
-                        .setSmallIcon(R.drawable.ic_launcher)
+                        .setSmallIcon(R.drawable.ic_stat_ic_notification)
                         .setContentTitle(getString(R.string.text_new_comic_alert))
                         .setStyle(new NotificationCompat.BigTextStyle()
                                 .bigText(msg))
@@ -69,9 +70,21 @@ public class SchedulingUpdateComicService extends IntentService {
     private boolean checkNewComic() throws MalformedURLException {
         Tools tools = new Tools();
         Calendar calendar = Calendar.getInstance();
-        dateImage = tools.calendarToString(calendar);
-        Map settings = tools.getPreferences(this);
-        String language = String.valueOf(settings.get("language"));
-        return tools.existImageInUrl(tools.constructURLIma(language, dateImage + ".jpg"));
+        boolean result=false;
+        if(stateOfConnectivity()){
+            dateImage = tools.calendarToString(calendar);
+            Map settings = tools.getPreferences(this);
+            String language = String.valueOf(settings.get("language"));
+            result=tools.existImageInUrl(tools.constructURLIma(language, dateImage + ".jpg"));
+        }
+        return result;
+    }
+
+    private boolean stateOfConnectivity() {
+        ConnectivityManager connMgr;
+        NetworkInfo networkInfo;
+        connMgr = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
+        networkInfo = connMgr.getActiveNetworkInfo();
+        return networkInfo != null && networkInfo.isConnected();
     }
 }
