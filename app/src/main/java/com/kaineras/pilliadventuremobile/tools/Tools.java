@@ -83,7 +83,8 @@ public class Tools {
         Map<String, String> settings = new HashMap<>();
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         settings.put("username", prefs.getString("username_preference", context.getString(R.string.default_username)));
-        if("Spanish".equals(prefs.getString("language_preference", context.getString(R.string.default_language)))) {
+        String language = prefs.getString("language_preference", context.getString(R.string.default_language));
+        if("Spanish".equals(language) || "Español".equals(language)) {
             settings.put("language", "espa");
         }else{
             settings.put("language", prefs.getString("language_preference", context.getString(R.string.default_language)));
@@ -172,6 +173,11 @@ public class Tools {
     public void saveImagePropertiesDB(Context context,ImagesProperties imagesProperties)  {
         mDBHelper=getDBHelper(context);
         mDBHelper.saveImageProperties(imagesProperties);
+    }
+
+    public void cleanDB(Context context){
+        mDBHelper=getDBHelper(context);
+        mDBHelper.deleteImagePropertiesAfterToday();
     }
 
     public int existImageDB(Context context,String dateImage, String language){

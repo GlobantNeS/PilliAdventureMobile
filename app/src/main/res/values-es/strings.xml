@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Pilli Adventure Mobile</string>
+    <string name="action_settings">Preferencias</string>
+    <string name="app_title">Pilli Adventure</string>
+    <string name="default_language">Ingles</string>
+    <string name="default_username">Usuario</string>
+    <string name="menu"></string>
+    <string name="pref_user_summary">Por favor escriba su usuario</string>
+    <string name="settings">Preferencias</string>
+    <string name="text_about">Acerca de</string>
+    <string name="text_autor_kaineras"></string>
+    <string name="text_autor_pilli">Autor y Dibujante</string>
+    <string name="text_body_alert">Hay un nuevo comic en Pilli Adventure</string>
+    <string name="text_body_mail">Haz tus preguntas</string>
+    <string name="text_check_connection">Por favor checa tu conexion</string>
+    <string name="text_contact">Contacto</string>
+    <string name="text_last_page">Ultima Pagina</string>
+    <string name="text_last_page_comic">Ultima Pagina</string>
+    <string name="text_loading">Cargando</string>
+    <string name="text_new_comic_alert">Nuevo Comic</string>
+    <string name="text_news">Noticias</string>
+    <string name="text_notifications">Notificaciones</string>
+    <string name="text_save_comic">Salvar ultima pagina leida</string>
+    <string name="text_send_email">Enviar correo</string>
+    <string name="text_subject_email">Fan de Pilli Adventure</string>
+    <string name="title_language">Lenguaje</string>
+    <string name="user_name">Usuario</string>
+    <string-array name="language">
+        <item>Ingles</item>
+        <item>Español</item>
+    </string-array>
+</resources>

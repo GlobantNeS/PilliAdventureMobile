@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v4.widget.SlidingPaneLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,6 +34,7 @@ public class PillisActivity extends ActionBarActivity implements MenuFragment.Op
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        cleanDB();
         stateOfConnectivity();
         setContentView(R.layout.activity_pillis);
         settings = tools.getPreferences(this);
@@ -40,6 +42,10 @@ public class PillisActivity extends ActionBarActivity implements MenuFragment.Op
         prepareToolbar();
         prepareSlide();
         loadNewsFragment(networkInfo);
+    }
+
+    private void cleanDB() {
+        tools.cleanDB(this);
     }
 
     private void setAlarm() {
