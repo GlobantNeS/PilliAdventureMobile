@@ -27,7 +27,8 @@ public class NewsFragment extends Fragment {
         rootView = inflater.inflate(R.layout.fragment_news, container, false);
         webView = (WebView) rootView.findViewById(R.id.web_news);
         webView.getSettings().setJavaScriptEnabled(true);
-        webView.getSettings().setBuiltInZoomControls(true);
+        webView.getSettings().setLoadWithOverviewMode(true);
+        webView.getSettings().setUseWideViewPort(true);
         webView.setWebViewClient(new WebViewClient());
         webView.loadUrl(URL);
         return rootView;

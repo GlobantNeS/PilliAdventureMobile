@@ -206,20 +206,20 @@ public class
         private void updateRightComics(Calendar tempCalendar) throws MalformedURLException {
             calendarLeft = tempCalendar;
             do {
-                int statusImage = tools.existImageDB(getActivity(), dateImage, language);
-                switch (statusImage) {
-                    case -1:
-                        addComicToDB(dateImage);
-                        break;
-                    case 1:
-                        addComicToList(dateImage);
-                        break;
-                    default:
-                        break;
-                }
-                if(numberOfImageTaken <=PAGERS) {
-                    dateImage = tools.getTomorrow(tempCalendar);
-                }
+                    int statusImage = tools.existImageDB(getActivity(), dateImage, language);
+                    switch (statusImage) {
+                        case -1:
+                            addComicToDB(dateImage);
+                            break;
+                        case 1:
+                            addComicToList(dateImage);
+                            break;
+                        default:
+                            break;
+                    }
+                    if(numberOfImageTaken <=PAGERS) {
+                        dateImage = tools.getTomorrow(tempCalendar);
+                    }
             } while (numberOfImageTaken < PAGERS);
             calendarRight = tempCalendar;
             resultComics.add("FakePageBefore");

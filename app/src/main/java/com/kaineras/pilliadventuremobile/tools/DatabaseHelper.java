@@ -3,15 +3,18 @@ package com.kaineras.pilliadventuremobile.tools;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+import android.widget.ImageButton;
 
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.stmt.DeleteBuilder;
 import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 import com.kaineras.pilliadventuremobile.pojo.ImagesProperties;
 
 import java.sql.SQLException;
+import java.util.Calendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -84,6 +87,18 @@ class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             dao.create(imagesProperties);
         } catch (SQLException e) {
             Log.e(LOG_TAG, "Failed to SaveImage.", e);
+            Logger.getLogger(DatabaseHelper.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }
+
+    public void deleteImagePropertiesAfterToday(){
+        Tools tools = new Tools();
+        try {
+            DeleteBuilder<ImagesProperties, Integer> deleteBuilder = getImageDao().deleteBuilder();
+            deleteBuilder.where().gt(NAME,tools.calendarToString(Calendar.getInstance()));
+            deleteBuilder.delete();
+        }catch (SQLException e) {
+            Log.e(LOG_TAG, "Failed to Clean DB.", e);
             Logger.getLogger(DatabaseHelper.class.getName()).log(Level.SEVERE, null, e);
         }
     }

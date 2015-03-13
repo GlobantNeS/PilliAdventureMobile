@@ -174,6 +174,11 @@ public class Tools {
         mDBHelper.saveImageProperties(imagesProperties);
     }
 
+    public void cleanDB(Context context){
+        mDBHelper=getDBHelper(context);
+        mDBHelper.deleteImagePropertiesAfterToday();
+    }
+
     public int existImageDB(Context context,String dateImage, String language){
         int result = -1;
         mDBHelper=getDBHelper(context);
