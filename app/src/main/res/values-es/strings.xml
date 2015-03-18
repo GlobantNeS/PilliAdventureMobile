@@ -5,11 +5,11 @@
     <string name="app_title">Pilli Adventure</string>
     <string name="default_language">Ingles</string>
     <string name="default_username">Usuario</string>
-    <string name="menu"></string>
+    <string name="menu">Menu</string>
     <string name="pref_user_summary">Por favor escriba su usuario</string>
     <string name="settings">Preferencias</string>
     <string name="text_about">Acerca de</string>
-    <string name="text_autor_kaineras"></string>
+    <string name="text_autor_kaineras">App By</string>
     <string name="text_autor_pilli">Autor y Dibujante</string>
     <string name="text_body_alert">Hay un nuevo comic en Pilli Adventure</string>
     <string name="text_body_mail">Haz tus preguntas</string>

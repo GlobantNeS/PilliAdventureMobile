@@ -28,20 +28,6 @@
             <set />
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/AboutFragment.java">
-          <value>
-            <set>
-              <SonarIssue>
-                <option name="isNew" value="true" />
-                <option name="key" value="682b8b45-b21b-4f0c-bae3-ef3eba3245e1" />
-                <option name="line" value="19" />
-                <option name="message" value="This block of commented-out lines of code should be removed." />
-                <option name="ruleKey" value="squid:CommentedOutCodeLine" />
-                <option name="severity" value="MAJOR" />
-              </SonarIssue>
-            </set>
-          </value>
-        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/Application.java">
           <value>
             <set />
@@ -54,7 +40,24 @@
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/ComicFragment.java">
           <value>
-            <set />
+            <set>
+              <SonarIssue>
+                <option name="isNew" value="true" />
+                <option name="key" value="ac544a4f-9567-40e4-8219-330d4c63143f" />
+                <option name="line" value="87" />
+                <option name="message" value="Reduce this anonymous class number of lines from 24 to at most 20, or make it a named class." />
+                <option name="ruleKey" value="squid:S1188" />
+                <option name="severity" value="MAJOR" />
+              </SonarIssue>
+              <SonarIssue>
+                <option name="isNew" value="true" />
+                <option name="key" value="3e954ccd-7b41-44b9-a403-c3f6f4f62a55" />
+                <option name="line" value="94" />
+                <option name="message" value="Assign this magic number 7 to a well-named constant, and use the constant instead." />
+                <option name="ruleKey" value="squid:S109" />
+                <option name="severity" value="MINOR" />
+              </SonarIssue>
+            </set>
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/ComicFullActivity.java">
@@ -65,6 +68,36 @@
         <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/ComicFullscreenActivity.java">
           <value>
             <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/EasterEgg.java">
+          <value>
+            <set>
+              <SonarIssue>
+                <option name="isNew" value="true" />
+                <option name="key" value="e830b92d-c982-46f5-8c99-0e64c834f810" />
+                <option name="line" value="62" />
+                <option name="message" value="Immediately return this expression instead of assigning it to the temporary variable &quot;rootView&quot;." />
+                <option name="ruleKey" value="squid:S1488" />
+                <option name="severity" value="MINOR" />
+              </SonarIssue>
+              <SonarIssue>
+                <option name="isNew" value="true" />
+                <option name="key" value="612d6fc2-3595-44e6-914c-d122a0273842" />
+                <option name="line" value="4" />
+                <option name="message" value="Remove this unused import 'android.support.v7.app.ActionBar'." />
+                <option name="ruleKey" value="squid:UselessImportCheck" />
+                <option name="severity" value="MINOR" />
+              </SonarIssue>
+              <SonarIssue>
+                <option name="isNew" value="true" />
+                <option name="key" value="1d6544ac-9798-4615-9d69-9b74f5fdda6a" />
+                <option name="line" value="12" />
+                <option name="message" value="Remove this unused import 'android.os.Build'." />
+                <option name="ruleKey" value="squid:UselessImportCheck" />
+                <option name="severity" value="MINOR" />
+              </SonarIssue>
+            </set>
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/InmersiveModeFragment.java">
@@ -82,11 +115,6 @@
             <set />
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/MenuFragment.java">
-          <value>
-            <set />
-          </value>
-        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/MyIntentService.java">
           <value>
             <set />
@@ -94,12 +122,30 @@
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/NewsFragment.java">
           <value>
-            <set />
+            <set>
+              <SonarIssue>
+                <option name="isNew" value="true" />
+                <option name="key" value="4d782071-5ef5-44e9-8977-22a86efdffc9" />
+                <option name="line" value="17" />
+                <option name="message" value="This block of commented-out lines of code should be removed." />
+                <option name="ruleKey" value="squid:CommentedOutCodeLine" />
+                <option name="severity" value="MAJOR" />
+              </SonarIssue>
+            </set>
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/PillisActivity.java">
           <value>
-            <set />
+            <set>
+              <SonarIssue>
+                <option name="isNew" value="true" />
+                <option name="key" value="e8cc0f4f-345b-461b-b470-0a74f5bc178d" />
+                <option name="line" value="12" />
+                <option name="message" value="Remove this unused import 'android.util.Log'." />
+                <option name="ruleKey" value="squid:UselessImportCheck" />
+                <option name="severity" value="MINOR" />
+              </SonarIssue>
+            </set>
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/adapter/InfinitePagerAdapter.java">
@@ -167,11 +213,6 @@
             <set />
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/services/SchedulingUpdateComicService.java">
-          <value>
-            <set />
-          </value>
-        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/services/newComicService.java">
           <value>
             <set />
@@ -184,21 +225,21 @@
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/tools/DatabaseHelper.java">
           <value>
-            <set />
+            <set>
+              <SonarIssue>
+                <option name="isNew" value="true" />
+                <option name="key" value="954bc1ab-bcbf-40a2-abc7-0c6aefc6c2f8" />
+                <option name="line" value="6" />
+                <option name="message" value="Remove this unused import 'android.widget.ImageButton'." />
+                <option name="ruleKey" value="squid:UselessImportCheck" />
+                <option name="severity" value="MINOR" />
+              </SonarIssue>
+            </set>
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/kaineras/pilliadventuremobile/tools/Tools.java">
           <value>
-            <set>
-              <SonarIssue>
-                <option name="isNew" value="true" />
-                <option name="key" value="ed6ae230-dfd2-4e64-bddd-1a38b6c7032a" />
-                <option name="line" value="45" />
-                <option name="message" value="This block of commented-out lines of code should be removed." />
-                <option name="ruleKey" value="squid:CommentedOutCodeLine" />
-                <option name="severity" value="MAJOR" />
-              </SonarIssue>
-            </set>
+            <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/newComicService.java">
@@ -221,22 +262,7 @@
             <set />
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/res/layout/fragment_easter_egg.xml">
-          <value>
-            <set />
-          </value>
-        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/res/menu/main.xml">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/res/values-es/strings.xml">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/res/values/strings.xml">
           <value>
             <set />
           </value>

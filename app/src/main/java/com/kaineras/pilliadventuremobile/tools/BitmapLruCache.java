@@ -1,6 +1,7 @@
 package com.kaineras.pilliadventuremobile.tools;
 
 import android.graphics.Bitmap;
+import android.util.Log;
 import android.util.LruCache;
 
 import com.android.volley.toolbox.ImageLoader;
@@ -12,6 +13,7 @@ class BitmapLruCache extends LruCache<String, Bitmap> implements ImageLoader.Ima
 
     private static final int MB= 1024;
     private static final int CACHE= 8;
+    private static final String LOG_TAG = BitmapLruCache.class.getSimpleName();
 
 
     public BitmapLruCache() {
@@ -39,6 +41,15 @@ class BitmapLruCache extends LruCache<String, Bitmap> implements ImageLoader.Ima
 
     @Override
     public void putBitmap(String url, Bitmap bitmap) {
-        put(url, bitmap);
+        if(url!=null && bitmap!=null) {
+            put(url, bitmap);
+        }else{
+            if(url == null) {
+                Log.e(LOG_TAG, "URL IS NULL");
+            }else{
+                Log.e(LOG_TAG, "BITMAP IS NULL");
+            }
+        }
+
     }
 }
