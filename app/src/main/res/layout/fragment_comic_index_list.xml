@@ -5,9 +5,10 @@
     android:orientation="vertical"
     android:theme="@style/AppTheme">
     <ListView
-        android:id="@+id/menuList"
+        android:id="@+id/list_comic_index"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:dividerHeight="15dp"
-        android:divider="@android:color/transparent" />
+        android:divider="@android:color/transparent"
+        android:layout_gravity="center" />
 </LinearLayout>

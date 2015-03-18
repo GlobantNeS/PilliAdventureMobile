@@ -24,6 +24,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
@@ -150,6 +152,18 @@ public class Tools {
         return year + "-" + month + "-" + day;
     }
 
+    public Calendar stringToCalendar(String tmpDate) {
+        Calendar c=Calendar.getInstance();
+        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            c.setTime(simpleDateFormat.parse(tmpDate));
+        } catch (ParseException e) {
+            Log.d(LOG_TAG, e.toString());
+            Logger.getLogger(Tools.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return c;
+    }
+
 
 
     /////////////DATA BASE TOOLS
@@ -160,12 +174,6 @@ public class Tools {
             mDBHelper = OpenHelperManager.getHelper(context, DatabaseHelper.class);
         }
         return mDBHelper;
-    }
-
-    public String getDBLastComic(Context context) throws SQLException {
-        mDBHelper = getDBHelper(context);
-        ImagesProperties eipTemp = mDBHelper.getLastImage();
-        return eipTemp.getName();
     }
 
     public void saveImagePropertiesDB(Context context,ImagesProperties imagesProperties)  {
@@ -194,8 +202,4 @@ public class Tools {
         }
         return result;
     }
-
-
-
-
 }

@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.support.v4.widget.SlidingPaneLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,7 +27,6 @@ public class PillisActivity extends ActionBarActivity implements MenuFragment.Op
     private PagerEnabledSlidingPaneLayout slidingPaneLayout;
     private Tools tools = new Tools();
     private Map<String, String> settings;
-    private ConnectivityManager connMgr;
     private NetworkInfo networkInfo;
 
     @Override
@@ -42,6 +40,9 @@ public class PillisActivity extends ActionBarActivity implements MenuFragment.Op
         prepareToolbar();
         prepareSlide();
         loadNewsFragment(networkInfo);
+        if(getIntent().getBooleanExtra("NOTIFICATION",false)){
+            loadComicFragment(networkInfo);
+        }
     }
 
     private void cleanDB() {
@@ -59,6 +60,7 @@ public class PillisActivity extends ActionBarActivity implements MenuFragment.Op
     }
 
     private void stateOfConnectivity() {
+        ConnectivityManager connMgr;
         connMgr = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
         networkInfo = connMgr.getActiveNetworkInfo();
     }
@@ -162,11 +164,14 @@ public class PillisActivity extends ActionBarActivity implements MenuFragment.Op
     @Override
     public void optionsMenuListener(String optionMenu) {
         switch (optionMenu) {
+            case "LAST":
+                loadComicFragment(networkInfo);
+                break;
             case "NEWS":
                 loadNewsFragment(networkInfo);
                 break;
             case "COMIC":
-                loadComicFragment(networkInfo);
+                loadComicIndexFragment(networkInfo);
                 break;
             case "ABOUT":
                 loadAboutFragment(networkInfo);
@@ -187,6 +192,14 @@ public class PillisActivity extends ActionBarActivity implements MenuFragment.Op
         }
     }
 
+
+    private void loadComicIndexFragment(NetworkInfo networkInfo) {
+        if (networkInfo != null && networkInfo.isConnected()) {
+            tools.loadFragment(getSupportFragmentManager(),R.id.rightpane, new ComicIndexFragment());
+        } else {
+            createAlert(getString(R.string.text_check_connection));
+        }
+    }
 
 
     private void loadComicFragment(NetworkInfo networkInfo) {

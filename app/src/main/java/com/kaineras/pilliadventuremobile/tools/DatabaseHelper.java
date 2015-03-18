@@ -3,7 +3,6 @@ package com.kaineras.pilliadventuremobile.tools;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
-import android.widget.ImageButton;
 
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
@@ -15,7 +14,6 @@ import com.kaineras.pilliadventuremobile.pojo.ImagesProperties;
 
 import java.sql.SQLException;
 import java.util.Calendar;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -43,12 +41,6 @@ class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         return mImageDao;
     }
 
-    public List<ImagesProperties> getImageByMonth(String year, String month) throws SQLException {
-        mImageDao = getImageDao();
-        QueryBuilder queryBuilder = mImageDao.queryBuilder();
-        queryBuilder.setWhere(queryBuilder.orderBy(NAME, true).where().like(NAME, year + "-" + month + "-%"));
-        return mImageDao.query(queryBuilder.prepare());
-    }
 
     public ImagesProperties getLastImage() throws SQLException {
         mImageDao = getImageDao();

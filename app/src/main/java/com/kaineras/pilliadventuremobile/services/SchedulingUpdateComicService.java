@@ -29,7 +29,7 @@ public class SchedulingUpdateComicService extends IntentService {
 
     private String dateImage;
     public static final int NOTIFICATION_ID = 1;
-    private NotificationManager mNotificationManager;
+
     private static final String LOG_TAG = SchedulingUpdateComicService.class.getSimpleName();
 
     public SchedulingUpdateComicService() {
@@ -52,10 +52,12 @@ public class SchedulingUpdateComicService extends IntentService {
 
     // Post a notification indicating whether a new comic was found.
     private void sendNotification(String msg) {
+        NotificationManager mNotificationManager;
         mNotificationManager = (NotificationManager)
                 this.getSystemService(Context.NOTIFICATION_SERVICE);
-
-        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, new Intent(this, PillisActivity.class), 0);
+        Intent intent=new Intent(this, PillisActivity.class);
+        intent.putExtra("NOTIFICATION",true);
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, intent, 0);
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(this)
                         .setLargeIcon(BitmapFactory.decodeResource(null,R.mipmap.ic_launcher))

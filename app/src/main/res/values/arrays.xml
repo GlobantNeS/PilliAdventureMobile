@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="url_chapters_image_eng">
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/SPRING-BREAK.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/GENESIS1.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/WATER-POT.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/FAN.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/DIA-DE-MUERTOS.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/LA-MA-BELLA.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/MOVIE.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/CEREAL-PRINCESS.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/naco-show.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/puppet-show-banner.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/malibran-ghost2.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/tourist-trap-copia.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/invasion-secreta-banner.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/banner-chaneque.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/RE-FLASHBACK.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/busphobia.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/cosplay-con.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/darkest-night.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/chimeraman2.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/woodmen.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/LA-MA-BELLA-copia1.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/summer-event1.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/devil-academy1.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/lets-go-shooping21.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/piñata-arc1.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/monster-war.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/narco-cola.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/giant-paco.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/borrachoman.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/zombies.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2012/12/where-are-tehy2.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2012/12/revangers.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2012/12/ironguy.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2012/12/back-to-the-school.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2012/12/roomies.jpg</item>
+    </string-array>
+    <string-array name="url_chapters_dest_eng">
+        <item>2007-05-24</item>
+        <item>2007-06-07</item>
+        <item>2007-06-26</item>
+        <item>2007-07-13</item>
+        <item>2007-09-05</item>
+        <item>2007-11-05</item>
+        <item>2007-05-24</item>
+        <item>2007-06-07</item>
+        <item>2007-06-26</item>
+        <item>2007-07-13</item>
+        <item>2007-09-05</item>
+        <item>2007-11-05</item>
+        <item>2007-05-24</item>
+        <item>2007-06-07</item>
+        <item>2007-06-26</item>
+        <item>2007-07-13</item>
+        <item>2007-09-05</item>
+        <item>2007-11-05</item>
+        <item>2007-05-24</item>
+        <item>2007-06-07</item>
+        <item>2007-06-26</item>
+        <item>2007-07-13</item>
+        <item>2007-09-05</item>
+        <item>2007-11-05</item>
+        <item>2007-05-24</item>
+        <item>2007-06-07</item>
+        <item>2007-06-26</item>
+        <item>2007-07-13</item>
+        <item>2007-09-05</item>
+        <item>2007-11-05</item>
+        <item>2007-05-24</item>
+        <item>2007-06-07</item>
+        <item>2007-06-26</item>
+        <item>2007-07-13</item>
+        <item>2007-09-05</item>
+    </string-array>
+    <string-array name="name_chapter_eng">
+        <item>CHAPTER 1</item>
+        <item>CHAPTER 2</item>
+        <item>CHAPTER 3</item>
+        <item>CHAPTER 4</item>
+        <item>CHAPTER 5</item>
+        <item>CHAPTER 6</item>
+        <item>CHAPTER 7</item>
+        <item>CHAPTER 8</item>
+        <item>CHAPTER 9</item>
+        <item>CHAPTER 10</item>
+        <item>CHAPTER 11</item>
+        <item>CHAPTER 12</item>
+        <item>CHAPTER 13</item>
+        <item>CHAPTER 14</item>
+        <item>CHAPTER 15</item>
+        <item>CHAPTER 16</item>
+        <item>CHAPTER 17</item>
+        <item>CHAPTER 18</item>
+        <item>CHAPTER 19</item>
+        <item>CHAPTER 20</item>
+        <item>CHAPTER 21</item>
+        <item>CHAPTER 22</item>
+        <item>CHAPTER 23</item>
+        <item>CHAPTER 24</item>
+        <item>CHAPTER 25</item>
+        <item>CHAPTER 26</item>
+        <item>CHAPTER 27</item>
+        <item>CHAPTER 28</item>
+        <item>CHAPTER 29</item>
+        <item>CHAPTER 30</item>
+        <item>CHAPTER 31</item>
+        <item>CHAPTER 32</item>
+        <item>CHAPTER 33</item>
+        <item>CHAPTER 34</item>
+        <item>CHAPTER 34.1</item>
+    </string-array>
+
+    <string-array name="url_chapters_image_esp">
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/SPRING-BREAK.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/GENESIS1.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/WATER-POT.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/FAN.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/DIA-DE-MUERTOS.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/LA-MA-BELLA.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/MOVIE.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/CEREAL-PRINCESS.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/naco-show.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/puppet-show-banner.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/malibran-ghost2.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/tourist-trap-copia.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/invasion-secreta-banner.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/banner-chaneque.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/RE-FLASHBACK.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/busphobia.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/cosplay-con.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/darkest-night.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/chimeraman2.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/woodmen.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/LA-MA-BELLA-copia1.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/summer-event1.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/devil-academy1.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/lets-go-shooping21.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/piñata-arc1.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/monster-war.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/narco-cola.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/giant-paco.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/borrachoman.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/zombies.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2012/12/where-are-tehy2.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2012/12/revangers.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2012/12/ironguy.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2012/12/back-to-the-school.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2012/12/roomies.jpg</item>
+    </string-array>
+    <string-array name="url_chapters_dest_esp">
+        <item>2007-05-24</item>
+        <item>2007-06-07</item>
+        <item>2007-06-26</item>
+        <item>2007-07-13</item>
+        <item>2007-09-05</item>
+        <item>2007-11-05</item>
+
+        <item>2007-05-24</item>
+        <item>2007-06-07</item>
+        <item>2007-06-26</item>
+        <item>2007-07-13</item>
+        <item>2007-09-05</item>
+        <item>2007-11-05</item>
+        <item>2007-05-24</item>
+        <item>2007-06-07</item>
+        <item>2007-06-26</item>
+        <item>2007-07-13</item>
+        <item>2007-09-05</item>
+        <item>2007-11-05</item>
+        <item>2007-05-24</item>
+        <item>2007-06-07</item>
+        <item>2007-06-26</item>
+        <item>2007-07-13</item>
+        <item>2007-09-05</item>
+        <item>2007-11-05</item>
+        <item>2007-05-24</item>
+        <item>2007-06-07</item>
+        <item>2007-06-26</item>
+        <item>2007-07-13</item>
+        <item>2007-09-05</item>
+        <item>2007-11-05</item>
+        <item>2007-05-24</item>
+        <item>2007-06-07</item>
+        <item>2007-06-26</item>
+        <item>2007-07-13</item>
+        <item>2007-09-05</item>
+    </string-array>
+    <string-array name="name_chapter_esp">
+        <item>CHAPTER 1</item>
+        <item>CHAPTER 2</item>
+        <item>CHAPTER 3</item>
+        <item>CHAPTER 4</item>
+        <item>CHAPTER 5</item>
+        <item>CHAPTER 6</item>
+        <item>CHAPTER 7</item>
+        <item>CHAPTER 8</item>
+        <item>CHAPTER 9</item>
+        <item>CHAPTER 10</item>
+        <item>CHAPTER 11</item>
+        <item>CHAPTER 12</item>
+        <item>CHAPTER 13</item>
+        <item>CHAPTER 14</item>
+        <item>CHAPTER 15</item>
+        <item>CHAPTER 16</item>
+        <item>CHAPTER 17</item>
+        <item>CHAPTER 18</item>
+        <item>CHAPTER 19</item>
+        <item>CHAPTER 20</item>
+        <item>CHAPTER 21</item>
+        <item>CHAPTER 22</item>
+        <item>CHAPTER 23</item>
+        <item>CHAPTER 24</item>
+        <item>CHAPTER 25</item>
+        <item>CHAPTER 26</item>
+        <item>CHAPTER 27</item>
+        <item>CHAPTER 28</item>
+        <item>CHAPTER 29</item>
+        <item>CHAPTER 30</item>
+        <item>CHAPTER 31</item>
+        <item>CHAPTER 32</item>
+        <item>CHAPTER 33</item>
+        <item>CHAPTER 34</item>
+        <item>CHAPTER 34.1</item>
+    </string-array>
+
+</resources>

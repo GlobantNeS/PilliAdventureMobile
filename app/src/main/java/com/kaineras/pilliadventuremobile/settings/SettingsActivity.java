@@ -13,11 +13,10 @@ import com.kaineras.pilliadventuremobile.tools.Tools;
  * Created the first version by kaineras on 3/02/15.
  */
 public class SettingsActivity extends ActionBarActivity {
-    Tools t = null;
+    Tools t = new Tools();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        t = new Tools();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preference);
         AppSettingsFragment appSettingsFragment = new AppSettingsFragment();

@@ -49,8 +49,10 @@ public class
     private int numberOfImageTaken;
     private int indexEasterEgg;
     private static final int INT_BASE = 77777;
+    private static final String UPDATE_RIGHT="updateRight";
     private static final String LOG_TAG = ComicFragment.class.getSimpleName();
     private static final  int PAGERS = 3;
+    private static final  int EGG = 7;
     private static final  int FIRST_PAGE = 0;
     private static final  int LAST_PAGE = 4;
     private static final  int REAL_PAGERS = 5;
@@ -65,16 +67,18 @@ public class
                              Bundle savedInstanceState) {
 
         rootView = inflater.inflate(R.layout.fragment_comic, container, false);
+        String datePass;
         calendar = Calendar.getInstance();
         calendarLeft = calendarRight = calendar;
         settings = tools.getPreferences(getActivity());
         indexEasterEgg=0;
         preparePager();
-        boolean lastPage = !getArguments().getBoolean("PAGE");
+        datePass=getArguments().getString("INDEX");
+        boolean lastPage = !getArguments().getBoolean("PAGE",false);
         if (lastPage) {
             new UpdateComic().execute("last");
         }else{
-            new UpdateComic().execute("update");
+            new UpdateComic().execute(UPDATE_RIGHT,datePass);
         }
         return rootView;
     }
@@ -91,16 +95,7 @@ public class
             }
             @Override
             public void onPageSelected(int position) {
-                if(indexEasterEgg==7) {
-                    Intent intent = new Intent(getActivity(),EasterEgg.class);
-                    indexEasterEgg=0;
-                    startActivity(intent);
-                }
-                if(PAGERS == position && lastPageName.equals(comicsList.get(PAGERS))){
-                    Toast.makeText(getActivity(), getString(R.string.text_last_page_comic), Toast.LENGTH_SHORT).show();
-                }else {
-                    checkComicUpdates(position);
-                }
+                updateViewPagerComic(position);
             }
 
             @Override
@@ -108,6 +103,23 @@ public class
                 //FUNCTIONALITY IN NEXT FEATURES
             }
         });
+    }
+
+    private void updateViewPagerComic(int position) {
+        if(indexEasterEgg==EGG) {
+            callEasterEgg();
+        }
+        if(PAGERS == position && lastPageName.equals(comicsList.get(PAGERS))){
+            Toast.makeText(getActivity(), getString(R.string.text_last_page_comic), Toast.LENGTH_SHORT).show();
+        }else {
+            checkComicUpdates(position);
+        }
+    }
+
+    private void callEasterEgg() {
+        Intent intent = new Intent(getActivity(),EasterEgg.class);
+        indexEasterEgg=0;
+        startActivity(intent);
     }
 
     private void checkComicUpdates(int position) {
@@ -120,7 +132,7 @@ public class
                 pager.setCurrentItem(PAGERS, false);
             } else {
                 if (position == LAST_PAGE) {
-                    new UpdateComic().execute("updateRight");
+                    new UpdateComic().execute(UPDATE_RIGHT);
                 }
             }
         }
@@ -146,6 +158,12 @@ public class
         @Override
         protected Void doInBackground(String... params) {
             String varOpt=params[0];
+            String tmpDate;
+            if(params.length>1){
+                tmpDate=params[1];
+                calendarRight=tools.stringToCalendar(tmpDate);
+                Log.d(LOG_TAG,calendarRight.toString());
+            }
             switch (varOpt){
                 case "last":
                     getLastPagesFrom(calendar,0);
@@ -153,7 +171,7 @@ public class
                 case "updateLeft":
                     getLastPagesFrom(calendarLeft,0);
                     break;
-                case "updateRight":
+                case UPDATE_RIGHT:
                     getLastPagesFrom(calendarRight,1);
                     break;
                 default:

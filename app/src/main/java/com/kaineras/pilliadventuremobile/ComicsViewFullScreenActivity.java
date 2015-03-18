@@ -15,7 +15,8 @@ public class ComicsViewFullScreenActivity extends ActionBarActivity {
         if (savedInstanceState == null) {
             ComicFragment fragment = new ComicFragment();
             Bundle bundle = new Bundle();
-            bundle.putBoolean("PAGE", false);
+            bundle.putBoolean("PAGE", getIntent().getBooleanExtra("PAGE",false));
+            bundle.putString("INDEX",getIntent().getStringExtra("INDEX"));
             fragment.setArguments(bundle);
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.container, fragment)

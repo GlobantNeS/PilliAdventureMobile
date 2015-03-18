@@ -11,14 +11,14 @@ import com.kaineras.pilliadventuremobile.MyApplication;
  */
 public class VolleySingleton {
     private static VolleySingleton mInstance = null;
-    private RequestQueue mRequestQueue;
     private ImageLoader mImageLoader;
     private BitmapLruCache bitmapLruCache;
 
     private VolleySingleton(){
+        RequestQueue mRequestQueue;
         mRequestQueue = Volley.newRequestQueue(MyApplication.getContext());
         bitmapLruCache = new BitmapLruCache();
-        mImageLoader = new ImageLoader(this.mRequestQueue,this.bitmapLruCache);
+        mImageLoader = new ImageLoader(mRequestQueue,this.bitmapLruCache);
     }
 
     public static VolleySingleton getInstance(){

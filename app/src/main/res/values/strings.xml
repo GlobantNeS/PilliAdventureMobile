@@ -39,4 +39,5 @@
     <string name="title_activity_easter_egg" translatable="false">KaineraS</string>
     <string name="text_autor_pilli">Author and Illustrator</string>
     <string name="text_autor_kaineras">App By</string>
+    <string name="text_chapter_one">CHAPTER ONE</string>
 </resources>

@@ -13,5 +13,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scaleType="fitXY" />
+    <com.kaineras.pilliadventuremobile.custom.CustomImageView
+        android:id="@+id/ivAboutVil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY" />
 </ScrollView>
 </LinearLayout>
