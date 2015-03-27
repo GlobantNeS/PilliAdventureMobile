@@ -24,7 +24,7 @@ public class LinkComicIndexAdapter extends ArrayAdapter<ComicsIndexData> {
     private Context ctx;
 
     public LinkComicIndexAdapter(List<ComicsIndexData> optionList, Context ctx) {
-        super(ctx, R.layout.options_layout, optionList);
+        super(ctx, R.layout.comic_index_layout, optionList);
         this.ctx = ctx;
         this.comicsIndexDataList = optionList;
     }

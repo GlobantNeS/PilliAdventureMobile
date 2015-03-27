@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -82,7 +81,6 @@ public class ComicIndexFragment extends Fragment {
 
         for(int i=0;i<name.size();i++) {
             comicsIndexDataList.add(new ComicsIndexData(name.get(i),urlImage.get(i),urlDest.get(i)));
-            Log.d("INDICES", name.get(i));
         }
     }
 

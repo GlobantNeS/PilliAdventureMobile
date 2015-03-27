@@ -41,6 +41,7 @@ public class Tools {
     private DatabaseHelper mDBHelper = null;
     private static final String LOG_TAG = Tools.class.getSimpleName();
     private BitmapLruCache bitmapLruCache;
+    private SharedPreferences prefs;
     private static final String SCHEME = "http";
     private static final String BASE_URL = "pilli-adventure.com";
     private static final String LANGUAGE_PATH = "espa";
@@ -81,7 +82,7 @@ public class Tools {
 
     public Map<String, String> getPreferences(Context context) {
         Map<String, String> settings = new HashMap<>();
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        prefs = PreferenceManager.getDefaultSharedPreferences(context);
         settings.put("username", prefs.getString("username_preference", context.getString(R.string.default_username)));
         String language = prefs.getString("language_preference", context.getString(R.string.default_language));
         if("Spanish".equals(language) || "Español".equals(language)) {
@@ -92,6 +93,7 @@ public class Tools {
 
         if (prefs.getBoolean("save_last_comic", false)) {
             settings.put("save", "1");
+            settings.put("text_last_comic",prefs.getString("text_last_comic","none"));
         } else {
             settings.put("save", "0");
         }
@@ -101,6 +103,13 @@ public class Tools {
             settings.put("notif", "0");
         }
         return settings;
+    }
+
+    public void savePreferenceLastPage(String comic)
+    {
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("text_last_comic",comic);
+        editor.commit();
     }
 
     public boolean existImageInUrl(URL urlToCheck) {

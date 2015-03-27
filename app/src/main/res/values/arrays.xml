@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="url_chapters_image_eng">
+    <string-array name="url_chapters_image_eng" translatable="false">
         <item>http://pilli-adventure.com/wp-content/uploads/2008/07/SPRING-BREAK.jpg</item>
         <item>http://pilli-adventure.com/wp-content/uploads/2008/07/GENESIS1.jpg</item>
         <item>http://pilli-adventure.com/wp-content/uploads/2008/07/WATER-POT.jpg</item>
         <item>http://pilli-adventure.com/wp-content/uploads/2008/07/FAN.jpg</item>
         <item>http://pilli-adventure.com/wp-content/uploads/2008/07/DIA-DE-MUERTOS.jpg</item>
-        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/LA-MA-BELLA.jpg</item>
         <item>http://pilli-adventure.com/wp-content/uploads/2008/07/MOVIE.jpg</item>
+        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/LA-MA-BELLA.jpg</item>
         <item>http://pilli-adventure.com/wp-content/uploads/2008/07/CEREAL-PRINCESS.jpg</item>
         <item>http://pilli-adventure.com/wp-content/uploads/2008/07/naco-show.jpg</item>
         <item>http://pilli-adventure.com/wp-content/uploads/2008/07/puppet-show-banner.jpg</item>
@@ -37,44 +37,44 @@
         <item>http://pilli-adventure.com/wp-content/uploads/2012/12/back-to-the-school.jpg</item>
         <item>http://pilli-adventure.com/wp-content/uploads/2012/12/roomies.jpg</item>
     </string-array>
-    <string-array name="url_chapters_dest_eng">
+    <string-array name="url_chapters_dest_eng" translatable="false">
         <item>2007-05-24</item>
         <item>2007-06-07</item>
         <item>2007-06-26</item>
         <item>2007-07-13</item>
-        <item>2007-09-05</item>
+        <item>2007-09-04</item>
+        <item>2007-09-17</item>
         <item>2007-11-05</item>
-        <item>2007-05-24</item>
-        <item>2007-06-07</item>
-        <item>2007-06-26</item>
-        <item>2007-07-13</item>
-        <item>2007-09-05</item>
-        <item>2007-11-05</item>
-        <item>2007-05-24</item>
-        <item>2007-06-07</item>
-        <item>2007-06-26</item>
-        <item>2007-07-13</item>
-        <item>2007-09-05</item>
-        <item>2007-11-05</item>
-        <item>2007-05-24</item>
-        <item>2007-06-07</item>
-        <item>2007-06-26</item>
-        <item>2007-07-13</item>
-        <item>2007-09-05</item>
-        <item>2007-11-05</item>
-        <item>2007-05-24</item>
-        <item>2007-06-07</item>
-        <item>2007-06-26</item>
-        <item>2007-07-13</item>
-        <item>2007-09-05</item>
-        <item>2007-11-05</item>
-        <item>2007-05-24</item>
-        <item>2007-06-07</item>
-        <item>2007-06-26</item>
-        <item>2007-07-13</item>
-        <item>2007-09-05</item>
+        <item>2008-04-01</item>
+        <item>2008-05-22</item>
+        <item>2008-06-03</item>
+        <item>2008-07-09</item>
+        <item>2008-08-13</item>
+        <item>2008-11-12</item>
+        <item>2009-01-19</item>
+        <item>2009-04-06</item>
+        <item>2009-05-18</item>
+        <item>2009-06-22</item>
+        <item>2009-10-12</item>
+        <item>2009-10-28</item>
+        <item>2010-01-18</item>
+        <item>2010-05-03</item>
+        <item>2010-06-28</item>
+        <item>2010-08-25</item>
+        <item>2010-10-13</item>
+        <item>2011-01-04</item>
+        <item>2011-02-18</item>
+        <item>2011-08-17</item>
+        <item>2011-10-28</item>
+        <item>2011-12-05</item>
+        <item>2012-01-25</item>
+        <item>2012-03-14</item>
+        <item>2012-05-04</item>
+        <item>2012-05-18</item>
+        <item>2012-07-27</item>
+        <item>2012-10-08</item>
     </string-array>
-    <string-array name="name_chapter_eng">
+    <string-array name="name_chapter_eng" translatable="false">
         <item>CHAPTER 1</item>
         <item>CHAPTER 2</item>
         <item>CHAPTER 3</item>
@@ -112,17 +112,7 @@
         <item>CHAPTER 34.1</item>
     </string-array>
 
-    <string-array name="url_chapters_image_esp">
-        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/SPRING-BREAK.jpg</item>
-        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/GENESIS1.jpg</item>
-        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/WATER-POT.jpg</item>
-        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/FAN.jpg</item>
-        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/DIA-DE-MUERTOS.jpg</item>
-        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/LA-MA-BELLA.jpg</item>
-        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/MOVIE.jpg</item>
-        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/CEREAL-PRINCESS.jpg</item>
-        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/naco-show.jpg</item>
-        <item>http://pilli-adventure.com/wp-content/uploads/2008/07/puppet-show-banner.jpg</item>
+    <string-array name="url_chapters_image_esp" translatable="false">
         <item>http://pilli-adventure.com/wp-content/uploads/2008/07/malibran-ghost2.jpg</item>
         <item>http://pilli-adventure.com/wp-content/uploads/2008/07/tourist-trap-copia.jpg</item>
         <item>http://pilli-adventure.com/wp-content/uploads/2008/07/invasion-secreta-banner.jpg</item>
@@ -149,80 +139,59 @@
         <item>http://pilli-adventure.com/wp-content/uploads/2012/12/back-to-the-school.jpg</item>
         <item>http://pilli-adventure.com/wp-content/uploads/2012/12/roomies.jpg</item>
     </string-array>
-    <string-array name="url_chapters_dest_esp">
-        <item>2007-05-24</item>
-        <item>2007-06-07</item>
-        <item>2007-06-26</item>
-        <item>2007-07-13</item>
-        <item>2007-09-05</item>
-        <item>2007-11-05</item>
-
-        <item>2007-05-24</item>
-        <item>2007-06-07</item>
-        <item>2007-06-26</item>
-        <item>2007-07-13</item>
-        <item>2007-09-05</item>
-        <item>2007-11-05</item>
-        <item>2007-05-24</item>
-        <item>2007-06-07</item>
-        <item>2007-06-26</item>
-        <item>2007-07-13</item>
-        <item>2007-09-05</item>
-        <item>2007-11-05</item>
-        <item>2007-05-24</item>
-        <item>2007-06-07</item>
-        <item>2007-06-26</item>
-        <item>2007-07-13</item>
-        <item>2007-09-05</item>
-        <item>2007-11-05</item>
-        <item>2007-05-24</item>
-        <item>2007-06-07</item>
-        <item>2007-06-26</item>
-        <item>2007-07-13</item>
-        <item>2007-09-05</item>
-        <item>2007-11-05</item>
-        <item>2007-05-24</item>
-        <item>2007-06-07</item>
-        <item>2007-06-26</item>
-        <item>2007-07-13</item>
-        <item>2007-09-05</item>
+    <string-array name="url_chapters_dest_esp" translatable="false">
+        <item>2009-01-04</item>
+        <item>2009-06-03</item>
+        <item>2009-07-22</item>
+        <item>2009-09-08</item>
+        <item>2009-11-12</item>
+        <item>2009-12-21</item>
+        <item>2010-01-21</item>
+        <item>2010-04-27</item>
+        <item>2010-05-11</item>
+        <item>2010-07-19</item>
+        <item>2010-10-01</item>
+        <item>2010-11-05</item>
+        <item>2010-12-01</item>
+        <item>2011-01-25</item>
+        <item>2011-03-02</item>
+        <item>2011-07-29</item>
+        <item>2011-12-01</item>
+        <item>2012-01-04</item>
+        <item>2012-01-21</item>
+        <item>2012-04-14</item>
+        <item>2012-05-07</item>
+        <item>2012-06-15</item>
+        <item>2012-07-31</item>
+        <item>2012-09-28</item>
+        <item>2012-12-12</item>
     </string-array>
-    <string-array name="name_chapter_esp">
-        <item>CHAPTER 1</item>
-        <item>CHAPTER 2</item>
-        <item>CHAPTER 3</item>
-        <item>CHAPTER 4</item>
-        <item>CHAPTER 5</item>
-        <item>CHAPTER 6</item>
-        <item>CHAPTER 7</item>
-        <item>CHAPTER 8</item>
-        <item>CHAPTER 9</item>
-        <item>CHAPTER 10</item>
-        <item>CHAPTER 11</item>
-        <item>CHAPTER 12</item>
-        <item>CHAPTER 13</item>
-        <item>CHAPTER 14</item>
-        <item>CHAPTER 15</item>
-        <item>CHAPTER 16</item>
-        <item>CHAPTER 17</item>
-        <item>CHAPTER 18</item>
-        <item>CHAPTER 19</item>
-        <item>CHAPTER 20</item>
-        <item>CHAPTER 21</item>
-        <item>CHAPTER 22</item>
-        <item>CHAPTER 23</item>
-        <item>CHAPTER 24</item>
-        <item>CHAPTER 25</item>
-        <item>CHAPTER 26</item>
-        <item>CHAPTER 27</item>
-        <item>CHAPTER 28</item>
-        <item>CHAPTER 29</item>
-        <item>CHAPTER 30</item>
-        <item>CHAPTER 31</item>
-        <item>CHAPTER 32</item>
-        <item>CHAPTER 33</item>
-        <item>CHAPTER 34</item>
-        <item>CHAPTER 34.1</item>
+    <string-array name="name_chapter_esp" translatable="false">
+        <item>CAPITULO 1</item>
+        <item>CAPITULO 2</item>
+        <item>CAPITULO 3</item>
+        <item>CAPITULO 4</item>
+        <item>CAPITULO 5</item>
+        <item>CAPITULO 6</item>
+        <item>CAPITULO 7</item>
+        <item>CAPITULO 8</item>
+        <item>CAPITULO 9</item>
+        <item>CAPITULO 10</item>
+        <item>CAPITULO 11</item>
+        <item>CAPITULO 12</item>
+        <item>CAPITULO 13</item>
+        <item>CAPITULO 14</item>
+        <item>CAPITULO 15</item>
+        <item>CAPITULO 16</item>
+        <item>CAPITULO 17</item>
+        <item>CAPITULO 18</item>
+        <item>CAPITULO 19</item>
+        <item>CAPITULO 20</item>
+        <item>CAPITULO 21</item>
+        <item>CAPITULO 22</item>
+        <item>CAPITULO 23</item>
+        <item>CAPITULO 24</item>
+        <item>CAPITULO 25</item>
     </string-array>
 
 </resources>

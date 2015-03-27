@@ -31,14 +31,14 @@ import java.util.logging.Logger;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class
-        ComicFragment extends Fragment {
+public class ComicFragment extends Fragment {
 
     private Tools tools = new Tools();
     private ViewPager pager = null;
     private MyFragmentPagerAdapter adapter;
     private Map<String, String> settings;
     private String lastPageName;
+    private String lastPageView;
     private String dateImage;
     private View rootView;
     private boolean flagLastName = false;
@@ -63,22 +63,31 @@ public class
     }
 
     @Override
+    public void onPause() {
+        super.onPause();
+        Log.d(LOG_TAG,lastPageView);
+        tools.savePreferenceLastPage(lastPageView);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         rootView = inflater.inflate(R.layout.fragment_comic, container, false);
-        String datePass;
-        calendar = Calendar.getInstance();
-        calendarLeft = calendarRight = calendar;
-        settings = tools.getPreferences(getActivity());
-        indexEasterEgg=0;
-        preparePager();
-        datePass=getArguments().getString("INDEX");
-        boolean lastPage = !getArguments().getBoolean("PAGE",false);
-        if (lastPage) {
-            new UpdateComic().execute("last");
-        }else{
-            new UpdateComic().execute(UPDATE_RIGHT,datePass);
+        if(rootView == null) {
+            String datePass;
+            calendar = Calendar.getInstance();
+            calendarLeft = calendarRight = calendar;
+            settings = tools.getPreferences(getActivity());
+            indexEasterEgg = 0;
+            preparePager();
+            datePass = getArguments().getString("INDEX");
+            boolean lastPage = !getArguments().getBoolean("PAGE", false);
+            if (lastPage) {
+                new UpdateComic().execute("last");
+            } else {
+                new UpdateComic().execute(UPDATE_RIGHT, datePass);
+            }
         }
         return rootView;
     }
@@ -106,6 +115,7 @@ public class
     }
 
     private void updateViewPagerComic(int position) {
+        lastPageView=comicsList.get(position+1);
         if(indexEasterEgg==EGG) {
             callEasterEgg();
         }
@@ -117,7 +127,7 @@ public class
     }
 
     private void callEasterEgg() {
-        Intent intent = new Intent(getActivity(),EasterEgg.class);
+        Intent intent = new Intent(getActivity(),EasterEggActivity.class);
         indexEasterEgg=0;
         startActivity(intent);
     }

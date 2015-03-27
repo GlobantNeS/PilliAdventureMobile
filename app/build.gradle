@@ -8,8 +8,8 @@ android {
         applicationId "com.kaineras.pilliadventuremobile"
         minSdkVersion 15
         targetSdkVersion 21
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.3"
     }
     buildTypes {
         release {
@@ -37,7 +37,7 @@ sonarRunner {
         property 'sonar.language', 'java'
         property 'sonar.sources', 'src'
         property 'sonar.projectName', 'Pillis Adventure'
-        property 'sonar.projectVersion', '1.1'
+        property 'sonar.projectVersion', '1.3'
     }
 }
 
@@ -50,4 +50,5 @@ dependencies {
     compile 'com.squareup.okhttp:okhttp:2.2.0'
     compile 'com.google.guava:guava:18.0'
     compile 'com.android.support:support-v4:21.0.3'
+    compile 'org.jsoup:jsoup:1.8.1'
 }

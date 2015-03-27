@@ -19,7 +19,7 @@ public class AboutFragment extends Fragment {
 
     private static final String URL = "http://pilli-adventure.com/wp-content/uploads/2008/07/cast-web.jpg";
     private static final String URL_ESP = "http://pilli-adventure.com/espa/wp-content/uploads/2009/05/bios.jpg";
-    private static final String URL_VIL_ESP = "http://pilli-adventure.com/espa/wp-content/uploads/2009/05/bios.jpg";
+    private static final String URL_VIL_ESP = "http://pilli-adventure.com/wp-content/uploads/2009/05/monsters-copia.jpg";
 
     public AboutFragment() {
     }

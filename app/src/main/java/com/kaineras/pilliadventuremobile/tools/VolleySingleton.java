@@ -13,9 +13,9 @@ public class VolleySingleton {
     private static VolleySingleton mInstance = null;
     private ImageLoader mImageLoader;
     private BitmapLruCache bitmapLruCache;
+    private RequestQueue mRequestQueue;
 
     private VolleySingleton(){
-        RequestQueue mRequestQueue;
         mRequestQueue = Volley.newRequestQueue(MyApplication.getContext());
         bitmapLruCache = new BitmapLruCache();
         mImageLoader = new ImageLoader(mRequestQueue,this.bitmapLruCache);
@@ -31,6 +31,11 @@ public class VolleySingleton {
     public BitmapLruCache getBitmapLruCache() {
         return this.bitmapLruCache;
     }
+
+    public RequestQueue getRequestQueue() {
+        return this.mRequestQueue;
+    }
+
 
     public ImageLoader getImageLoader(){
         return this.mImageLoader;
