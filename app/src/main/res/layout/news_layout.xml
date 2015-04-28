@@ -13,7 +13,7 @@
         android:textSize="@dimen/abc_text_size_large_material"
         android:gravity="center_horizontal" />
 
-    <com.kaineras.pilliadventuremobile.custom.CustomImageView
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/imageNews"

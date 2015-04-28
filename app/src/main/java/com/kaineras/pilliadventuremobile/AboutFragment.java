@@ -6,6 +6,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+
+import com.bumptech.glide.Glide;
 import com.kaineras.pilliadventuremobile.custom.CustomImageView;
 import com.kaineras.pilliadventuremobile.tools.Tools;
 
@@ -29,19 +32,19 @@ public class AboutFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v;
         Map settings;
-        final CustomImageView nivAbout;
+        final ImageView nivAbout;
         Tools tools=new Tools();
         v = inflater.inflate(R.layout.fragment_about, container, false);
-        nivAbout = (CustomImageView) v.findViewById(R.id.ivAbout);
+        nivAbout = (ImageView) v.findViewById(R.id.ivAbout);
         nivAbout.setAdjustViewBounds(true);
         settings=tools.getPreferences(getActivity());
         if("espa".equals(settings.get("language"))){
-            CustomImageView nivAboutVil = (CustomImageView) v.findViewById(R.id.ivAboutVil);
+            ImageView nivAboutVil = (ImageView) v.findViewById(R.id.ivAboutVil);
             nivAboutVil.setAdjustViewBounds(true);
-            tools.loadImageFromInternet(nivAbout, URL_ESP);
-            tools.loadImageFromInternet(nivAboutVil, URL_VIL_ESP);
+            Glide.with(getActivity()).load(URL_ESP).into(nivAbout);
+            Glide.with(getActivity()).load(URL_VIL_ESP).into(nivAboutVil);
         }else {
-            tools.loadImageFromInternet(nivAbout, URL);
+            Glide.with(getActivity()).load(URL).into(nivAbout);
         }
         return v;
     }

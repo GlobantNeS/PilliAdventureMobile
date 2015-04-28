@@ -11,11 +11,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.common.collect.Lists;
 import com.kaineras.pilliadventuremobile.adapter.MyFragmentPagerAdapter;
-import com.kaineras.pilliadventuremobile.custom.CustomImageView;
 import com.kaineras.pilliadventuremobile.pojo.ImagesProperties;
 import com.kaineras.pilliadventuremobile.tools.Tools;
 
@@ -62,32 +63,30 @@ public class ComicFragment extends Fragment {
 
     }
 
-    @Override
+    /*@Override
     public void onPause() {
         super.onPause();
         Log.d(LOG_TAG,lastPageView);
         tools.savePreferenceLastPage(lastPageView);
-    }
+    }*/
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         rootView = inflater.inflate(R.layout.fragment_comic, container, false);
-        if(rootView == null) {
-            String datePass;
-            calendar = Calendar.getInstance();
-            calendarLeft = calendarRight = calendar;
-            settings = tools.getPreferences(getActivity());
-            indexEasterEgg = 0;
-            preparePager();
-            datePass = getArguments().getString("INDEX");
-            boolean lastPage = !getArguments().getBoolean("PAGE", false);
-            if (lastPage) {
-                new UpdateComic().execute("last");
-            } else {
-                new UpdateComic().execute(UPDATE_RIGHT, datePass);
-            }
+        String datePass;
+        calendar = Calendar.getInstance();
+        calendarLeft = calendarRight = calendar;
+        settings = tools.getPreferences(getActivity());
+        indexEasterEgg = 0;
+        preparePager();
+        datePass = getArguments().getString("INDEX");
+        boolean lastPage = !getArguments().getBoolean("PAGE", false);
+        if (lastPage) {
+            new UpdateComic().execute("last");
+        } else {
+            new UpdateComic().execute(UPDATE_RIGHT, datePass);
         }
         return rootView;
     }
@@ -115,7 +114,7 @@ public class ComicFragment extends Fragment {
     }
 
     private void updateViewPagerComic(int position) {
-        lastPageView=comicsList.get(position+1);
+        lastPageView=comicsList.get(position);
         if(indexEasterEgg==EGG) {
             callEasterEgg();
         }
@@ -312,10 +311,10 @@ public class ComicFragment extends Fragment {
 
         private void updateImagesInViewPager(int index, String name) {
             try {
-                CustomImageView customImageView= (CustomImageView) rootView.findViewById(INT_BASE+index);
+                ImageView customImageView= (ImageView) rootView.findViewById(INT_BASE+index);
                 String url=tools.constructURLIma(language, name + ".jpg").toString();
-                tools.loadImageFromInternet(customImageView, url);
-            } catch (MalformedURLException e) {
+                Glide.with(getActivity()).load(url).into(customImageView);
+             } catch (MalformedURLException e) {
                 Log.d(LOG_TAG, e.toString());
                 Logger.getLogger(ComicFragment.class.getName()).log(Level.SEVERE, null, e);
             }

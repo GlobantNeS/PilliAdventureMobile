@@ -9,8 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.kaineras.pilliadventuremobile.R;
 import com.kaineras.pilliadventuremobile.custom.CustomImageView;
 import com.kaineras.pilliadventuremobile.pojo.NewsData;
@@ -53,11 +55,12 @@ public class LinkNewsAdapter extends ArrayAdapter<NewsData> {
         TextView tName = (TextView) v.findViewById(R.id.nameNews);
         TextView tDate = (TextView) v.findViewById(R.id.dateNews);
         TextView tEntry = (TextView) v.findViewById(R.id.entryNews);
-        CustomImageView icoIma = (CustomImageView) v.findViewById(R.id.imageNews);
+        ImageView icoIma = (ImageView) v.findViewById(R.id.imageNews);
         tName.setText(newsDataList.get(position).getName());
         tDate.setText(newsDataList.get(position).getDate());
         tEntry.setText(newsDataList.get(position).getEntry());
-        tools.loadImageFromInternet(icoIma, newsDataList.get(position).getImage());
+        Glide.with(ctx).load(newsDataList.get(position).getImage()).into(icoIma);
+        //tools.loadImageFromInternet(icoIma, newsDataList.get(position).getImage());
         return v;
     }
 

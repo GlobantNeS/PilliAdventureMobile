@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:gravity="center_vertical|center_horizontal">
 
-    <com.kaineras.pilliadventuremobile.custom.CustomImageView
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/imageIndex"

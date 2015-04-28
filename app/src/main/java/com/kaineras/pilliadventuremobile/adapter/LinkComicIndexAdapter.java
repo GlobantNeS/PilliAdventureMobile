@@ -5,12 +5,15 @@ package com.kaineras.pilliadventuremobile.adapter;
  */
 
 import android.content.Context;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.kaineras.pilliadventuremobile.R;
 import com.kaineras.pilliadventuremobile.custom.CustomImageView;
 import com.kaineras.pilliadventuremobile.pojo.ComicsIndexData;
@@ -51,9 +54,9 @@ public class LinkComicIndexAdapter extends ArrayAdapter<ComicsIndexData> {
         LayoutInflater inf = (LayoutInflater) ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         v = inf.inflate(R.layout.comic_index_layout, null);
         TextView tName = (TextView) v.findViewById(R.id.nameIndex);
-        CustomImageView icoIma = (CustomImageView) v.findViewById(R.id.imageIndex);
+        ImageView icoIma = (ImageView) v.findViewById(R.id.imageIndex);
         tName.setText(comicsIndexDataList.get(position).getName());
-        tools.loadImageFromInternet(icoIma, comicsIndexDataList.get(position).getUrlImage());
+        Glide.with(ctx).load(comicsIndexDataList.get(position).getUrlImage()).fitCenter().into(icoIma);
         return v;
     }
 

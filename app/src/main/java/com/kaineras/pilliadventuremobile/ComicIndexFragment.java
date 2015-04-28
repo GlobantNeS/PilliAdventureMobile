@@ -1,7 +1,6 @@
 package com.kaineras.pilliadventuremobile;
 
 
-import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -26,6 +25,7 @@ import java.util.Map;
  */
 public class ComicIndexFragment extends Fragment {
 
+    Tools tools=new Tools();
 
     private List<ComicsIndexData> comicsIndexDataList = new ArrayList<>();
 
@@ -52,10 +52,12 @@ public class ComicIndexFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position,
                                     long id) {
-                Intent intent = new Intent(getActivity(),ComicsViewFullScreenActivity.class);
-                intent.putExtra("INDEX",comicsIndexDataList.get(position).getUrlDest());
-                intent.putExtra("PAGE",true);
-                startActivity(intent);
+                ComicFragment fragment = new ComicFragment();
+                Bundle bundle = new Bundle();
+                bundle.putBoolean("PAGE", true);
+                bundle.putString("INDEX",comicsIndexDataList.get(position).getUrlDest());
+                fragment.setArguments(bundle);
+                tools.loadFragment(getFragmentManager(),R.id.rightpane, fragment);
             }
         });
         setHasOptionsMenu(true);

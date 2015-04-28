@@ -204,8 +204,12 @@ public class PillisActivity extends ActionBarActivity implements MenuFragment.Op
 
     private void loadComicFragment(NetworkInfo networkInfo) {
         if (networkInfo != null && networkInfo.isConnected()) {
-            Intent intent = new Intent(PillisActivity.this,ComicsViewFullScreenActivity.class);
-            startActivity(intent);
+            ComicFragment fragment = new ComicFragment();
+            Bundle bundle = new Bundle();
+            bundle.putBoolean("PAGE", getIntent().getBooleanExtra("PAGE",false));
+            bundle.putString("INDEX",getIntent().getStringExtra("INDEX"));
+            fragment.setArguments(bundle);
+            tools.loadFragment(getSupportFragmentManager(),R.id.rightpane, fragment);
         } else {
             createAlert(getString(R.string.text_check_connection));
         }

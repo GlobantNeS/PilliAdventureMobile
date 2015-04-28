@@ -13,13 +13,13 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
 
-        <com.kaineras.pilliadventuremobile.custom.CustomImageView
+        <ImageView
             android:id="@+id/ivAbout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scaleType="fitXY" />
 
-        <com.kaineras.pilliadventuremobile.custom.CustomImageView
+        <ImageView
             android:id="@+id/ivAboutVil"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
