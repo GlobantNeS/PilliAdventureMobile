@@ -6,18 +6,9 @@
     android:theme="@style/AppTheme"
     android:gravity="center"
     android:background="#ff000000">
-
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:descendantFocusability="blocksDescendants"
-    android:background="#ff000000">
-
-    <ImageView
+    <com.kaineras.pilliadventuremobile.custom.ZoomImageView
         android:id="@+id/ivComic"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scaleType="centerCrop" />
-</ScrollView>
-
 </LinearLayout>

@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.kaineras.pilliadventuremobile.custom.CustomImageView;
+import com.kaineras.pilliadventuremobile.custom.ZoomImageView;
 import com.kaineras.pilliadventuremobile.tools.Tools;
 
 /**
@@ -18,7 +18,7 @@ public class ImageComicsViewFragment extends Fragment {
 
     private String url;
     private int index;
-    private ImageView nivComic;
+    private ZoomImageView nivComic;
     private View rootView;
     private static String URL = "URL";
     private static final String INDEX = "INDEX";
@@ -49,13 +49,13 @@ public class ImageComicsViewFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_image_comic, container, false);
-        nivComic = (ImageView) rootView.findViewById(R.id.ivComic);
+        nivComic = (ZoomImageView) rootView.findViewById(R.id.ivComic);
         nivComic.setId(INT_BASE+index);
         nivComic.setAdjustViewBounds(true);
         if(url.isEmpty()){
             nivComic.setImageResource(R.mipmap.ic_launcher);
         }else {
-            Glide.with(this).load(url).into(nivComic);
+            Glide.with(this).load(url).fitCenter().into(nivComic);
             //tools.loadImageFromInternet(nivComic, url);
         }
         return rootView;

@@ -1,4 +1,4 @@
-package com.ebay.app.views;
+package com.kaineras.pilliadventuremobile.custom;
 
 import android.content.Context;
 import android.graphics.Matrix;
@@ -7,13 +7,12 @@ import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.ViewConfiguration;
 
-import static com.ebay.app.util.LogUtils.LogD;
-import static com.ebay.app.util.LogUtils.LogI;
 
 
 @SuppressWarnings("unused")
@@ -120,7 +119,7 @@ public class ZoomImageView extends ZoomImageViewBase {
     protected void onZoomAnimationCompleted(float scale) {
 
         if (LOG_ENABLED) {
-            LogD(TAG, "onZoomAnimationCompleted. scale: " + scale + ", minZoom: " + getMinScale());
+            Log.d(TAG, "onZoomAnimationCompleted. scale: " + scale + ", minZoom: " + getMinScale());
         }
 
         if (scale < getMinScale()) {
@@ -229,7 +228,7 @@ public class ZoomImageView extends ZoomImageViewBase {
         @Override
         public boolean onDoubleTap(MotionEvent e) {
             if (LOG_ENABLED) {
-                LogI(TAG, "onDoubleTap. double tap enabled? " + mDoubleTapEnabled);
+                Log.i(TAG, "onDoubleTap. double tap enabled? " + mDoubleTapEnabled);
             }
             if (mDoubleTapEnabled) {
                 mUserScaled = true;

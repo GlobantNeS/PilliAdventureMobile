@@ -3,7 +3,6 @@ package com.kaineras.pilliadventuremobile.tools;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
@@ -11,10 +10,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 
-import com.android.volley.toolbox.ImageLoader;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.kaineras.pilliadventuremobile.R;
-import com.kaineras.pilliadventuremobile.custom.CustomImageView;
 import com.kaineras.pilliadventuremobile.pojo.ImagesProperties;
 
 import java.io.BufferedInputStream;
@@ -40,7 +37,6 @@ public class Tools {
 
     private DatabaseHelper mDBHelper = null;
     private static final String LOG_TAG = Tools.class.getSimpleName();
-    private BitmapLruCache bitmapLruCache;
     private SharedPreferences prefs;
     private static final String SCHEME = "http";
     private static final String BASE_URL = "pilli-adventure.com";
@@ -49,7 +45,6 @@ public class Tools {
 
 
     public Tools() {
-        bitmapLruCache=new BitmapLruCache(BitmapLruCache.getDefaultLruCacheSize());
 
     }
 
@@ -59,15 +54,6 @@ public class Tools {
         fragmentTransaction.replace(container, f);
         fragmentTransaction.commit();
     }
-
-    public void loadImageFromInternet(CustomImageView nivComic, String url) {
-        ImageLoader imageLoader;
-        imageLoader = VolleySingleton.getInstance().getImageLoader();
-        if(!url.isEmpty()) {
-            imageLoader.get(url, ImageLoader.getImageListener(nivComic, 0, 0));
-        }
-    }
-
 
     public URL constructURLIma(String language, String key) throws MalformedURLException {
         Uri.Builder builder = new Uri.Builder();
@@ -127,8 +113,6 @@ public class Tools {
         try {
             InputStream inputStream=connection.getInputStream();
             BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream);
-            bitmapLruCache = VolleySingleton.getInstance().getBitmapLruCache();
-            bitmapLruCache.putBitmap(url.toString(),BitmapFactory.decodeStream(bufferedInputStream));
             result = true;
         } catch (IOException e) {
             Log.d(LOG_TAG, e.toString());

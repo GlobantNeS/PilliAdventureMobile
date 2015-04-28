@@ -12,13 +12,10 @@ import com.kaineras.pilliadventuremobile.MyApplication;
 public class VolleySingleton {
     private static VolleySingleton mInstance = null;
     private ImageLoader mImageLoader;
-    private BitmapLruCache bitmapLruCache;
     private RequestQueue mRequestQueue;
 
     private VolleySingleton(){
         mRequestQueue = Volley.newRequestQueue(MyApplication.getContext());
-        bitmapLruCache = new BitmapLruCache();
-        mImageLoader = new ImageLoader(mRequestQueue,this.bitmapLruCache);
     }
 
     public static VolleySingleton getInstance(){
@@ -26,10 +23,6 @@ public class VolleySingleton {
             mInstance = new VolleySingleton();
         }
         return mInstance;
-    }
-
-    public BitmapLruCache getBitmapLruCache() {
-        return this.bitmapLruCache;
     }
 
     public RequestQueue getRequestQueue() {

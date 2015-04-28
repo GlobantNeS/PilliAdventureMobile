@@ -14,7 +14,6 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.kaineras.pilliadventuremobile.R;
-import com.kaineras.pilliadventuremobile.custom.CustomImageView;
 import com.kaineras.pilliadventuremobile.pojo.NewsData;
 import com.kaineras.pilliadventuremobile.tools.Tools;
 
@@ -59,8 +58,7 @@ public class LinkNewsAdapter extends ArrayAdapter<NewsData> {
         tName.setText(newsDataList.get(position).getName());
         tDate.setText(newsDataList.get(position).getDate());
         tEntry.setText(newsDataList.get(position).getEntry());
-        Glide.with(ctx).load(newsDataList.get(position).getImage()).into(icoIma);
-        //tools.loadImageFromInternet(icoIma, newsDataList.get(position).getImage());
+        Glide.with(ctx).load(newsDataList.get(position).getImage()).fitCenter().into(icoIma);
         return v;
     }
 

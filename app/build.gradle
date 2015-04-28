@@ -52,4 +52,5 @@ dependencies {
     compile 'org.jsoup:jsoup:1.8.1'
     compile 'com.github.bumptech.glide:volley-integration:1.2.2'
     compile 'com.mcxiaoke.volley:library:1.0.5'
+    compile 'com.mikepenz.materialdrawer:library:2.9.1'
 }

@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 /**
  * Created the first version by kaineras on 9/02/15.
  */
-class DatabaseHelper extends OrmLiteSqliteOpenHelper {
+public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
 
     private Dao<ImagesProperties, Integer> mImageDao;

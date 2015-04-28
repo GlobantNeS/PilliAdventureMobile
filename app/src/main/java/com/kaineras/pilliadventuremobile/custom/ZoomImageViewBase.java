@@ -1,6 +1,5 @@
-package com.ebay.app.views;
+package com.kaineras.pilliadventuremobile.custom;
 
-import com.ebay.app.graphics.BasicBitmapDrawable;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -8,17 +7,14 @@ import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.graphics.PointF;
 import android.graphics.RectF;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.widget.ImageView;
 
-import static com.ebay.app.util.LogUtils.LogD;
-import static com.ebay.app.util.LogUtils.LogE;
-import static com.ebay.app.util.LogUtils.LogI;
-import static com.ebay.app.util.LogUtils.LogV;
-import static com.ebay.app.util.LogUtils.LogW;
-import static com.ebay.app.util.LogUtils.makeLogTag;
+
 
 
 @SuppressWarnings("unused")
@@ -60,7 +56,7 @@ public abstract class ZoomImageViewBase extends UrlImageView {
     }
 
 
-    public static final String TAG = makeLogTag(ZoomImageViewBase.class);
+    public static final String TAG = ZoomImageViewBase.class.getSimpleName();
     protected static final boolean LOG_ENABLED = false;
 
     public static final float ZOOM_INVALID = -1f;
@@ -133,7 +129,7 @@ public abstract class ZoomImageViewBase extends UrlImageView {
         if (scaleType == ScaleType.MATRIX) {
             super.setScaleType(scaleType);
         } else {
-            LogW(TAG, "Unsupported scaletype. Only MATRIX can be used");
+            Log.w(TAG, "Unsupported scaletype. Only MATRIX can be used");
         }
     }
 
@@ -150,7 +146,7 @@ public abstract class ZoomImageViewBase extends UrlImageView {
     public void setDisplayType(DisplayType type) {
         if (type != mScaleType) {
             if (LOG_ENABLED) {
-                LogI(TAG, "setDisplayType: " + type);
+                Log.i(TAG, "setDisplayType: " + type);
             }
             mUserScaled = false;
             mScaleType = type;
@@ -165,7 +161,7 @@ public abstract class ZoomImageViewBase extends UrlImageView {
 
     protected void setMinScale(float value) {
         if (LOG_ENABLED) {
-            LogD(TAG, "setMinZoom: " + value);
+            Log.d(TAG, "setMinZoom: " + value);
         }
 
         mMinZoom = value;
@@ -173,7 +169,7 @@ public abstract class ZoomImageViewBase extends UrlImageView {
 
     protected void setMaxScale(float value) {
         if (LOG_ENABLED) {
-            LogD(TAG, "setMaxZoom: " + value);
+            Log.d(TAG, "setMaxZoom: " + value);
         }
         mMaxZoom = value;
     }
@@ -182,7 +178,7 @@ public abstract class ZoomImageViewBase extends UrlImageView {
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
 
         if (LOG_ENABLED) {
-            LogE(TAG, "onLayout: " + changed + ", bitmapChanged: " + mBitmapChanged + ", scaleChanged: " + mScaleTypeChanged);
+            Log.e(TAG, "onLayout: " + changed + ", bitmapChanged: " + mBitmapChanged + ", scaleChanged: " + mScaleTypeChanged);
         }
 
         super.onLayout(changed, left, top, right, bottom);
@@ -240,18 +236,18 @@ public abstract class ZoomImageViewBase extends UrlImageView {
                 float new_matrix_scale = getScale(mBaseMatrix);
 
                 if (LOG_ENABLED) {
-                    LogD(TAG, "old matrix scale: " + old_matrix_scale);
-                    LogD(TAG, "new matrix scale: " + new_matrix_scale);
-                    LogD(TAG, "old min scale: " + old_min_scale);
-                    LogD(TAG, "old scale: " + old_scale);
+                    Log.d(TAG, "old matrix scale: " + old_matrix_scale);
+                    Log.d(TAG, "new matrix scale: " + new_matrix_scale);
+                    Log.d(TAG, "old min scale: " + old_min_scale);
+                    Log.d(TAG, "old scale: " + old_scale);
                 }
 
                 // 1. bitmap changed or scaletype changed
                 if (mBitmapChanged || mScaleTypeChanged) {
 
                     if (LOG_ENABLED) {
-                        LogD(TAG, "display type: " + mScaleType);
-                        LogD(TAG, "newMatrix: " + mNextMatrix);
+                        Log.d(TAG, "display type: " + mScaleType);
+                        Log.d(TAG, "newMatrix: " + mNextMatrix);
                     }
 
                     if (mNextMatrix != null) {
@@ -267,7 +263,7 @@ public abstract class ZoomImageViewBase extends UrlImageView {
 
                     if (scale != getScale()) {
                         if (LOG_ENABLED) {
-                            LogV(TAG, "scale != getScale: " + scale + " != " + getScale());
+                            Log.v(TAG, "scale != getScale: " + scale + " != " + getScale());
                         }
                         zoomTo(scale);
                     }
@@ -289,7 +285,7 @@ public abstract class ZoomImageViewBase extends UrlImageView {
                     if (!mUserScaled) {
                         scale = getDefaultScale(mScaleType);
                         if (LOG_ENABLED) {
-                            LogV(TAG, "!userScaled. scale=" + scale);
+                            Log.v(TAG, "!userScaled. scale=" + scale);
                         }
                         zoomTo(scale);
                     } else {
@@ -297,14 +293,14 @@ public abstract class ZoomImageViewBase extends UrlImageView {
                             scale = (old_matrix_scale / new_matrix_scale) * old_scale;
                         }
                         if (LOG_ENABLED) {
-                            LogV(TAG, "userScaled. scale=" + scale);
+                            Log.v(TAG, "userScaled. scale=" + scale);
                         }
                         zoomTo(scale);
                     }
 
                     if (LOG_ENABLED) {
-                        LogD(TAG, "old scale: " + old_scale);
-                        LogD(TAG, "new scale: " + scale);
+                        Log.d(TAG, "old scale: " + old_scale);
+                        Log.d(TAG, "new scale: " + scale);
                     }
 
                 }
@@ -334,7 +330,7 @@ public abstract class ZoomImageViewBase extends UrlImageView {
                 }
 
                 if (LOG_ENABLED) {
-                    LogD(TAG, "new scale: " + getScale());
+                    Log.d(TAG, "new scale: " + getScale());
                 }
             }
         } else {
@@ -366,7 +362,7 @@ public abstract class ZoomImageViewBase extends UrlImageView {
 
     public void resetMatrix() {
         if (LOG_ENABLED) {
-            LogI(TAG, "resetMatrix");
+            Log.i(TAG, "resetMatrix");
         }
         mSuppMatrix = new Matrix();
 
@@ -374,7 +370,7 @@ public abstract class ZoomImageViewBase extends UrlImageView {
         setImageMatrix(getImageViewMatrix());
 
         if (LOG_ENABLED) {
-            LogD(TAG, "default scale: " + scale + ", scale: " + getScale());
+            Log.d(TAG, "default scale: " + scale + ", scale: " + getScale());
         }
 
         if (scale != getScale()) {
@@ -418,7 +414,7 @@ public abstract class ZoomImageViewBase extends UrlImageView {
      */
     public void setImageBitmap(final Bitmap bitmap, Matrix matrix, float min_zoom, float max_zoom) {
         if (bitmap != null) {
-            setImageDrawable(new BasicBitmapDrawable(bitmap), matrix, min_zoom, max_zoom);
+            setImageDrawable(new BitmapDrawable(getResources(),bitmap), matrix, min_zoom, max_zoom);
         } else {
             setImageDrawable(null, matrix, min_zoom, max_zoom);
         }
@@ -456,14 +452,14 @@ public abstract class ZoomImageViewBase extends UrlImageView {
     protected void _setImageDrawable(final Drawable drawable, final Matrix initial_matrix, float min_zoom, float max_zoom) {
 
         if (LOG_ENABLED) {
-            LogI(TAG, "_setImageDrawable");
+            Log.i(TAG, "_setImageDrawable");
         }
 
         mBaseMatrix.reset();
 
         if (drawable != null) {
             if (LOG_ENABLED) {
-                LogD(TAG, "size: " + drawable.getIntrinsicWidth() + "x" + drawable.getIntrinsicHeight());
+                Log.d(TAG, "size: " + drawable.getIntrinsicWidth() + "x" + drawable.getIntrinsicHeight());
             }
             super.setImageDrawable(drawable);
         } else {
@@ -505,7 +501,7 @@ public abstract class ZoomImageViewBase extends UrlImageView {
         }
 
         if (LOG_ENABLED) {
-            LogV(TAG, "mMinZoom: " + mMinZoom + ", mMaxZoom: " + mMaxZoom);
+            Log.v(TAG, "mMinZoom: " + mMinZoom + ", mMaxZoom: " + mMaxZoom);
         }
 
         mBitmapChanged = true;
@@ -517,8 +513,8 @@ public abstract class ZoomImageViewBase extends UrlImageView {
      */
     protected void onDrawableChanged(final Drawable drawable) {
         if (LOG_ENABLED) {
-            LogI(TAG, "onDrawableChanged");
-            LogV(TAG, "scale: " + getScale() + ", minScale: " + getMinScale());
+            Log.i(TAG, "onDrawableChanged");
+            Log.v(TAG, "scale: " + getScale() + ", minScale: " + getMinScale());
         }
         fireOnDrawableChangeListener(drawable);
     }
@@ -542,7 +538,7 @@ public abstract class ZoomImageViewBase extends UrlImageView {
      */
     protected void onLayoutChanged(int left, int top, int right, int bottom) {
         if (LOG_ENABLED) {
-            LogI(TAG, "onLayoutChanged");
+            Log.i(TAG, "onLayoutChanged");
         }
         fireOnLayoutChangeListener(left, top, right, bottom);
     }
@@ -559,14 +555,14 @@ public abstract class ZoomImageViewBase extends UrlImageView {
         float scale = Math.max(fw, fh) * 8;
 
         if (LOG_ENABLED) {
-            LogI(TAG, "computeMaxZoom: " + scale);
+            Log.i(TAG, "computeMaxZoom: " + scale);
         }
         return scale;
     }
 
     protected float computeMinZoom() {
         if (LOG_ENABLED) {
-            LogI(TAG, "computeMinZoom");
+            Log.i(TAG, "computeMinZoom");
         }
 
         final Drawable drawable = getDrawable();
@@ -579,7 +575,7 @@ public abstract class ZoomImageViewBase extends UrlImageView {
         scale = Math.min(1f, 1f / scale);
 
         if (LOG_ENABLED) {
-            LogI(TAG, "computeMinZoom: " + scale);
+            Log.i(TAG, "computeMinZoom: " + scale);
         }
 
         return scale;
@@ -600,7 +596,7 @@ public abstract class ZoomImageViewBase extends UrlImageView {
      */
     public float getMinScale() {
         if (LOG_ENABLED) {
-            LogI(TAG, "getMinScale, mMinZoom: " + mMinZoom);
+            Log.i(TAG, "getMinScale, mMinZoom: " + mMinZoom);
         }
 
         if (mMinZoom == ZOOM_INVALID) {
@@ -608,7 +604,7 @@ public abstract class ZoomImageViewBase extends UrlImageView {
         }
 
         if (LOG_ENABLED) {
-            LogV(TAG, "mMinZoom: " + mMinZoom);
+            Log.v(TAG, "mMinZoom: " + mMinZoom);
         }
 
         return mMinZoom;
@@ -677,7 +673,7 @@ public abstract class ZoomImageViewBase extends UrlImageView {
         float viewHeight = mThisHeight;
 
         if (LOG_ENABLED) {
-            LogD(TAG, "getProperBaseMatrix. view: " + viewWidth + "x" + viewHeight);
+            Log.d(TAG, "getProperBaseMatrix. view: " + viewWidth + "x" + viewHeight);
         }
 
         float w = drawable.getIntrinsicWidth();
@@ -743,7 +739,7 @@ public abstract class ZoomImageViewBase extends UrlImageView {
         float scaley = getValue(matrix, Matrix.MSCALE_Y);
         float tx = getValue(matrix, Matrix.MTRANS_X);
         float ty = getValue(matrix, Matrix.MTRANS_Y);
-        LogD(TAG, "matrix: { x: " + tx + ", y: " + ty + ", scalex: " + scalex + ", scaley: " + scaley + " }");
+        Log.d(TAG, "matrix: { x: " + tx + ", y: " + ty + ", scalex: " + scalex + ", scaley: " + scaley + " }");
     }
 
     public RectF getBitmapRect() {
@@ -793,7 +789,7 @@ public abstract class ZoomImageViewBase extends UrlImageView {
         if (rect.left != 0 || rect.top != 0) {
 
             if (LOG_ENABLED) {
-                LogI(TAG, "center");
+                Log.i(TAG, "center");
             }
             postTranslate(rect.left, rect.top);
         }
@@ -838,7 +834,7 @@ public abstract class ZoomImageViewBase extends UrlImageView {
     protected void postTranslate(float deltaX, float deltaY) {
         if (deltaX != 0 || deltaY != 0) {
             if (LOG_ENABLED) {
-                LogI(TAG, "postTranslate: " + deltaX + "x" + deltaY);
+                Log.i(TAG, "postTranslate: " + deltaX + "x" + deltaY);
             }
             mSuppMatrix.postTranslate(deltaX, deltaY);
             setImageMatrix(getImageViewMatrix());
@@ -847,7 +843,7 @@ public abstract class ZoomImageViewBase extends UrlImageView {
 
     protected void postScale(float scale, float centerX, float centerY) {
         if (LOG_ENABLED) {
-            LogI(TAG, "postScale: " + scale + ", center: " + centerX + "x" + centerY);
+            Log.i(TAG, "postScale: " + scale + ", center: " + centerX + "x" + centerY);
         }
         mSuppMatrix.postScale(scale, scale, centerX, centerY);
         setImageMatrix(getImageViewMatrix());
@@ -859,7 +855,7 @@ public abstract class ZoomImageViewBase extends UrlImageView {
 
     protected void zoomTo(float scale) {
         if (LOG_ENABLED) {
-            LogI(TAG, "zoomTo: " + scale);
+            Log.i(TAG, "zoomTo: " + scale);
         }
 
         if (scale > getMaxScale()) {
@@ -870,7 +866,7 @@ public abstract class ZoomImageViewBase extends UrlImageView {
         }
 
         if (LOG_ENABLED) {
-            LogD(TAG, "sanitized scale: " + scale);
+            Log.d(TAG, "sanitized scale: " + scale);
         }
 
         PointF center = getCenter();
